@@ -1,0 +1,10 @@
+{
+    "cmsPro": {
+        "blocks": {
+            "teaserCollapse": {
+                "showMore": "Show more",
+                "showLess": "Show less"
+            }
+        }
+    }
+}

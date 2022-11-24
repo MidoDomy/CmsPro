@@ -48,6 +48,11 @@
             "accordion": {
                 "label": "Accordion"
             },
+            "teaserCollapse": {
+                "label": "Teaser collapse",
+                "showMore": "Show more",
+                "showLess": "Show less"
+            },
             "slider": {
                 "label": "Slider"
             },

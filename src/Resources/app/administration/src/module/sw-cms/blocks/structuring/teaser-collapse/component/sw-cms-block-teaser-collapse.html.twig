@@ -1,0 +1,27 @@
+{% block cms_block_group_content %}
+    {% block sw_cms_block_teaser_collapse %}
+        <div class="sw-cms-block-teaser-collapse"
+            :class="{ 'sw-cms-block-teaser-collapse--open' : isOpen }"
+        >
+            <div class="sw-cms-block-teaser-collapse__content">
+                <cms-block-sub-section
+                    :childBlocks="childBlocks('mainContent')"
+                    subSectionName="mainContent"
+                    @stage-block-add="onAddSectionBlock"
+                    @block-overlay-click="onBlockSelection"
+                />
+            </div>
+
+            {# Show more #}
+            <a class="sw-cms-block-teaser-collapse__link show-more" @click="isOpen = true">
+                <span>{{ $tc('sw-cms.blocks.teaserCollapse.showMore') }}</span>
+                <sw-icon name="default-arrow-head-down" size="14" />
+            </a>
+            {# Show less #}
+            <a class="sw-cms-block-teaser-collapse__link show-less" @click="isOpen = false">
+                <sw-icon name="default-arrow-head-up" size="14" />
+                <span>{{ $tc('sw-cms.blocks.teaserCollapse.showLess') }}</span>
+            </a>
+        </div>
+    {% endblock %}
+{% endblock %}
