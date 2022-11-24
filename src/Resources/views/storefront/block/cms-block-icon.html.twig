@@ -1,9 +1,9 @@
-{% block block_icon %}
+{% block cms_block_icon %}
     {% set element = block.slots.getSlot('slot') %}
     {% set columns = 1 %}
     
     <div class="col-12" data-cms-element-id="{{ element.id }}">
-        {% block block_icon_inner %}
+        {% block cms_block_icon_inner %}
             {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
         {% endblock %}
     </div>

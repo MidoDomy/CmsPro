@@ -1,8 +1,8 @@
-{% block block_breadcrumbs %}
+{% block cms_block_breadcrumbs %}
     {% set element = block.slots.getSlot('slot') %}
 
     <div class="col-12" data-cms-element-id="{{ element.id }}">
-        {% block block_breadcrumbs_inner %}
+        {% block cms_block_breadcrumbs_inner %}
             {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
         {% endblock %}
     </div>

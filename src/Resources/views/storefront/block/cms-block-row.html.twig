@@ -1,0 +1,18 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-group/cms-block-group-dynamic.html.twig' %}
+
+{% block cms_block_group_dynamic_content %}
+    {% block cms_block_row %}
+        <div class="cms-custom-row row">
+            {% for panelConfig in panelConfigs %}
+                <div class="col">
+                    {% for block in panelConfig.subBlocks %}
+                        {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                            sectionBlocks: sectionBlocks,
+                            parentBlockId: currentBlockId
+                        } %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+{% endblock %}

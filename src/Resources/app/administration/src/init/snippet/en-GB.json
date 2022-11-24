@@ -17,7 +17,7 @@
         "detail": {
             "label": {
                 "blockStructuringBlocks": "Structuring blocks",
-                "blockBasicElements": "Basic elements"
+                "blockBasicElements": "Basic blocks"
             }
         },
         "blocks": {
@@ -39,9 +39,9 @@
             "icon": {
                 "label": "Icon"
             },
-            "googleMap": {
-                "label": "Google map"
-            },
+            "row": {
+                "label": "Row (dynamically adding columns)"
+            },  
             "tabs": {
                 "label": "Tabs"
             },
@@ -246,23 +246,6 @@
                         "optionLeft": "Left",
                         "optionCenter": "Center",
                         "optionRight": "Right"
-                    }
-                }
-            },
-            "googleMap": {
-                "label": "Google map",
-                "config": {
-                    "latitude": {
-                        "label": "Latitude",
-                        "placeholder": "Enter latitude.."
-                    },
-                    "longitude": {
-                        "label": "Longitude",
-                        "placeholder": "Enter logitude.."
-                    },
-                    "height": {
-                        "label": "Height",
-                        "placeholder": "Enter height.."
                     }
                 }
             },

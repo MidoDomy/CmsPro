@@ -5,31 +5,33 @@
 } %}
 
 {% block cms_block_group_predefined_content %}
-    <div class="cms-teaser-collapse" 
-        data-teaser-collapse="true"
-    >
-        <div class="cms-teaser-collapse-content">
-            <div>
-                {# Output slot blocks #}
-                {% for block in columnChildBlocks.mainContent %}
-                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                        sectionBlocks: sectionBlocks,
-                        parentBlockId: currentBlockId
-                    } %}
-                {% endfor %}
+    {% block cms_block_teaser_collapse %}
+        <div class="cms-teaser-collapse" 
+            data-teaser-collapse="true"
+        >
+            <div class="cms-teaser-collapse-content">
+                <div>
+                    {# Output slot blocks #}
+                    {% for block in columnChildBlocks.mainContent %}
+                        {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                            sectionBlocks: sectionBlocks,
+                            parentBlockId: currentBlockId
+                        } %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="cms-teaser-collapse-btn-container">
+                <a class="cms-teaser-collapse-btn show-more">
+                    <span>{{ 'cmsPro.blocks.teaserCollapse.showMore'|trans }}</span>
+                    {% sw_icon 'arrow-head-down' %}
+                </a>
+        
+                <a class="cms-teaser-collapse-btn show-less">
+                    {% sw_icon 'arrow-head-up' %}
+                    <span>{{ 'cmsPro.blocks.teaserCollapse.showLess'|trans }}</span>
+                </a>
             </div>
         </div>
-
-        <div class="cms-teaser-collapse-btn-container">
-            <a class="cms-teaser-collapse-btn show-more">
-                <span>{{ 'cmsPro.blocks.teaserCollapse.showMore'|trans }}</span>
-                {% sw_icon 'arrow-head-down' %}
-            </a>
-    
-            <a class="cms-teaser-collapse-btn show-less">
-                {% sw_icon 'arrow-head-up' %}
-                <span>{{ 'cmsPro.blocks.teaserCollapse.showLess'|trans }}</span>
-            </a>
-        </div>
-    </div>
+    {% endblock %}
 {% endblock %}

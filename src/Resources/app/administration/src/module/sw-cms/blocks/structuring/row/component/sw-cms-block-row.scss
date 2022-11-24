@@ -1,0 +1,10 @@
+@import "~scss/variables";
+
+.sw-cms-block-row {
+    display: flex;
+    gap: 40px;
+    
+    &__col {
+        flex: 1;
+    }
+}

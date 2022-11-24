@@ -1,5 +1,13 @@
 @import "~scss/variables";
 
+.sw-cms-section {
+    &.is--boxed {
+        .sw-cms-section__wrapper {
+            max-width: 1400px;
+        }
+    }
+}
+
 .sw-cms-block-preview__empty-stage {
     display: flex;
     justify-content: center;

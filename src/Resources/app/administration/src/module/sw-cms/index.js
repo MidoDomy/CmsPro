@@ -28,6 +28,7 @@ import './elements/breadcrumbs';
 
 /*-------------- Blocks ----------------*/
     /* Structuring */
+import './blocks/structuring/row';
 import './blocks/structuring/slider';
 import './blocks/structuring/tabs';
 import './blocks/structuring/accordion';

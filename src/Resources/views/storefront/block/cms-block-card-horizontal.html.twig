@@ -6,35 +6,37 @@
 } %}
 
 {% block cms_block_group_predefined_content %}
-    <div class="cms-card-horizontal card">
-        <div class="row no-gutters">
-            {% if columnChildBlocks.headerContent %}
-                <div class="col-md-4">
-                    <div class="card-header">
-                        {# Output slot blocks #}
-                        {% for block in columnChildBlocks.headerContent %}
-                            {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                sectionBlocks: sectionBlocks,
-                                parentBlockId: currentBlockId
-                            } %}
-                        {% endfor %}
+    {% block cms_block_card_horizontal %}
+        <div class="cms-card-horizontal card">
+            <div class="row no-gutters">
+                {% if columnChildBlocks.headerContent %}
+                    <div class="col-md-4">
+                        <div class="card-header">
+                            {# Output slot blocks #}
+                            {% for block in columnChildBlocks.headerContent %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                    sectionBlocks: sectionBlocks,
+                                    parentBlockId: currentBlockId
+                                } %}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
 
-            {% if columnChildBlocks.bodyContent %}
-                <div class="col-md-8">
-                    <div class="card-body">
-                        {# Output slot blocks #}
-                        {% for block in columnChildBlocks.bodyContent %}
-                            {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                sectionBlocks: sectionBlocks,
-                                parentBlockId: currentBlockId
-                            } %}
-                        {% endfor %}
+                {% if columnChildBlocks.bodyContent %}
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            {# Output slot blocks #}
+                            {% for block in columnChildBlocks.bodyContent %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                    sectionBlocks: sectionBlocks,
+                                    parentBlockId: currentBlockId
+                                } %}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
-    </div>
+    {% endblock %}
 {% endblock %}
