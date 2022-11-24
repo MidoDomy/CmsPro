@@ -1,0 +1,17 @@
+<li class="sw-cms-el-list__item">
+    <div class="sw-cms-el-list__item-name">
+        {{ item.value.name }}
+    </div>
+
+    <ul 
+        v-if="item.value.hasChildren"
+        class="sw-cms-el-list__children"
+    >
+        <list-item 
+            v-for="(child, index) in item.value.children" 
+            :key="'list-item-child-' + level + index"
+            :item="child"
+            :level="parseInt(level) + 1"
+        />
+    </ul>
+</li>

@@ -1,0 +1,60 @@
+<div
+    v-on:click="$emit('click')"
+    class="repeater-block-container"
+    :class="{'is-expanded' : isExpanded}" >
+
+    <div class="collapsible">
+        <div class="collapsible-left-section" v-on:click="toggleCollapsible()">
+            <span>{{ blockName }} {{ itemIndex }}</span>
+            <sw-icon name="small-arrow-medium-down"></sw-icon>
+        </div>
+
+        <div class="navigation-and-toolbar">
+            <div>
+                <button
+                    class="sw-button sw-button--danger" 
+                    v-on:click.stop="$emit('remove')" 
+                    title="Remove block"
+                >
+                    <span class="sw-button__content">
+                        <sw-icon name="default-action-trash"></sw-icon>
+                    </span>
+                </button>
+            </div>
+
+            <div class="toolbar">
+                <button
+                    v-on:click.stop="isFirst ? null : $emit('up')"
+                    type="button"
+                    class="sw-button nav-button up"
+                    :disabled="isFirst"
+                >
+                    <span class="sw-button__content">
+                        <sw-icon name="small-arrow-medium-up"></sw-icon>
+                    </span>
+                </button>
+    
+                <button
+                    v-on:click.stop="isLast ? null : $emit('down')"
+                    type="button"
+                    class="sw-button nav-button down"
+                    :disabled="isLast"
+                >
+                    <span class="sw-button__content">
+                        <sw-icon name="small-arrow-medium-down"></sw-icon>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div 
+        class="repeater-block-content" 
+        :style="contentStyle" 
+        :ref="'repeaterBlockContent' + index"
+    >
+        <div class="repeater-block-content-inner">
+            <slot></slot>
+        </div>
+    </div>
+</div>

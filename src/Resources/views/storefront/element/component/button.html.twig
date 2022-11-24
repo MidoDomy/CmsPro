@@ -1,0 +1,9 @@
+{% block element_cms_button_component %}
+    <a class="btn btn-{{ button.style }} btn-{{ button.size }}" 
+        href="{{ button.url }}" 
+        title="{{ button.title }}"
+        {% if button.newTab %}target="_blank"{% endif %}
+    >
+        {{ button.text }}
+    </a>
+{% endblock %}

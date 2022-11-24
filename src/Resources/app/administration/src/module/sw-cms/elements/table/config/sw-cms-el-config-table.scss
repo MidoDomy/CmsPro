@@ -1,0 +1,114 @@
+.sw-cms-el-config-table {
+    &__table-container {
+        position: relative;
+        max-width: 100%;
+        margin-bottom: 40px;
+        overflow: auto;
+    }
+
+    &__table {
+        padding: 35px 10px 11px 35px;
+        white-space: nowrap;
+
+        .sw-field--text {
+            margin: 0;
+        }
+    }
+
+    &__table-row {
+        position: relative;
+        display: flex;
+
+        &:first-child {
+            input {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &__table-col {
+        position: relative;
+        flex: 1;
+        min-width: 130px;
+        padding: 1px;
+    }
+
+    &__btn-add-row,
+    &__btn-add-col,
+    &__btn-remove-row,
+    &__btn-remove-col {
+        opacity: 0.05;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &.sw-button {
+            position: absolute;
+            padding: 5px;
+            text-align: center;
+            line-height: 1;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            background-color: inherit;
+            aspect-ratio: 1;
+            z-index: -1;
+        }
+    }
+
+    &__btn-add-row,
+    &__btn-remove-row {
+        top: 0;
+        right: 100%;
+        transform: translate(-40%, -50%);
+
+        &.last {
+            top: 100%;
+        }
+
+        &::after {
+            top: 4px;
+            left: 100%;
+            height: 64%;
+            border-top-right-radius: 2px;
+            transform: translateX(-60%) rotate(45deg);
+        }
+    }
+
+    &__btn-remove-row {
+        top: 50%;
+    }
+
+    &__btn-add-col,
+    &__btn-remove-col {
+        left: 0;
+        bottom: 100%;
+        transform: translate(-55%, -55%);
+
+        &.last {
+            left: 100%;
+        }
+
+        &::after {
+            top: 100%;
+            left: 4px;
+            width: 65%;
+            border-bottom-right-radius: 2px;
+            transform: translateY(-55%) rotate(45deg);
+        }
+    }
+
+    &__btn-remove-col {
+        left: 50%;
+    }
+
+    .sw-field {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

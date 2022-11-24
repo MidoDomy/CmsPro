@@ -1,0 +1,19 @@
+{% block sw_cms_element_list %}
+    <div class="sw-cms-el-list">
+        <sw-cms-heading 
+            :value="title"
+        />
+
+        <ul class="sw-cms-el-list__items" 
+            :class="'sw-cms-el-list__' + size" 
+            :style="listStyles"
+        >
+            <list-item 
+                v-for="(item, index) in fields"
+                :key="'list-item-' + index"
+                :item="item"
+                :level="1"
+            />
+        </ul>
+    </div>
+{% endblock %}

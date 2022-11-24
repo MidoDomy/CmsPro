@@ -1,0 +1,112 @@
+{% block sw_cms_element_alert_config %}
+    <div class="sw-cms-el-config-alert">
+        {% block sw_cms_element_alert_config_tabs %}
+            <sw-tabs
+                class="sw-cms-el-config-alert__tabs"
+                default-item="content"
+            >
+                <template slot-scope="{ active }">
+                    {% block sw_cms_element_alert_config_tab_content %}
+                        <sw-tabs-item
+                            :title="$tc('sw-cms.elements.general.config.tab.content')"
+                            name="content"
+                            :active-tab="active"
+                        >
+                            {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+
+                    {% block sw_cms_element_alert_config_tab_options %}
+                        <sw-tabs-item
+                            :title="$tc('sw-cms.elements.general.config.tab.settings')"
+                            name="settings"
+                            :active-tab="active"
+                        >
+                            {{ $tc('sw-cms.elements.general.config.tab.settings') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+                </template>
+
+                <template
+                    slot="content"
+                    slot-scope="{ active }"
+                >
+                    {# Content tab #}
+                    {% block sw_cms_element_alert_config_content %}
+                        <sw-container
+                            v-if="active === 'content'"
+                            class="sw-cms-el-config-alert__tab-content"
+                        >
+                            {# Heading field #}
+                            <sw-text-field
+                                v-model="element.config.heading.value"
+                                :label="$tc('sw-cms.elements.alert.config.heading.label')"
+                                :placeholder="$tc('sw-cms.elements.alert.config.heading.placeholder')"
+                            />
+
+                            {# Content field #}
+                            <sw-text-editor
+                                v-model="element.config.content.value"
+                                :label="$tc('sw-cms.elements.alert.config.content.label')"
+                                :placeholder="$tc('sw-cms.elements.alert.config.content.placeholder')"
+                                :allow-inline-data-mapping="true"
+                                sanitize-input
+                            />
+                        </sw-container>
+                    {% endblock %}
+
+                    {# Settings tab #}
+                    {% block sw_cms_element_alert_config_settings %}
+                        <sw-container
+                            v-if="active === 'settings'"
+                            class="sw-cms-el-config-alert__tab-settings"
+                        >
+                            {# Type #}
+                            <sw-select-field
+                                v-model="element.config.type.value"
+                                :label="$tc('sw-cms.elements.alert.config.type.label')"
+                            >
+                                <option value="primary">
+                                    {{ $tc('sw-cms.elements.alert.config.type.option1') }}
+                                </option>
+                                <option value="secondary">
+                                    {{ $tc('sw-cms.elements.alert.config.type.option2') }}
+                                </option>
+                                <option value="success">
+                                    {{ $tc('sw-cms.elements.alert.config.type.option3') }}
+                                </option>
+                                <option value="danger">
+                                    {{ $tc('sw-cms.elements.alert.config.type.option4') }}
+                                </option>
+                                <option value="warning">
+                                    {{ $tc('sw-cms.elements.alert.config.type.option5') }}
+                                </option>
+                                <option value="info">
+                                    {{ $tc('sw-cms.elements.alert.config.type.option6') }}
+                                </option>
+                                <option value="light">
+                                    {{ $tc('sw-cms.elements.alert.config.type.option7') }}
+                                </option>
+                                <option value="dark">
+                                    {{ $tc('sw-cms.elements.alert.config.type.option8') }}
+                                </option>
+                            </sw-select-field>
+
+                            {# Dismissible #}
+                            <sw-checkbox-field 
+                                v-model="element.config.dismissible.value"
+                                :label="$tc('sw-cms.elements.alert.config.dismissible.label')"
+                            ></sw-checkbox-field>
+
+                            {# Show icon #}
+                            <sw-checkbox-field 
+                                v-model="element.config.showIcon.value"
+                                :label="$tc('sw-cms.elements.alert.config.showIcon.label')"
+                            ></sw-checkbox-field>
+                        </sw-container>
+                    {% endblock %}
+                </template>
+            </sw-tabs>
+        {% endblock %}
+    </div>
+{% endblock %}

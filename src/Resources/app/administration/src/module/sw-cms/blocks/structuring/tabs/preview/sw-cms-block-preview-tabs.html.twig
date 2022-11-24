@@ -1,0 +1,24 @@
+{% block sw_cms_block_preview_tabs %}
+    <div class="sw-cms-block-preview-tabs">
+        <ul class="sw-cms-block-preview-tabs__nav-items">
+            <li class="sw-cms-block-preview-tabs__nav-item active">
+                Tab 1
+            </li>
+
+            <li class="sw-cms-block-preview-tabs__nav-item">
+                Tab 2
+            </li>
+            
+            <li class="sw-cms-block-preview-tabs__nav-item">
+                Tab 3
+            </li>
+        </ul>
+
+        <div class="sw-cms-block-preview-tabs__content">
+            <div class="sw-cms-block-preview__empty-stage">
+                <sw-icon name="default-basic-plus-circle" size="18" />
+                <p>{{ $tc('sw-cms.detail.label.addBlocks') }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

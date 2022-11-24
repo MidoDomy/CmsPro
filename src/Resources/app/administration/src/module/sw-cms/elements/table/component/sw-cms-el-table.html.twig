@@ -1,0 +1,21 @@
+{% block sw_cms_element_table %}
+    <table class="sw-cms-el-table" 
+        :class="['sw-cms-el-table__' + type, {'sw-cms-el-table__striped': striped}, {'sw-cms-el-table__bordered': bordered}, {'sw-cms-el-table__hoverEffect': hoverEffect}, {'sw-cms-el-table__small': small}]"
+    >
+        <caption v-if="caption">{{ caption }}</caption>
+
+        <thead>
+            <tr>
+                <th v-if="showNumeric" scope="col">#</th>
+                <th scope="col" v-for="cell in table[0]">{{ cell }}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr v-for="(row, index) in table" v-if="index != 0">
+                <th v-if="showNumeric" scope="row">{{ index }}</th>
+                <td v-for="cell in row">{{ cell }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,43 @@
+.sw-cms-el-list {
+    width: 100%;
+    min-height: 80px;
+
+    &__sm {
+        &.sw-cms-el-list__items {
+            font-size: 14px;
+        }
+
+        &.sw-cms-el-list__children {
+            font-size: 12px;
+        }
+    }
+
+    &__md {
+        &.sw-cms-el-list__items {
+            font-size: 16px;
+        }
+
+        &.sw-cms-el-list__children {
+            font-size: 14px;
+        }
+    }
+
+    &__lg {
+        &.sw-cms-el-list__items {
+            font-size: 18px;
+        }
+
+        &.sw-cms-el-list__children {
+            font-size: 16px;
+        }
+    }
+
+    &__items {
+        padding: 0;
+    }
+
+    &__children {
+        padding: 0 0 0 18px;
+        list-style-type: inherit;
+    }
+}

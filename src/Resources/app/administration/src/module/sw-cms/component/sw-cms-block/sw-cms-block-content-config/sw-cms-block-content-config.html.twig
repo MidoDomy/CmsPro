@@ -1,0 +1,80 @@
+{% block sw_cms_block_content_config %}
+    <div class="cms-block-content-config">
+        {# <div class="dreisc-cms-first-column-width"
+            v-if="true === cmsBlockAdditionalConfig.dreiscCmsFirstColumnWidth">
+            <sw-number-field
+                v-model="block.customFields.dreisc_cms_first_column_width"
+                numberType="float"
+                :label="$tc('dreiscCms.dreiscCmsSwCmsBlockConfig.cmsBlockAdditionalConfig.labels.dreiscCmsFirstColumnWidth')"
+                :helpText="$tc('dreiscCms.dreiscCmsSwCmsBlockConfig.cmsBlockAdditionalConfig.helpText.dreiscCmsFirstColumnWidth')"
+                :min="1"
+                :max="100"
+                :digits="2"
+                @keyup="onKeyUpCustomFieldDreiscCmsFirstColumnWidth($event)">
+            </sw-number-field>
+        </div> #}
+
+        {# Dynamic slot items config #}
+        <div v-if="true === cmsBlockAdditionalConfig.cmsBlockDynamicSlotItemsManagement"
+            class="cms-block-content-config__dynamic-slot-items"
+            :class="{ 'not-system-default-language' : !isSystemDefaultLanguage }"
+        >
+            {# Slot items #}
+            <div v-for="(slotItem, key) in panelItems" 
+                class="cms-block-content-config__dynamic-slot-items__item"
+            >
+                {# Slot item name #}
+                <sw-text-field 
+                    v-model="slotItem.config.content.value"
+                    size="small"
+                    :placeholder="$tc('sw-cms.sidebar.block.dynamicSlotItems.slotItemPlaceholder')"
+                />
+
+                {# Slot item actions #}
+                <div class="cms-block-content-config__dynamic-slot-items__item-actions">
+                    {# Slot item remove #}
+                    <sw-button class="cms-block-content-config__dynamic-slot-items__item-delete"
+                        variant="ghost-danger" 
+                        size="small"
+                        :square="true"
+                        title="Remove block"
+                        :disabled="panelItems.length == 1"
+                        @click="deletePanelItem(key)"
+                    >
+                        <sw-icon name="default-action-trash" size="16" />
+                    </sw-button>
+
+                    <div class="cms-block-content-config__dynamic-slot-items__item-arrows">
+                        {# Slot item move up #}
+                        <sw-button class="cms-block-content-config__dynamic-slot-items__item-arrow"
+                            size="x-small"
+                            :disabled="key == 0"
+                            @click="movePanelItem('up', key)"
+                        >
+                            <sw-icon name="default-arrow-head-up" size="10" />
+                        </sw-button>
+
+                        {# Slot item move down #}
+                        <sw-button class="cms-block-content-config__dynamic-slot-items__item-arrow"
+                            size="x-small"
+                            :disabled="key == panelItems.length - 1"
+                            @click="movePanelItem('down', key)"
+                        >
+                            <sw-icon name="default-arrow-head-down" size="10" />
+                        </sw-button>
+                    </div>
+                </div>
+            </div>
+
+            {# Add slot item btn #}
+            <sw-button class="cms-block-content-config__dynamic-slot-items__add-btn"
+                variant="ghost" 
+                size="small"
+                :block="true"
+                @click="onAddPanel"
+            >
+                {{ $tc('sw-cms.sidebar.block.dynamicSlotItems.addBtn') }}
+            </sw-button>
+        </div>
+    </div>
+{% endblock %}

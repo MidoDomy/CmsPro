@@ -1,0 +1,28 @@
+.card-tabs {
+    .card-header {
+        padding: 0;
+        border-bottom: 0;
+    }
+
+    .nav-item {
+        margin-bottom: 0;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .nav-link {
+        &:hover {
+            background-color: transparent;
+        }
+
+        &:not(.active):not([tabindex]):hover {
+            color: $sw-color-brand-primary;
+        }
+    }
+}
+
+.nav-tabs {
+    border-bottom: 0;
+}

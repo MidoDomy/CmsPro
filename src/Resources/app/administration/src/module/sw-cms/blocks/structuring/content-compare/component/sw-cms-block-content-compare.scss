@@ -1,0 +1,46 @@
+@import "~scss/variables";
+
+.sw-cms-block-content-compare {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1px;
+
+    &__left-side,
+    &__right-side {
+        display: flex;
+        flex: 0 0 50%;
+        width: 50%;
+        overflow: hidden;
+    }
+
+    &__right-side {
+        justify-content: flex-end;
+    }
+
+    &__divider {
+        position: absolute;
+        top: 0;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-right: 2px solid #d1d9e0;
+        z-index: 101;
+    }
+
+    &__divider-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 6px 8px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: 2px solid #d1d9e0;
+        border-radius: 50%;
+
+        .sw-icon {
+            position: relative;
+            top: -2px;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+.accordion-item {
+    margin-bottom: 10px;
+}
+
+.accordion-item-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 0;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, .025);
+    transition: background-color .2s;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, .05);
+    }
+
+    &.collapsed {
+        .icon-plus {
+            display: block;
+        }
+
+        .icon-minus {
+            display: none;
+        }
+    }
+
+    .icon-plus {
+        display: none;
+
+        svg {
+            top: -2px;
+        }
+    }
+
+    .icon-minus {
+        svg {
+            top: 1px;
+        }
+    }
+}
+
+.accordion-item-content-inner {
+    padding: 15px 0 5px;
+}

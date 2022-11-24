@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/section/cms-section-block-container.html.twig' %}
+
+{% block section_content_block %}
+    {# Make sure, that we only render the first level #}
+    {% if block.customFields.cms_parent_block_id is empty %}
+        {{ parent() }}
+    {% else %}
+        {# In case of a block with a parent block id we check if the parentBlockId is set and matches #}
+        {% if parentBlockId is defined and parentBlockId == block.customFields.cms_parent_block_id %}
+            {{ parent() }}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block section_content_block_container %}
+    <div class="cms-block-container"
+        style="{% if top or right or bottom or left %}padding: {{ padding }};{% endif %}">
+
+        {% block section_content_block_row %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}

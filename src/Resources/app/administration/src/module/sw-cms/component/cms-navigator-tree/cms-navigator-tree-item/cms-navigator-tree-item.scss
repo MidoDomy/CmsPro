@@ -1,0 +1,32 @@
+@import "~scss/variables";
+
+.cms-navigator-tree {
+    .sw-tree-item {
+        &.is--hidden {
+            display: none;
+        }
+
+        .sw-tree-item__children {
+            position: relative;
+            padding-left: 15px;
+        }
+    } 
+
+    .tree-item-action--edit,
+    .tree-item-action--locate {
+        &:hover {
+            .sw-icon {
+                cursor: pointer;
+                color: #189EFF;
+            }
+        }
+    }
+
+    .sw-context-button .sw-context-button__button, 
+    .item__actions {
+        &:hover {
+            cursor: pointer;
+            color: #189EFF;
+        }
+    }
+}

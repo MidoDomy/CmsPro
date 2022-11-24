@@ -1,0 +1,269 @@
+{
+    "sw-cms": {
+        "navigatorTree" :{
+            "emptyTreeItem": "[Empty item]"
+        },
+        "sidebar": {
+            "contentMenu": {
+                "contentSettings": "Content"
+            },
+            "block": {
+                "dynamicSlotItems": {
+                    "addBtn": "Add item",
+                    "slotItemPlaceholder": "Enter item name.."
+                }
+            }
+        },
+        "detail": {
+            "label": {
+                "blockStructuringBlocks": "Structuring blocks",
+                "blockBasicElements": "Basic elements"
+            }
+        },
+        "blocks": {
+            "alert": {
+                "label": "Alert"
+            },
+            "list": {
+                "label": "List"
+            },
+            "table": {
+                "label": "Table"
+            },
+            "button": {
+                "label": "Button"
+            },
+            "breadcrumbs": {
+                "label": "Breadcrumbs"
+            },
+            "icon": {
+                "label": "Icon"
+            },
+            "googleMap": {
+                "label": "Google map"
+            },
+            "tabs": {
+                "label": "Tabs"
+            },
+            "accordion": {
+                "label": "Accordion"
+            },
+            "slider": {
+                "label": "Slider"
+            },
+            "contentCompare": {
+                "label": "Content compare"
+            },
+            "card": {
+                "label": "Card"
+            },
+            "cardHorizontal": {
+                "label": "Card horizontal"
+            }
+        },
+        "component": {
+            "repeater": {
+                "contentElements": "Content elements"
+            },
+            "sw-cms-link-field": {
+                "categoryLabel": "Category",
+                "categoryPlaceholder": "Select a category",
+                "isExternalLabel": "Use external URL instead of a category?",
+                "textLabel": "Link Text",
+                "textPlaceholder": "Enter link text...",
+                "titleLabel": "Link Title",
+                "titlePlaceholder": "Enter link title...",
+                "newTabLabel": "Open in a new tab?",
+                "urlLabel": "URL",
+                "linkStyleLabel": "Link style",
+                "linkStyleLink": "Link",
+                "linkStylePrimary": "Primary",
+                "linkStyleSecondary": "Secondary",
+                "linkSizeLabel": "Link size",
+                "linkSizeSm": "Small",
+                "linkSizeMd": "Medium (default)",
+                "linkSizeLg": "Large"
+            },
+            "sw-cms-heading-field": {
+                "headingTag": {
+                    "h1": "h1",
+                    "h2": "h2",
+                    "h3": "h3",
+                    "h4": "h4",
+                    "h5": "h5",
+                    "h6": "h6"
+                },
+                "textPlaceholder": "Enter text"
+            }
+        },
+        "elements": {
+            "alert": {
+                "label": "Alert",
+                "config": {
+                    "heading": {
+                        "label": "Heading",
+                        "placeholder": "Enter heading.."
+                    },
+                    "content": {
+                        "label": "Content",
+                        "placeholder": "Enter content.."
+                    },
+                    "type": {
+                        "label": "Type",
+                        "option1": "Primary",
+                        "option2": "Secondary",
+                        "option3": "Success",
+                        "option4": "Danger",
+                        "option5": "Warning",
+                        "option6": "Info",
+                        "option7": "Light",
+                        "option8": "Dark"
+                    },
+                    "dismissible": {
+                        "label": "Dismissible"
+                    },
+                    "showIcon": {
+                        "label": "Show icon"
+                    }
+                }
+            },
+            "list": {
+                "label": "List",
+                "config": {
+                    "title": "Title",
+                    "blockName": "Item",
+                    "blockChildName": "Child",
+                    "text": "Text",
+                    "hasChildren": "Has children?",
+                    "addButton": "Add item",
+                    "addChildButton": "Add child",
+                    "styleType": {
+                        "label": "List style type",
+                        "option1": "None",
+                        "option2": "Custom sign",
+                        "option3": "Custom icon",
+                        "option4": "Disc",
+                        "option5": "Circle",
+                        "option6": "Square",
+                        "option7": "Decimal",
+                        "option8": "Decimal-leading-zero",
+                        "option9": "Lower-roman",
+                        "option10": "Upper-roman",
+                        "option11": "Lower-greek",
+                        "option12": "Lower-latin",
+                        "option13": "Upper-latin",
+                        "option14": "Armenian",
+                        "option15": "Georgian",
+                        "option16": "Lower-alpha",
+                        "option17": "Upper-alpha"
+                    },
+                    "size": {
+                        "label": "List size",
+                        "small": "Small",
+                        "medium": "Medium",
+                        "large": "Large"
+                    },
+                    "customSign": {
+                        "label": "Custom sign",
+                        "placeholder": "Enter custom sign.."
+                    }
+                }
+            },
+            "table": {
+                "label": "Table",
+                "config": {
+                    "addRow": {
+                        "title": "Add row"
+                    },
+                    "addCol": {
+                        "title": "Add col"
+                    },
+                    "removeRow": {
+                        "title": "Remove row"
+                    },
+                    "removeCol": {
+                        "title": "Remove col"
+                    },
+                    "cell": {
+                        "placeholder": "Empty cell"
+                    },
+                    "caption": {
+                        "label": "Caption",
+                        "placeholder": "Enter caption.."
+                    },
+                    "type": {
+                        "label": "Type",
+                        "option1": "Default",
+                        "option2": "Dark"
+                    },
+                    "showNumeric": {
+                        "label": "Show row index"
+                    },
+                    "striped": {
+                        "label": "Striped"
+                    },
+                    "bordered": {
+                        "label": "Bordered"
+                    },
+                    "hoverEffect": {
+                        "label": "Hover effect"
+                    },
+                    "small": {
+                        "label": "Show as small"
+                    }
+                }
+            },
+            "button": {
+                "label": "Button",
+                "config": {
+                    "link": {
+                        "label": "Button"
+                    }
+                }
+            },
+            "icon": {
+                "label": "Icon",
+                "config": {
+                    "icon": {
+                        "label": "Icon"
+                    },
+                    "text": {
+                        "label": "Text",
+                        "placeholder": "Enter text.."
+                    },
+                    "size": {
+                        "label": "Icon size",
+                        "optionSmall": "Small",
+                        "optionLarge": "Large"
+                    },
+                    "horizontalAlignment": {
+                        "label": "Horizontal alignment",
+                        "optionLeft": "Left",
+                        "optionCenter": "Center",
+                        "optionRight": "Right"
+                    }
+                }
+            },
+            "googleMap": {
+                "label": "Google map",
+                "config": {
+                    "latitude": {
+                        "label": "Latitude",
+                        "placeholder": "Enter latitude.."
+                    },
+                    "longitude": {
+                        "label": "Longitude",
+                        "placeholder": "Enter logitude.."
+                    },
+                    "height": {
+                        "label": "Height",
+                        "placeholder": "Enter height.."
+                    }
+                }
+            },
+            "breadcrumbs": {
+                "label": "Breadcrumbs"
+            }
+        }
+    }
+}

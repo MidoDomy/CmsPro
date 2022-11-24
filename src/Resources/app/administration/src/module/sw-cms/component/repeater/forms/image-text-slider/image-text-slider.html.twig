@@ -1,0 +1,141 @@
+{% block image_text_slider_form %}
+    <div class="image-text-slider-form" v-if="element">
+        {% block sw_cms_element_image_slider_config_tabs %}
+            <sw-tabs
+                class="sw-cms-el-config-image-slider__tabs"
+                default-item="content"
+            >
+                <template slot-scope="{ active }">
+                    {% block sw_cms_element_image_slider_config_tab_content %}
+                    <sw-tabs-item
+                        :title="$tc('sw-cms.elements.general.config.tab.content')"
+                        name="content"
+                        :active-tab="active"
+                    >
+                        {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                    </sw-tabs-item>
+                    {% endblock %}
+
+                    {% block sw_cms_element_image_slider_config_tab_options %}
+                    <sw-tabs-item
+                        :title="$tc('sw-cms.elements.general.config.tab.settings')"
+                        name="settings"
+                        :active-tab="active"
+                    >
+                        {{ $tc('sw-cms.elements.general.config.tab.settings') }}
+                    </sw-tabs-item>
+                    {% endblock %}
+                </template>
+
+                <template
+                    slot="content"
+                    slot-scope="{ active }"
+                >
+                    {% block sw_cms_element_image_slider_config_content %}
+                    <sw-container
+                        v-if="active === 'content'"
+                        class="sw-cms-el-config-image-text-slider__tab-content"
+                    >
+                        {# IMAGE #}
+                        <sw-cms-mapping-field :label="$tc('sw-cms.elements.image-text-slider.config.imageLabel')" valueTypes="entity" entity="media" v-model="element.config.sliderItems">
+                            <sw-media-upload-v2 
+                                :entityMediaItems="mediaItems"
+                                :entity="entity"
+                                :uploadTag="uploadTag"
+                                :defaultFolder="defaultFolder"
+                                :source="previewSource"
+                                :allowMultiSelect="false"
+                                @media-upload-sidebar-open="onOpenMediaModal('thumbnail')"
+                                @media-upload-remove-image="onItemRemove"
+                            />
+                        </sw-cms-mapping-field>
+
+                        <sw-upload-listener
+                            :uploadTag="uploadTag"
+                            autoUpload
+                            @media-upload-finish="successfulUpload"
+                        />
+
+                        <sw-media-modal-v2
+                            variant="regular"
+                            v-if="mediaModalIsOpen"
+                            :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                            :entityContext="cmsPageState.entityName"
+                            :initialFolderId="cmsPageState.defaultMediaFolderId"
+                            :allowMultiSelect="false"
+                            @media-upload-remove-image="onItemRemove"
+                            @media-modal-selection-change="onMediaSelectionChange"
+                            @modal-close="onCloseMediaModal"
+                        />
+
+                        {# Text #}
+                        <sw-text-field
+                            class="sw-field"
+                            v-model="sliderInfo.text"
+                            :label="$tc('sw-cms.elements.image-text-slider.config.textLabel')"
+                            required="required"
+                        />
+
+                        {# Link #}
+                        <sw-cms-link-field
+                            :sectionTitle="$tc('sw-cms.elements.image-text-slider.config.linkLabel')"
+                            :link.sync="sliderInfo.link"
+                            type="button"
+                        />
+                    </sw-container>
+                    {% endblock %}
+
+                    {% block sw_cms_element_image_slider_config_settings %}
+                    <sw-container
+                        v-if="active === 'settings'"
+                        class="sw-cms-el-config-image-text-slider__tab-settings"
+                    >
+                        {# Color invert #}
+                        <sw-switch-field
+                            no-margin-top
+                            :label="$tc('sw-cms.elements.image-text-slider.config.colorInvert')"
+                            v-model="sliderInfo.isColorInverted"
+                        />
+
+                        {# Navigation invert #}
+                        <sw-switch-field
+                            no-margin-top
+                            :label="$tc('sw-cms.elements.image-text-slider.config.navigationInvert')"
+                            v-model="sliderInfo.isNavigationInverted"
+                        />
+
+                        {# Dots invert #}
+                        <sw-switch-field
+                            no-margin-top
+                            :label="$tc('sw-cms.elements.image-text-slider.config.dotsInvert')"
+                            v-model="sliderInfo.isDotsInverted"
+                        />
+
+                        {# Horizontal alignment #}
+                        <sw-radio-field
+                            :label="$tc('sw-cms.elements.image-text-slider.config.horizontalAlignment')"
+                            bordered
+                            :options="[
+                                {'value': 'left', 'name': $tc('sw-cms.elements.image-text-slider.config.left')},
+                                {'value': 'center', 'name': $tc('sw-cms.elements.image-text-slider.config.center')},
+                                {'value': 'right', 'name': $tc('sw-cms.elements.image-text-slider.config.right')},
+                        ]"
+                        v-model="sliderInfo.horizontalAlignment"></sw-radio-field>
+
+                        {# Vertical alignment #}
+                        <sw-radio-field
+                            :label="$tc('sw-cms.elements.image-text-slider.config.verticalAlignment')"
+                            bordered
+                            :options="[
+                                {'value': 'top', 'name': $tc('sw-cms.elements.image-text-slider.config.top')},
+                                {'value': 'center', 'name': $tc('sw-cms.elements.image-text-slider.config.center')},
+                                {'value': 'bottom', 'name': $tc('sw-cms.elements.image-text-slider.config.bottom')},
+                        ]"
+                        v-model="sliderInfo.verticalAlignment"></sw-radio-field>
+                    </sw-container>
+                    {% endblock %}
+                </template>
+            </sw-tabs>
+        {% endblock %}
+    </div>
+{% endblock %}

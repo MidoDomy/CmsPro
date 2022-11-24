@@ -1,0 +1,212 @@
+{% block sw_cms_element_table_config %}
+    <div class="sw-cms-el-config-table">
+        {% block sw_cms_element_table_config_tabs %}
+            <sw-tabs
+                class="sw-cms-el-config-table__tabs"
+                default-item="content"
+            >
+                <template slot-scope="{ active }">
+                    {% block sw_cms_element_table_config_tab_content %}
+                        <sw-tabs-item
+                            :title="$tc('sw-cms.elements.general.config.tab.content')"
+                            name="content"
+                            :active-tab="active"
+                        >
+                            {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+
+                    {% block sw_cms_element_table_config_tab_options %}
+                        <sw-tabs-item
+                            :title="$tc('sw-cms.elements.general.config.tab.settings')"
+                            name="settings"
+                            :active-tab="active"
+                        >
+                            {{ $tc('sw-cms.elements.general.config.tab.settings') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+                </template>
+
+                <template
+                    slot="content"
+                    slot-scope="{ active }"
+                >
+                    {# Content tab #}
+                    {% block sw_cms_element_table_config_content %}
+                        <sw-container
+                            v-if="active === 'content'"
+                            class="sw-cms-el-config-table__tab-content"
+                        >
+                            {# Table fields #}
+                            <div class="sw-cms-el-config-table__table-container">
+                                <div class="sw-cms-el-config-table__table">
+                                    <div 
+                                        v-for="(row, index) in table"
+                                        class="sw-cms-el-config-table__table-row"
+                                    >
+                                        {# Add Row btn #}
+                                        <button 
+                                            @click="addRow(index)" 
+                                            class="sw-button sw-button--primary sw-cms-el-config-table__btn-add-row"
+                                            :title="$tc('sw-cms.elements.table.config.addRow.title')"
+                                        >
+                                            <span class="sw-button__content">
+                                                <sw-icon
+                                                    name="default-basic-plus-line"
+                                                    size="12px"
+                                                />
+                                            </span>
+                                        </button>
+
+                                        {# Remove Row btn #}
+                                        <button 
+                                            @click="removeRow(index)" 
+                                            class="sw-button sw-button--danger sw-cms-el-config-table__btn-remove-row"
+                                            :title="$tc('sw-cms.elements.table.config.removeRow.title')"
+                                        >
+                                            <span class="sw-button__content">
+                                                <sw-icon
+                                                    name="default-basic-minus-line"
+                                                    size="12px"
+                                                />
+                                            </span>
+                                        </button>
+
+                                        {# Add last Row btn #}
+                                        <button 
+                                            v-if="index == table.length - 1" 
+                                            @click="addRow(table.length)" 
+                                            class="sw-button sw-button--primary sw-cms-el-config-table__btn-add-row last"
+                                            :title="$tc('sw-cms.elements.table.config.addRow.title')"
+                                        >
+                                            <span class="sw-button__content">
+                                                <sw-icon
+                                                    name="default-basic-plus-line"
+                                                    size="12px"
+                                                />
+                                            </span>
+                                        </button>  
+    
+                                        <div 
+                                            v-for="(cell, index2) in row"
+                                            class="sw-cms-el-config-table__table-col"
+                                        >
+                                            {# Add Col btn #}
+                                            <button 
+                                                v-if="index == 0" 
+                                                @click="addCol(index2)" 
+                                                class="sw-button sw-button--primary sw-cms-el-config-table__btn-add-col"
+                                                :title="$tc('sw-cms.elements.table.config.addCol.title')"
+                                            >
+                                                <span class="sw-button__content">
+                                                    <sw-icon
+                                                        name="default-basic-plus-line"
+                                                        size="12px"
+                                                    />
+                                                </span>
+                                            </button>
+
+                                            {# Remove Col btn #}
+                                            <button 
+                                                v-if="index == 0" 
+                                                @click="removeCol(index2)" 
+                                                class="sw-button sw-button--danger sw-cms-el-config-table__btn-remove-col"
+                                                :title="$tc('sw-cms.elements.table.config.removeCol.title')"
+                                            >
+                                                <span class="sw-button__content">
+                                                    <sw-icon
+                                                        name="default-basic-minus-line"
+                                                        size="12px"
+                                                    />
+                                                </span>
+                                            </button>
+
+                                            {# Add last Col btn #}
+                                            <button 
+                                                v-if="index == 0 && index2 == row.length - 1" 
+                                                @click="addCol(row.length)" 
+                                                class="sw-button sw-button--primary sw-cms-el-config-table__btn-add-col last"
+                                                :title="$tc('sw-cms.elements.table.config.addCol.title')"
+                                            >
+                                                <span class="sw-button__content">
+                                                    <sw-icon
+                                                        name="default-basic-plus-line"
+                                                        size="12px"
+                                                    />
+                                                </span>
+                                            </button>  
+    
+                                            {# Cell field #}
+                                            <sw-text-field
+                                                v-model="table[index][index2]"
+                                                :placeholder="$tc('sw-cms.elements.table.config.cell.placeholder')"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div>
+                            
+                            {# Caption field #}
+                            <sw-text-field
+                                v-model="element.config.caption.value"
+                                :label="$tc('sw-cms.elements.table.config.caption.label')"
+                                :placeholder="$tc('sw-cms.elements.table.config.caption.placeholder')"
+                            />
+                        </sw-container>
+                    {% endblock %}
+
+                    {# Settings tab #}
+                    {% block sw_cms_element_table_config_settings %}
+                        <sw-container
+                            v-if="active === 'settings'"
+                            class="sw-cms-el-config-table__tab-settings"
+                        >
+                            {# Type #}
+                            <sw-select-field
+                                v-model="element.config.type.value"
+                                :label="$tc('sw-cms.elements.table.config.type.label')"
+                            >
+                                <option value="default">
+                                    {{ $tc('sw-cms.elements.table.config.type.option1') }}
+                                </option>
+                                <option value="dark">
+                                    {{ $tc('sw-cms.elements.table.config.type.option2') }}
+                                </option>
+                            </sw-select-field>
+
+                            {# Show number #}
+                            <sw-checkbox-field 
+                                v-model="element.config.showNumeric.value"
+                                :label="$tc('sw-cms.elements.table.config.showNumeric.label')"
+                            ></sw-checkbox-field>
+
+                            {# Striped #}
+                            <sw-checkbox-field 
+                                v-model="element.config.striped.value"
+                                :label="$tc('sw-cms.elements.table.config.striped.label')"
+                            ></sw-checkbox-field>
+
+                            {# Bordered #}
+                            <sw-checkbox-field 
+                                v-model="element.config.bordered.value"
+                                :label="$tc('sw-cms.elements.table.config.bordered.label')"
+                            ></sw-checkbox-field>
+
+                            {# Hover effect #}
+                            <sw-checkbox-field 
+                                v-model="element.config.hoverEffect.value"
+                                :label="$tc('sw-cms.elements.table.config.hoverEffect.label')"
+                            ></sw-checkbox-field>
+
+                            {# Small #}
+                            <sw-checkbox-field 
+                                v-model="element.config.small.value"
+                                :label="$tc('sw-cms.elements.table.config.small.label')"
+                            ></sw-checkbox-field>
+                        </sw-container>
+                    {% endblock %}
+                </template>
+            </sw-tabs>
+        {% endblock %}
+    </div>
+{% endblock %}

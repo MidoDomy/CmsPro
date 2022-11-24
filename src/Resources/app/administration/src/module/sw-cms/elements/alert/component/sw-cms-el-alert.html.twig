@@ -1,0 +1,53 @@
+{% block sw_cms_element_alert %}
+    <div 
+        class="sw-cms-el-alert"
+        :class="['sw-cms-el-alert--' + type, {'sw-cms-el-alert--dismissible' : dismissible}, {'sw-cms-el-alert--has-icon' : showIcon}]"
+    >
+        <div 
+            v-if="showIcon" 
+            class="sw-cms-el-alert__icon-container"
+        >
+            <sw-icon 
+                v-if="type == 'danger'"
+                name="default-badge-blocked" 
+                size="22"
+            />
+            <sw-icon 
+                v-else-if="type == 'warning'"
+                name="default-badge-warning" 
+                size="22"
+            />
+            <sw-icon 
+                v-else-if="type == 'success'"
+                name="default-basic-checkmark-circle" 
+                size="22"
+            />
+            <sw-icon 
+                v-else
+                name="default-badge-info" 
+                size="22"
+            />
+        </div>
+
+        <div class="sw-cms-el-alert__content-container">
+            <h5 
+                v-if="heading" 
+                class="sw-cms-el-alert__heading"
+            >
+                {{ heading }}
+            </h5>
+
+            <div
+                v-html="content" 
+                class="sw-cms-el-alert__content"
+            />
+
+            <button 
+                v-if="dismissible"
+                class="sw-cms-el-alert__close"
+            >
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+{% endblock %}

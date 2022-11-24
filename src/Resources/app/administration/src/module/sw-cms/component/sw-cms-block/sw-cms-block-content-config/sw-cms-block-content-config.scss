@@ -1,0 +1,41 @@
+@import "~scss/variables";
+
+.cms-block-content-config {
+    padding: 10px 25px 25px;
+
+    &__dynamic-slot-items {
+        &__item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 8px;
+
+            .sw-field {
+                margin-bottom: 0;
+            }
+        }
+
+        &__item-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        &__item-delete {
+            border: 0;
+
+            .sw-icon {
+                color: inherit;
+            }
+        }
+
+        &__item-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        &__add-btn {
+            margin-top: 25px;
+        }
+    }
+}

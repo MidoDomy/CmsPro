@@ -1,0 +1,19 @@
+.sw-cms-el-config-list {
+    .sw-tabs__custom-content {
+        padding-bottom: 0;
+    }
+
+    &__tab-settings {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 30px;
+
+        .sw-field {
+            flex: 1 1 45%;
+        }
+    }
+
+    .sw-field--checkbox {
+        margin-top: -10px;
+    }
+}

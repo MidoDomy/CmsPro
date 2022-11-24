@@ -1,0 +1,35 @@
+{% block cms_block_group_content %}
+    {% block sw_cms_block_card %}
+        <div class="sw-cms-block-card">
+            {# Card header #}
+            <div class="sw-cms-block-card__header">
+                <cms-block-sub-section
+                    :childBlocks="childBlocks('headerContent')"
+                    subSectionName="headerContent"
+                    @stage-block-add="onAddSectionBlock"
+                    @block-overlay-click="onBlockSelection"
+                />
+            </div>
+
+            {# Card body #}
+            <div class="sw-cms-block-card__body">
+                <cms-block-sub-section
+                    :childBlocks="childBlocks('bodyContent')"
+                    subSectionName="bodyContent"
+                    @stage-block-add="onAddSectionBlock"
+                    @block-overlay-click="onBlockSelection"
+                />
+            </div>
+
+            {# Card footer #}
+            <div class="sw-cms-block-card__footer">
+                <cms-block-sub-section
+                    :childBlocks="childBlocks('footerContent')"
+                    subSectionName="footerContent"
+                    @stage-block-add="onAddSectionBlock"
+                    @block-overlay-click="onBlockSelection"
+                />
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

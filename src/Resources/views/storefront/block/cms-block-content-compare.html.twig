@@ -1,0 +1,42 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-group/cms-block-group-predefined.html.twig' %}
+
+{% set columnChildBlocks = {
+    'leftContent': [],
+    'rightContent': []
+} %}
+
+{% block cms_block_group_predefined_content %}
+    <div class="cms-content-compare" 
+        data-content-compare="true"
+    >
+        <div class="cms-content-compare-slot left-content">
+            <div>
+                {# Output slot blocks #}
+                {% for block in columnChildBlocks.leftContent %}
+                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                        sectionBlocks: sectionBlocks,
+                        parentBlockId: currentBlockId
+                    } %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="cms-content-compare-slot right-content">
+            <div>
+                {# Output slot blocks #}
+                {% for block in columnChildBlocks.rightContent %}
+                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                        sectionBlocks: sectionBlocks,
+                        parentBlockId: currentBlockId
+                    } %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="cms-content-compare-divider">
+            <div class="cms-content-compare-divider-button">
+                {% sw_icon 'arrow-move-vertical-axis' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

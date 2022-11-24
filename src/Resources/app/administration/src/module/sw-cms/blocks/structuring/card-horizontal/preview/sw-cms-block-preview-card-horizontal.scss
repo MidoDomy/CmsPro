@@ -1,0 +1,27 @@
+@import "~scss/variables";
+
+.sw-cms-block-preview-card-horizontal {
+    padding: 15px;
+
+    &__inner {
+        display: flex;
+        border: 1px solid #d1d9e0;
+        border-radius: 4px;
+    }
+
+    &__header {
+        flex: 0 0 33%;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, .03);
+        border-right: 1px solid #d1d9e0;
+    }
+
+    &__body {
+        flex: 1;
+        padding: 10px;
+    }
+
+    .sw-cms-block-preview__empty-stage {
+        height: 100px;
+    }
+}

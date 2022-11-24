@@ -1,0 +1,43 @@
+{% block cms_block_group_content %}
+    {% block sw_cms_block_content_compare %}
+        <div class="sw-cms-block-content-compare" 
+            ref="mainContainer"
+            @mouseleave="onRemoveDrags"
+            @mouseup="onRemoveDrags" 
+        >
+            {# Left #}
+            <div class="sw-cms-block-content-compare__left-side" ref="leftContent">
+                <div class="sw-cms-block-content-compare__left-side-inner">
+                    <cms-block-sub-section
+                        :childBlocks="childBlocks('leftContent')"
+                        subSectionName="leftContent"
+                        @stage-block-add="onAddSectionBlock"
+                        @block-overlay-click="onBlockSelection"
+                    />
+                </div>
+            </div>
+
+            {# Slide handle #}
+            <div class="sw-cms-block-content-compare__divider" 
+                ref="divider" 
+                @mousedown="onDrags" 
+            >
+                <div class="sw-cms-block-content-compare__divider-button">
+                    <sw-icon name="default-arrow-move-vertical-axis" size="16" />
+                </div>
+            </div>
+
+            {# Right #}
+            <div class="sw-cms-block-content-compare__right-side" ref="rightContent">
+                <div class="sw-cms-block-content-compare__right-side-inner">
+                    <cms-block-sub-section
+                        :childBlocks="childBlocks('rightContent')"
+                        subSectionName="rightContent"
+                        @stage-block-add="onAddSectionBlock"
+                        @block-overlay-click="onBlockSelection"
+                    />
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

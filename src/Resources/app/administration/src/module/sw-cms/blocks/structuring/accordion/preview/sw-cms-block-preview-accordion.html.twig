@@ -1,0 +1,31 @@
+{% block sw_cms_block_preview_accordion %}
+    <div class="sw-cms-block-preview-accordion">
+        <div class="sw-cms-block-preview-accordion__item">
+            <h3 class="sw-cms-block-preview-accordion__item-trigger">
+                <span>Collapse 1</span>
+                <sw-icon name="default-basic-minus-line" size="14" />
+            </h3>
+
+            <div class="sw-cms-block-preview-accordion__item-content">
+                <div class="sw-cms-block-preview__empty-stage">
+                    <sw-icon name="default-basic-plus-circle" size="18" />
+                    <p>{{ $tc('sw-cms.detail.label.addBlocks') }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sw-cms-block-preview-accordion__item">
+            <h3 class="sw-cms-block-preview-accordion__item-trigger">
+                <span>Collapse 2</span>
+                <sw-icon name="default-basic-plus-line" size="14" />
+            </h3>
+        </div>
+
+        <div class="sw-cms-block-preview-accordion__item">
+            <h3 class="sw-cms-block-preview-accordion__item-trigger">
+                <span>Collapse 3</span>
+                <sw-icon name="default-basic-plus-line" size="14" />
+            </h3>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% block element_cms_heading_component %}
+    {% if tagName == 'h1' %}
+        <h1 class="cms-heading">{{ text }}</h1>
+    {% elseif tagName == 'h2' %}
+        <h2 class="cms-heading">{{ text }}</h2>
+    {% elseif tagName == 'h3' %}
+        <h3 class="cms-heading">{{ text }}</h3>
+    {% elseif tagName == 'h4' %}
+        <h4 class="cms-heading">{{ text }}</h4>
+    {% elseif tagName == 'h5' %}
+        <h5 class="cms-heading">{{ text }}</h5>
+    {% elseif tagName == 'h6' %}
+        <h6 class="cms-heading">{{ text }}</h6>
+    {% else %}
+        <p>Not found</p>
+    {% endif %}
+{% endblock %}

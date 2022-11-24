@@ -1,0 +1,30 @@
+{% block cms_block_group_content %}
+    {% block sw_cms_block_slider %}
+        <div class="sw-cms-block-slider">
+            <sw-icon class="sw-cms-block-slider__prev"
+                name="default-arrow-head-left"
+                size="24"
+                @click="slidePrev"
+            />
+
+            <div class="sw-cms-block-slider__content">
+                <div v-for="(slide, index) in panels"
+                    v-show="index === activePanelIndex"
+                >
+                    <cms-block-sub-section
+                        :childBlocks="childBlocks(`${slide.key}`)"
+                        :subSectionName="`${slide.key}`"
+                        @stage-block-add="onAddSectionBlock"
+                        @block-overlay-click="onBlockSelection"
+                    />
+                </div>
+            </div>
+
+            <sw-icon class="sw-cms-block-slider__next"
+                name="default-arrow-head-right"
+                size="24"
+                @click="slideNext"
+            />
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% block element_breadcrumbs %}
+    <div class="cms-element-{{ element.type }}">
+        {% if page.product.seoCategory %}  
+            {% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' with {
+                context: context,
+                category: page.product.seoCategory
+            } only %}
+        {% else %}
+            <div class="cms-breadcrumb">
+                {% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' with {
+                    context: context,
+                    category: page.header.navigation.active,
+                    cmsPage: page.cmsPage
+                } only %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

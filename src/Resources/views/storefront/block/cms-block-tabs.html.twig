@@ -1,0 +1,46 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-group/cms-block-group-dynamic.html.twig' %}
+
+{% block cms_block_group_dynamic_content %}
+    {% block cms_block_tabs %}
+        <div class="card card-tabs">
+            <div class="card-header">
+                <ul class="nav nav-tabs" id="tab{{ currentBlockId }}" role="tablist">
+                    {% for panelConfig in panelConfigs %}
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link{% if loop.first %} active{% endif %}"
+                                id="tab{{ currentBlockId }}{{ panelConfig.slot }}" 
+                                data-toggle="tab" 
+                                data-target="#{{ currentBlockId }}{{ panelConfig.slot }}" 
+                                type="button" 
+                                role="tab" 
+                                aria-controls="{{ currentBlockId }}{{ panelConfig.slot }}" 
+                                aria-selected="{% if loop.first %}true{% else %}false{% endif %}"
+                            >
+                                <span>{{ panelConfig.label }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="card-body">
+                <div class="tab-content" id="tab{{ currentBlockId }}Content">
+                    {% for panelConfig in panelConfigs %}
+                        <div class="tab-pane fade{% if loop.first %} show active{% endif %}"
+                            id="{{ currentBlockId }}{{ panelConfig.slot }}" 
+                            role="tabpanel" 
+                            aria-labelledby="tab{{ currentBlockId }}{{ panelConfig.slot }}"
+                        >
+                            {% for block in panelConfig.subBlocks %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                    sectionBlocks: sectionBlocks,
+                                    parentBlockId: currentBlockId
+                                } %}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

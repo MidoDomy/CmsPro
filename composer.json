@@ -1,0 +1,39 @@
+{
+    "name": "domi/cms-pro",
+    "description": "Shopware CMS Professional",
+    "version": "6.2.8",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Dreischild GmbH"
+        }
+    ],
+    "require": {
+        "shopware/core": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "CmsPro\\CmsPro",
+        "label": {
+            "de-DE": "Shopware CMS Professional",
+            "en-GB": "Shopware CMS Professional"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://de.dreischild.com",
+            "en-GB": "https://translate.google.com/translate?sl=de&tl=en&u=https%3A%2F%2Fde.dreischild.com"
+        },
+        "supportLink": {
+            "de-DE": "https://de.dreischild.com",
+            "en-GB": "https://translate.google.com/translate?sl=de&tl=en&u=https%3A%2F%2Fde.dreischild.com"
+        },
+        "description": {
+            "de-DE": "Dieses Plugin erweitert die Standard CMS Funktionen um weitere Features",
+            "en-GB": "These plugin extends the standard CMS functions by additional features"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "CmsPro\\": "src/"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+.cms-element-icon {
+    .icon-container {
+        margin-bottom: 10px;
+    }
+
+    .icon {
+        &-small {
+            height: 30px;
+        }
+
+        &-large {
+            height: 60px;
+        }
+    }
+}

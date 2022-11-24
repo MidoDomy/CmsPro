@@ -1,0 +1,13 @@
+@import "~scss/variables";
+
+.cms-block-sub-section {
+    position: relative;
+    padding-bottom: 10px;
+
+    .sw-cms-section__content {
+        &.is--empty {
+            min-height: 300px;
+            height: 300px;
+        }
+    }
+}

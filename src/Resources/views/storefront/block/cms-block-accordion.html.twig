@@ -1,0 +1,42 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-group/cms-block-group-dynamic.html.twig' %}
+
+{% block cms_block_group_dynamic_content %}
+    {% block cms_block_accordion %}
+        <div class="accordion" 
+            id="accordion{{ currentBlockId }}"
+        >
+            {% for panelConfig in panelConfigs %}
+                <div class="accordion-item">
+                    <div id="heading{{ currentBlockId }}{{ loop.index }}">
+                        <h4 class="accordion-item-trigger{% if not loop.first %} collapsed{% endif %}"
+                            data-toggle="collapse" 
+                            data-target="#collapse{{ currentBlockId }}{{ loop.index }}" 
+                            aria-expanded="true" 
+                            aria-controls="collapse{{ currentBlockId }}{{ loop.index }}"
+                        >
+                            <span>{{ panelConfig.label }}</span>
+    
+                            {% sw_icon 'plus' %}
+                            {% sw_icon 'minus' %}
+                        </h4>
+                    </div>
+
+                    <div class="accordion-item-content collapse{% if loop.first %} show{% endif %}"
+                        id="collapse{{ currentBlockId }}{{ loop.index }}" 
+                        aria-labelledby="heading{{ currentBlockId }}{{ loop.index }}" 
+                        data-parent="#accordion{{ currentBlockId }}"
+                    >
+                        <div class="accordion-item-content-inner">
+                            {% for block in panelConfig.subBlocks %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                    sectionBlocks: sectionBlocks,
+                                    parentBlockId: currentBlockId
+                                } %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+{% endblock %}

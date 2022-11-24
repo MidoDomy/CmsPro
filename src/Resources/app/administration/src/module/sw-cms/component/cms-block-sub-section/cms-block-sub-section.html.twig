@@ -1,0 +1,55 @@
+{% block cms_block_sub_section %}
+    <div class="cms-block-sub-section">
+        {% block cms_block_sub_section__is_empty %}
+            <template v-if="isEmpty">
+                <div class="sw-cms-section__content is--empty">
+                    <div class="sw-cms-section__empty-stage"
+                        @click="onAddEmptySection"
+                        v-droppable="{ dragGroup: 'cms-stage', data: getDropData(0) }"
+                    >
+                        <sw-icon name="default-basic-plus-circle" size="24" />
+                        <p>{{ $tc('sw-cms.detail.label.addBlocks') }}</p>
+                    </div>
+                </div>
+            </template>
+        {% endblock %}
+
+        {% block cms_block_sub_section__content %}
+            <template v-else>
+                <template v-for="(block, index) in childBlocks">
+                    <sw-cms-stage-add-block
+                        :key="index"
+                        v-droppable="{ dragGroup: 'cms-stage', data: getDropData(block.position) }"
+                        @stage-block-add="onAddSectionBlock"
+                    />
+
+                    <sw-cms-block 
+                        class="sw-cms-stage-block"
+                        :key="block.id"
+                        :block="block"
+                        :active="selectedBlock !== null && selectedBlock.id === block.id"
+                        @block-overlay-click="onBlockSelection(block)"
+                    >
+                        <component :is="`sw-cms-block-${block.type}`">
+                            <sw-cms-slot 
+                                v-for="el in block.slots"
+                                :slot="el.slot"
+                                :key="el.id"
+                                :element="el"
+                                :active="selectedBlock !== null && selectedBlock.id === block.id"
+                            />
+                        </component>
+                    </sw-cms-block>
+                </template>
+
+                <div class="last-stage-add-block">
+                    <sw-cms-stage-add-block
+                        :key="appendPositionId"
+                        v-droppable="{ dragGroup: 'cms-stage', data: getDropData(appendPositionId) }"
+                        @stage-block-add="onAddSectionBlock"
+                    />
+                </div>
+            </template>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,159 @@
+{% block sw_cms_element_list_config %}
+    <div class="sw-cms-el-config-list">
+        {% block sw_cms_element_list_config_tabs %}
+            <sw-tabs
+                class="sw-cms-el-config-list__tabs"
+                default-item="content"
+            >
+                <template slot-scope="{ active }">
+                    {% block sw_cms_element_list_config_tab_content %}
+                        <sw-tabs-item
+                            :title="$tc('sw-cms.elements.general.config.tab.content')"
+                            name="content"
+                            :active-tab="active"
+                        >
+                            {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+
+                    {% block sw_cms_element_list_config_tab_options %}
+                        <sw-tabs-item
+                            :title="$tc('sw-cms.elements.general.config.tab.settings')"
+                            name="settings"
+                            :active-tab="active"
+                        >
+                            {{ $tc('sw-cms.elements.general.config.tab.settings') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+                </template>
+
+                <template
+                    slot="content"
+                    slot-scope="{ active }"
+                >
+                    {% block sw_cms_element_list_config_content %}
+                        <sw-container
+                            v-if="active === 'content'"
+                            class="sw-cms-el-config-list__tab-content"
+                        >
+                            {# Title #}
+                            {% block sw_cms_element_list_config_title %}
+                                <sw-cms-heading-field 
+                                    :label="$tc('sw-cms.elements.list.config.title')"
+                                    :heading.sync="element.config.title.value"
+                                />
+                            {% endblock %}
+
+                            {# Items #}
+                            {% block sw_cms_element_list_config_items %}
+                                <repeater 
+                                    v-model="element.config.fields.value" 
+                                    formName="list-item"
+                                    :defaultValue="defaultValue" 
+                                    :blockName="$tc('sw-cms.elements.list.config.blockName')"
+                                    :addButtonText="$tc('sw-cms.elements.list.config.addButton')">
+                                </repeater>
+                            {% endblock %}
+                        </sw-container>
+                    {% endblock %}
+
+                    {% block sw_cms_element_list_config_settings %}
+                        <sw-container
+                            v-if="active === 'settings'"
+                            class="sw-cms-el-config-list__tab-settings"
+                        >
+                            {% block sw_cms_element_list_config_style_type %}
+                                <sw-select-field
+                                    v-model="element.config.styleType.value"
+                                    :label="$tc('sw-cms.elements.list.config.styleType.label')"
+                                >
+                                    <option value="none">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option1') }}
+                                    </option>
+                                    <option value="customSign">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option2') }}
+                                    </option>
+                                    {# TODO: Add custom icon field #}
+                                    {# <option value="customIcon">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option3') }}
+                                    </option> #}
+                                    <option value="disc">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option4') }}
+                                    </option>
+                                    <option value="circle">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option5') }}
+                                    </option>
+                                    <option value="square">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option6') }}
+                                    </option>
+                                    <option value="decimal">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option7') }}
+                                    </option>
+                                    <option value="decimal-leading-zero">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option8') }}
+                                    </option>
+                                    <option value="lower-roman">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option9') }}
+                                    </option>
+                                    <option value="upper-roman">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option10') }}
+                                    </option>
+                                    <option value="lower-greek">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option11') }}
+                                    </option>
+                                    <option value="lower-latin">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option12') }}
+                                    </option>
+                                    <option value="upper-latin">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option13') }}
+                                    </option>
+                                    <option value="armenian">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option14') }}
+                                    </option>
+                                    <option value="georgian">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option15') }}
+                                    </option>
+                                    <option value="lower-alpha">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option16') }}
+                                    </option>
+                                    <option value="upper-alpha">
+                                        {{ $tc('sw-cms.elements.list.config.styleType.option17') }}
+                                    </option>
+                                </sw-select-field>
+                            {% endblock %}
+
+                            {% block sw_cms_element_list_config_size %}
+                                <sw-select-field
+                                    v-model="element.config.size.value"
+                                    :label="$tc('sw-cms.elements.list.config.size.label')"
+                                >
+                                    <option value="sm">
+                                        {{ $tc('sw-cms.elements.list.config.size.small') }}
+                                    </option>
+                                    <option value="md">
+                                        {{ $tc('sw-cms.elements.list.config.size.medium') }}
+                                    </option>
+                                    <option value="lg">
+                                        {{ $tc('sw-cms.elements.list.config.size.large') }}
+                                    </option>
+                                </sw-select-field>
+                            {% endblock %}
+
+                            {% block sw_cms_element_list_config_custom_sign %}
+                                <sw-field
+                                    v-if="element.config.styleType.value == 'customSign'"
+                                    v-model="element.config.customSign.value"
+                                    :label="$tc('sw-cms.elements.list.config.customSign.label')"
+                                    :placeholder="$tc('sw-cms.elements.list.config.customSign.placeholder')"
+                                    type="text" 
+                                />
+                            {% endblock %}
+
+                            {# TODO: Add custom icon field #}
+                        </sw-container>
+                    {% endblock %}
+                </template>
+            </sw-tabs>
+        {% endblock %}
+    </div>
+{% endblock %}

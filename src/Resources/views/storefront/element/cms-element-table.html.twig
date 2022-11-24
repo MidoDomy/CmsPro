@@ -1,0 +1,34 @@
+{% block element_table %}
+    {% set config = element.translated.config %}
+    
+    <div class="cms-element-{{ element.type }}">
+        <table class="table table-{{ config.type.value }}{% if config.small.value %} table-sm{% endif %}{% if config.striped.value %} table-striped{% endif %}{% if config.bordered.value %} table-bordered{% endif %}{% if config.hoverEffect.value %} table-hover{% endif %}">
+            {% if config.caption.value %}<caption>{{ config.caption.value }}</caption>{% endif %}
+
+            <thead>
+                <tr>
+                    {% if config.showNumeric.value %}<th scope="col">#</th>{% endif %}
+                    {% for heading in config.fields.value|first %}
+                        <th scope="col">{{ heading }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+    
+            <tbody>
+                {% for row in config.fields.value %}
+                    {% if not loop.first %}
+                        <tr>
+                            {% if config.showNumeric.value %}
+                                <th scope="row">{{ loop.index - 1 }}</th>
+                            {% endif %}
+
+                            {% for cell in row %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

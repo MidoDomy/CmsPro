@@ -1,0 +1,25 @@
+@import "~scss/variables";
+
+.sw-cms-block-preview-accordion {
+    padding: 15px;
+
+    &__item {
+        margin-bottom: 5px;
+
+        .sw-cms-block-preview-accordion__item-trigger {
+            margin-bottom: 0;
+        } 
+    }
+
+    .sw-cms-block-preview-accordion__item-trigger {
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 9px;
+        background-color: rgba(0, 0, 0, .025);
+        font-size: 14px;
+    } 
+
+    &__item-content {
+        padding: 10px 0 5px;
+    }
+}

@@ -1,0 +1,13 @@
+{% block element_alert %}
+    {% set config = element.translated.config %}
+
+    <div class="cms-element-{{ element.type }}">
+        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+            type: config.type.value,
+            heading: config.heading.value,
+            content: config.content.value,
+            dismissible: config.dismissible.value,
+            icon: config.showIcon.value ? 'true' : 'false'
+        } %}
+    </div>
+{% endblock %}

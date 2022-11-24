@@ -1,0 +1,124 @@
+{% block sw_cms_element_icon_config %}
+    <div class="sw-cms-el-config-icon">
+        {% block sw_cms_element_icon_config_tabs %}
+            <sw-tabs
+                class="sw-cms-el-config-icon__tabs"
+                default-item="content"
+            >
+                <template slot-scope="{ active }">
+                    {% block sw_cms_element_icon_config_tab_content %}
+                        <sw-tabs-item
+                            :title="$tc('sw-cms.elements.general.config.tab.content')"
+                            name="content"
+                            :active-tab="active"
+                        >
+                            {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+
+                    {% block sw_cms_element_icon_config_tab_options %}
+                        <sw-tabs-item
+                            :title="$tc('sw-cms.elements.general.config.tab.settings')"
+                            name="settings"
+                            :active-tab="active"
+                        >
+                            {{ $tc('sw-cms.elements.general.config.tab.settings') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+                </template>
+
+                <template
+                    slot="content"
+                    slot-scope="{ active }"
+                >
+                    {% block sw_cms_element_icon_config_content %}
+                        <sw-container
+                            v-if="active === 'content'"
+                            class="sw-cms-el-config-icon__tab-content"
+                        >
+                            {# Icon #}
+                            {% block sw_cms_element_icon_config_icon %}
+                                <div style="margin-bottom: 20px;">
+                                    <sw-cms-mapping-field 
+                                        v-model="element.config.media"
+                                        :label="$tc('sw-cms.elements.icon.config.icon.label')" 
+                                        valueTypes="entity" 
+                                        entity="media"
+                                    >
+                                        <sw-media-upload-v2 
+                                            variant="regular"
+                                            :uploadTag="uploadTag"
+                                            :source="previewSource"
+                                            :allowMultiSelect="false"
+                                            :defaultFolder="cmsPageState.pageEntityName"
+                                            @media-upload-sidebar-open="onOpenMediaModal"
+                                            @media-upload-remove-image="onImageRemove"
+                                        />
+                                    </sw-cms-mapping-field>
+
+                                    <sw-upload-listener
+                                        :uploadTag="uploadTag"
+                                        autoUpload
+                                        @media-upload-finish="onImageUpload"
+                                    />
+
+                                    <sw-media-modal-v2
+                                        variant="regular"
+                                        v-if="mediaModalIsOpen"
+                                        :entityContext="cmsPageState.entityName"
+                                        :allowMultiSelect="false"
+                                        :initialFolderId="cmsPageState.defaultMediaFolderId"
+                                        @media-upload-remove-image="onImageRemove"
+                                        @media-modal-selection-change="onSelectionChanges"
+                                        @modal-close="onCloseModal"
+                                    />
+                                </div>
+                            {% endblock %}
+
+                            {# Text #}
+                            {% block sw_cms_element_icon_config_text %}
+                                <sw-field
+                                    v-model="element.config.text.value"
+                                    type="text"
+                                    :label="$tc('sw-cms.elements.icon.config.text.label')"
+                                    :placeholder="$tc('sw-cms.elements.icon.config.text.placeholder')"
+                                    @change="onInput"
+                                />
+                            {% endblock %}
+                        </sw-container>
+                    {% endblock %}
+
+                    {% block sw_cms_element_icon_config_settings %}
+                        <sw-container
+                            v-if="active === 'settings'"
+                            class="sw-cms-el-config-icon__tab-settings"
+                        >
+                            {# Size #}
+                            {% block sw_cms_element_icon_config_size %}
+                                <sw-boolean-radio-group
+                                    v-model="element.config.iconSize.value"
+                                    :label="$tc('sw-cms.elements.icon.config.size.label')"
+                                    :labelOptionTrue="$tc('sw-cms.elements.icon.config.size.optionSmall')"
+                                    :labelOptionFalse="$tc('sw-cms.elements.icon.config.size.optionLarge')"
+                                />
+                            {% endblock %}
+
+                            {# Horizontal alignment #}
+                            {% block sw_cms_element_icon_config_horizontal_alignment %}
+                                <sw-radio-field
+                                    v-model="element.config.horizontalAlignment.value"
+                                    :label="$tc('sw-cms.elements.icon.config.horizontalAlignment.label')"
+                                    :options="[
+                                        {'value': 'left', 'name': $tc('sw-cms.elements.icon.config.horizontalAlignment.optionLeft')},
+                                        {'value': 'center', 'name': $tc('sw-cms.elements.icon.config.horizontalAlignment.optionCenter')},
+                                        {'value': 'right', 'name': $tc('sw-cms.elements.icon.config.horizontalAlignment.optionRight')},
+                                    ]"
+                                />
+                            {% endblock %}
+                        </sw-container>
+                    {% endblock %}
+                </template>
+            </sw-tabs>
+        {% endblock %}
+    </div>
+{% endblock %}

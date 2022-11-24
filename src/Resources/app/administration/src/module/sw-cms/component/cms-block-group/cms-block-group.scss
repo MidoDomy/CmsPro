@@ -1,0 +1,48 @@
+@import "~scss/variables";
+
+.sw-cms-block__config-overlay.fix--block-overlay-z-index {
+    z-index: -1 !important;
+}
+
+.sw-cms-block-group {
+    position: relative;
+
+    &:hover .sw-cms-block-group__actions {
+        display: block;
+    }
+
+    &__actions {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: none;
+        grid-template-columns: 1fr;
+        background-color: $color-shopware-brand-500;
+        border: 1px solid $color-shopware-brand-500;
+        border-radius: 8px;
+        z-index: 251;
+        opacity: .6;
+        transform: translate(50%, -50%);
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &.center {
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        &.left {
+            right: auto;
+            left: 0;
+        }
+    }
+
+    &__settings-action {
+        padding: 10px;
+        line-height: 16px;
+        color: $color-white;
+        cursor: pointer;
+    }
+}

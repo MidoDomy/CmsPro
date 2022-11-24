@@ -1,0 +1,18 @@
+{% block element_icon %}
+    {% set config = element.translated.config %}
+    
+    <div class="cms-element-{{ element.type }} text-{{ config.horizontalAlignment.value }}">
+        <div class="icon-container">
+            {% sw_thumbnails 'cms-image-thumbnails' with {
+                media: element.data.media,
+                attributes: {
+                    'class': (config.iconSize.value ? 'icon-small' : 'icon-large')
+                }
+            } %}
+        </div>
+
+        {% if config.text.value %}
+            <span class="text">{{ config.text.value | raw }}</span>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/section/cms-section-sidebar.html.twig' %}
+
+{% block section_sidebar_content_block %}
+    {# Adding the CmsBlockCollection to the default include #}
+    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+        sectionBlocks: section.blocks
+    } %}
+{% endblock %}
+
+{% block section_main_content_block %}
+    {# Adding the CmsBlockCollection to the default include #}
+    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+        sectionBlocks: section.blocks
+    } %}
+{% endblock %}

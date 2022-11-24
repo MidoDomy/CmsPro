@@ -1,0 +1,30 @@
+@import "~scss/variables";
+
+.sw-cms-block-preview-alert {
+    padding: 20px;
+
+    .sw-cms-block-preview-alert__container {
+        display: flex;
+        align-items: center;
+        background-color: #26b6cf;
+        border-radius: 3px;
+        color: #26b6cf;
+
+        .sw-icon {
+            flex: 0 22px;
+            margin: 8px;
+            color: white;
+        }
+
+        .sw-cms-block-preview-alert__content-container {
+            flex: 1;
+            padding: 8px 12px;
+            background-color: #d4f0f5;
+            font-size: 14px;
+        }
+
+        .sw-cms-block-preview-alert__heading {
+            font-weight: 600;
+        }
+    }
+}

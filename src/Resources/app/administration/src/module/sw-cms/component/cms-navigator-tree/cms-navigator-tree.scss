@@ -1,0 +1,48 @@
+@import "~scss/variables";
+
+.cms-navigator-tree {
+    .sw-tree {
+        .sw-tree-item {
+            &__element {
+                grid-template-columns: 24px 15px auto 15px 15px 34px;
+            }
+
+            &__content {
+                padding-left: 8px;
+            }
+        }
+
+        .sw-tree__content {
+            max-height: unset;
+            min-height: unset;
+            height: calc(100% - 131px);
+        }
+    }
+
+    .sw-tree-actions__headline {
+        display: none;
+    }
+
+    .sw-tree-item {
+        &__selection {
+            display: none;
+        }
+
+        /** Hide the root element */
+        &.is--root {
+            & > .sw-tree-item {
+                &__element {
+                    display: none;
+                }
+    
+                &__children {
+                    padding-left: 0;
+        
+                    &::before {
+                        background: initial;
+                    }
+                }
+            }
+        }
+    }
+}

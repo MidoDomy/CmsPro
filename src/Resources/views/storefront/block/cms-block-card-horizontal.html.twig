@@ -1,0 +1,40 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-group/cms-block-group-predefined.html.twig' %}
+
+{% set columnChildBlocks = {
+    'headerContent': [],
+    'bodyContent': []
+} %}
+
+{% block cms_block_group_predefined_content %}
+    <div class="cms-card-horizontal card">
+        <div class="row no-gutters">
+            {% if columnChildBlocks.headerContent %}
+                <div class="col-md-4">
+                    <div class="card-header">
+                        {# Output slot blocks #}
+                        {% for block in columnChildBlocks.headerContent %}
+                            {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                sectionBlocks: sectionBlocks,
+                                parentBlockId: currentBlockId
+                            } %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if columnChildBlocks.bodyContent %}
+                <div class="col-md-8">
+                    <div class="card-body">
+                        {# Output slot blocks #}
+                        {% for block in columnChildBlocks.bodyContent %}
+                            {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                sectionBlocks: sectionBlocks,
+                                parentBlockId: currentBlockId
+                            } %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

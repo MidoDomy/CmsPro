@@ -1,0 +1,31 @@
+{% block cms_block_group_content %}
+    {% block sw_cms_block_tabs %}
+        <div class="sw-cms-block-tabs">
+            <ul class="sw-cms-block-tabs__nav-items">
+                <li v-for="(tab, index) in panels" 
+                    class="sw-cms-block-tabs__nav-item"
+                    :class="{ active: index === activePanelIndex }"
+                >
+                    <a class="sw-cms-block-tabs__nav-link"
+                        @click="activePanelIndex = index"
+                    >
+                        {{ tab.headline }}
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sw-cms-block-tabs__content">
+                <div v-for="(tab, index) in panels"
+                    v-show="index === activePanelIndex"
+                >
+                    <cms-block-sub-section
+                        :childBlocks="childBlocks(`${tab.key}`)"
+                        :subSectionName="`${tab.key}`"
+                        @stage-block-add="onAddSectionBlock"
+                        @block-overlay-click="onBlockSelection"
+                    />
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

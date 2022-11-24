@@ -1,0 +1,22 @@
+@import "~scss/variables";
+
+.sw-cms-block-preview-tabs {
+    padding: 15px;
+
+    &__nav-items {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 15px;
+        list-style-type: none;
+        font-size: 12px;
+    }
+
+    &__nav-item {
+        padding-bottom: 4px;
+        border-bottom: 1px solid #d1d9e0;
+
+        &.active {
+            border-bottom-color: #008490;
+        }
+    }
+}

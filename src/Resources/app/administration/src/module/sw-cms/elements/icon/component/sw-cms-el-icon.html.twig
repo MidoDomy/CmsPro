@@ -1,0 +1,12 @@
+{% block sw_cms_element_icon %}
+    <div class="sw-cms-el-icon" :class="horizontalAlign">
+        <div class="icon-container">
+            <img :src="mediaUrl" 
+                class="icon" 
+                :class="iconSize ? 'icon-small' : 'icon-large'"
+            />
+        </div>
+
+        <span class="text" v-html="text" />
+    </div>
+{% endblock %}

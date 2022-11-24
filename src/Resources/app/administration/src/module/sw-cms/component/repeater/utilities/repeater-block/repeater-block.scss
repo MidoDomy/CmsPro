@@ -1,0 +1,105 @@
+@import "~scss/variables";
+
+.repeater-block-container {
+    &.is-expanded {
+        &> .collapsible {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            .collapsible-left-section {
+                .sw-icon {
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+
+        &> .repeater-block-content {
+            border-color: $color-gray-300;
+            border-top-color: transparent;
+        }
+    }
+
+    .collapsible {
+        display: flex;
+        border: 1px solid $color-gray-300;
+        border-radius: $border-radius-default;
+    }
+
+    .collapsible-left-section {
+        flex: 1;
+        padding: 12px 16px;
+        font-size: $font-size-large;
+        border-top-left-radius: $border-radius-default;
+        border-bottom-left-radius: $border-radius-default;
+        border-right: 1px solid $color-gray-300;
+        background-color: $color-gray-100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        
+        .sw-icon {
+            height: 18px;
+            width: 18px;
+            transition: transform .25s;
+        }
+    }
+
+    // block buttons
+    .navigation-and-toolbar {
+        display: flex;
+        padding: 8px;
+
+        .sw-button {
+            padding: 0 12px;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:disabled {
+                opacity: .5;
+
+                .sw-icon {
+                    color: inherit;
+                }
+            }
+        }
+
+        .sw-button--danger {
+            height: 100%;
+            margin-right: 4px;
+            background-color: transparent;
+            color: $color-crimson-500;
+
+            &:hover:not(:disabled) {
+                background-color: $color-crimson-50;
+            }
+        }
+
+        .toolbar {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sw-icon {
+            height: 16px;
+            width: 16px;
+            color: inherit;
+        }
+    }
+    
+    // block content
+    .repeater-block-content {
+        transition: max-height .25s;
+        border: 1px solid transparent;
+        border-bottom-left-radius: $border-radius-default;
+        border-bottom-right-radius: $border-radius-default;
+        overflow: auto;
+    }
+    
+    .repeater-block-content-inner {
+        padding: 8px;
+    }
+}

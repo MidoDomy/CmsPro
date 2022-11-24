@@ -1,0 +1,35 @@
+{% block cms_block_group_content %}
+    {% block sw_cms_block_accordion %}
+        <div class="sw-cms-block-accordion">
+            <div v-for="(item, index) in panels" 
+                class="sw-cms-block-accordion__item"
+            >
+                <h3 class="sw-cms-block-accordion__item-trigger" 
+                    @click="setActiveIndex(index)"
+                >
+                    <span>{{ item.headline }}</span>
+
+                    <sw-icon v-show="index !== activePanelIndex"
+                        name="default-basic-plus-line" 
+                        size="20" 
+                    />
+                    <sw-icon v-show="index === activePanelIndex"
+                        name="default-basic-minus-line" 
+                        size="20" 
+                    />
+                </h3>
+
+                <div v-show="index === activePanelIndex" 
+                    class="sw-cms-block-accordion__item-content"
+                >
+                    <cms-block-sub-section
+                        :childBlocks="childBlocks(`${item.key}`)"
+                        :subSectionName="`${item.key}`"
+                        @stage-block-add="onAddSectionBlock"
+                        @block-overlay-click="onBlockSelection"
+                    />
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

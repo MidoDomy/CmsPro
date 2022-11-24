@@ -1,0 +1,92 @@
+{% block sw_cms_component_link_field %}
+    <div class="sw-cms-link-field">
+        {% block sw_cms_component_link_field_section_title %}
+            <h3>{{ label }}</h3>
+        {% endblock %}
+
+        {% block sw_cms_component_link_field_url %}
+            <div class="url-field-container add-margin">
+                <sw-switch-field
+                    :label="$tc('sw-cms.component.sw-cms-link-field.isExternalLabel')"
+                    v-model="linkValue.isExternal">
+                </sw-switch-field>
+                
+                <sw-url-field
+                    v-if="linkValue.isExternal"
+                    v-model="linkValue.url"
+                    :label="$tc('sw-cms.component.sw-cms-link-field.urlLabel')">
+                </sw-url-field>
+            
+                <sw-entity-single-select
+                    v-if="!linkValue.isExternal"
+                    entity="category"
+                    v-model="linkValue.category"
+                    :label="$tc('sw-cms.component.sw-cms-link-field.categoryLabel')"
+                    :placeholder="$tc('sw-cms.component.sw-cms-link-field.categoryPlaceholder')">
+                </sw-entity-single-select>
+            </div>
+        {% endblock %}
+
+        {% block sw_cms_component_link_field_text %}
+            <sw-field
+                v-if="type=='button'"
+                v-model="linkValue.text"
+                type="text"
+                :label="$tc('sw-cms.component.sw-cms-link-field.textLabel')"
+                :placeholder="$tc('sw-cms.component.sw-cms-link-field.textPlaceholder')">
+            </sw-field>
+        {% endblock %}
+
+        {% block sw_cms_component_link_field_title %}
+            <sw-field
+                v-model="linkValue.title"
+                type="text"
+                :label="$tc('sw-cms.component.sw-cms-link-field.titleLabel')"
+                :placeholder="$tc('sw-cms.component.sw-cms-link-field.titlePlaceholder')">
+            </sw-field>
+        {% endblock %}
+
+        {% block sw_cms_component_link_field_style_type %}
+            <sw-select-field
+                v-if="type=='button'"
+                v-model="linkValue.style"
+                :label="$tc('sw-cms.component.sw-cms-link-field.linkStyleLabel')"
+            >
+                <option value="link">
+                    {{ $tc('sw-cms.component.sw-cms-link-field.linkStyleLink') }}
+                </option>
+                <option value="primary">
+                    {{ $tc('sw-cms.component.sw-cms-link-field.linkStylePrimary') }}
+                </option>
+                <option value="secondary">
+                    {{ $tc('sw-cms.component.sw-cms-link-field.linkStyleSecondary') }}
+                </option>
+            </sw-select-field>
+        {% endblock %}
+
+        {% block sw_cms_component_link_field_size %}
+            <sw-select-field
+                v-if="type=='button'"
+                v-model="linkValue.size"
+                :label="$tc('sw-cms.component.sw-cms-link-field.linkSizeLabel')"
+            >
+                <option value="sm">
+                    {{ $tc('sw-cms.component.sw-cms-link-field.linkSizeSm') }}
+                </option>
+                <option value="md">
+                    {{ $tc('sw-cms.component.sw-cms-link-field.linkSizeMd') }}
+                </option>
+                <option value="lg">
+                    {{ $tc('sw-cms.component.sw-cms-link-field.linkSizeLg') }}
+                </option>
+            </sw-select-field>
+        {% endblock %}
+
+        {% block sw_cms_component_link_field_new_tab %}
+            <sw-switch-field
+                :label="$tc('sw-cms.component.sw-cms-link-field.newTabLabel')"
+                v-model="linkValue.newTab">
+            </sw-switch-field>
+        {% endblock %}
+    </div>
+{% endblock %}

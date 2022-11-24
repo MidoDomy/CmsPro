@@ -1,0 +1,125 @@
+.sw-cms-el-alert {
+    position: relative;
+    width: 100%;
+    min-height: 40px;
+    margin-bottom: 16px;
+    border-radius: 0.1875rem;
+
+    // variants -----------------------------
+    &--primary {
+        background-color: #008490;
+        color: #008490;
+
+        .sw-cms-el-alert__content-container {
+            background-color: #cce6e9;
+        }
+    }
+
+    &--secondary {
+        background-color: #526e7f;
+        color: #526e7f;
+
+        .sw-cms-el-alert__content-container {
+            background-color: #dce2e5;
+        }
+    }
+
+    &--success {
+        background-color: #3cc261;
+        color: #3cc261;
+
+        .sw-cms-el-alert__content-container {
+            background-color: #d8f3df;
+        }
+    }
+
+    &--danger {
+        background-color: #e52427;
+        color: #e52427;
+
+        .sw-cms-el-alert__content-container {
+            background-color: #fad3d4;
+        }
+    }
+
+    &--warning {
+        background-color: #ffbd5d;
+        color: #ffbd5d;
+
+        .sw-cms-el-alert__content-container {
+            background-color: #fff2df;
+        }
+    }
+
+    &--info {
+        background-color: #26b6cf;
+        color: #26b6cf;
+
+        .sw-cms-el-alert__content-container {
+            background-color: #d4f0f5;
+        }
+    }
+
+    &--light {
+        background-color: #818181;
+        color: #818181;
+
+        .sw-cms-el-alert__content-container {
+            background-color: #f9f9f9;
+        }
+    }
+
+    &--dark {
+        background-color: #4a545b;
+        color: #4a545b;
+
+        .sw-cms-el-alert__content-container {
+            background-color: #dbddde;
+        }
+    }
+    // variants end -------------------------
+
+    &.sw-cms-el-alert--has-icon {
+        display: flex;
+        align-items: center;
+
+        .sw-cms-el-alert__content-container {
+            padding-left: 16px;
+        }
+    }
+
+    .sw-cms-el-alert__icon-container {
+        flex: 0 0 auto;
+        margin: 8px;
+
+        .sw-icon {
+            color: #fff;
+        }
+    }
+
+    .sw-cms-el-alert__content-container {
+        flex-grow: 1;
+        padding: 12px 8px;
+    }
+
+    .sw-cms-el-alert__heading {
+        margin-bottom: 10px;
+        color: inherit;
+    }
+
+    .sw-cms-el-alert__content {
+        font-size: 14px;
+    }
+
+    .sw-cms-el-alert__close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 12px 20px;
+        appearance: none;
+        background-color: transparent;
+        border: 0;
+        color: inherit;
+        font-size: 21px;
+    }
+}

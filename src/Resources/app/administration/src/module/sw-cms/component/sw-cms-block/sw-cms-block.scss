@@ -1,0 +1,11 @@
+@import "~scss/variables";
+
+.sw-cms-sidebar__block-preview.is--draggable.is--drag-element {
+    opacity: 0.7;
+}
+
+.sw-cms-block {
+    .sw-cms-block {
+        z-index: 100;
+    }
+}

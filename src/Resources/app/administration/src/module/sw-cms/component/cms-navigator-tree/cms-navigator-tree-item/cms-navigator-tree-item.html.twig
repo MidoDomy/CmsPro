@@ -1,0 +1,71 @@
+{% block sw_tree_item_children_items %}
+    <cms-navigator-tree-item 
+        v-for="child in item.children"
+        :key="child.id"
+        :item="child"
+        :draggedItem="draggedItem"
+        :parentScope="parentScope"
+        :newElementId="newElementId"
+        :translationContext="translationContext"
+        :onChangeRoute="onChangeRoute"
+        @check-item="emitCheckedItem"
+        :activeParentIds="activeParentIds"
+        :activeItemIds="activeItemIds"
+        :markInactive="markInactive"
+        :sortable="sortable"
+        :shouldFocus="shouldFocus"
+        :activeFocusId="activeFocusId"
+        :displayCheckbox="displayCheckbox"
+        :disableContextMenu="disableContextMenu"
+    >
+        {% block sw_tree_item_children_items_slots %}{% endblock %}
+    </cms-navigator-tree-item>
+{% endblock %}
+
+{% block sw_tree_item_element_actions %}
+    {# Locate action #}
+    <div v-if="item.data && true != item.data.isSubSection && true != item.data.isEmptyTreeItem"
+        class="tree-item-action--locate"
+        @click="onLocateBlock"
+    >
+        <sw-icon name="default-location-marker" size="16" />
+    </div>
+    <div v-else class="empty-div" />
+
+    {# Edit action #}
+    <div v-if="item.data && true != item.data.isSubSection && true != item.data.isEmptyTreeItem"
+        class="tree-item-action--edit"
+        @click="onEditBlock"
+    >
+        <sw-icon name="default-documentation-paper-pencil" size="16" />
+    </div>
+    <div v-else class="empty-div" />
+
+    {# Tree dots (duplicate, delete) #}
+    <div v-if="item.data && true != item.data.isSubSection && true != item.data.isEmptyTreeItem"
+        class="sw-tree-item__actions"
+    >
+        <slot name="actions" :item="item" :openTreeItem="openTreeItem">
+            <sw-context-button :disabled="!isSystemDefaultLanguage">
+                {% block sw_tree_items_actions_duplicate %}
+                    <sw-context-menu-item
+                        class="sw-tree-item__duplicate"
+                        @click="onBlockDuplicate(item);"
+                    >
+                        {{ $tc('sw-cms.sidebar.contentMenu.duplicate') }}
+                    </sw-context-menu-item>
+                {% endblock %}
+
+                {% block sw_tree_items_actions_trash %}
+                    <sw-context-menu-item
+                        class="sw-tree-item__trash"
+                        @click="onBlockDelete(item);"
+                    >
+                        {{ $tc('sw-cms.general.buttonDelete') }}
+                    </sw-context-menu-item>
+                {% endblock %}
+            </sw-context-button>
+        </slot>
+    </div>
+    <div v-else class="empty-div" />
+{% endblock %}

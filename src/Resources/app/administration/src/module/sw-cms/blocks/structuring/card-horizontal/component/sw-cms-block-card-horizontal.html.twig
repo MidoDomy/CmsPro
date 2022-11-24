@@ -1,0 +1,25 @@
+{% block cms_block_group_content %}
+    {% block sw_cms_block_card_horizontal %}
+        <div class="sw-cms-block-card-horizontal">
+            {# Card header #}
+            <div class="sw-cms-block-card-horizontal__header">
+                <cms-block-sub-section
+                    :childBlocks="childBlocks('headerContent')"
+                    subSectionName="headerContent"
+                    @stage-block-add="onAddSectionBlock"
+                    @block-overlay-click="onBlockSelection"
+                />
+            </div>
+
+            {# Card body #}
+            <div class="sw-cms-block-card-horizontal__body">
+                <cms-block-sub-section
+                    :childBlocks="childBlocks('bodyContent')"
+                    subSectionName="bodyContent"
+                    @stage-block-add="onAddSectionBlock"
+                    @block-overlay-click="onBlockSelection"
+                />
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

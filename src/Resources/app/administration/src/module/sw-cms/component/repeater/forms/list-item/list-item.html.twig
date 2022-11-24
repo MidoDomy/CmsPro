@@ -1,0 +1,29 @@
+{% block list_item %}
+    <div class="list-item">
+        {% block sw_cms_element_list_form_config %}
+            {# Item name #}
+            <sw-field
+                v-model="item.name"
+                type="text"
+                :label="$tc('sw-cms.elements.list.config.text')"
+                required="required"
+            />
+
+            {# Has children #}
+            <sw-checkbox-field 
+                v-model="item.hasChildren" 
+                :label="$tc('sw-cms.elements.list.config.hasChildren')"
+            ></sw-checkbox-field>
+
+            {# Items #}
+            <repeater 
+                v-if="item.hasChildren"
+                v-model="item.children" 
+                formName="list-item"
+                :defaultValue="defaultValue" 
+                :blockName="$tc('sw-cms.elements.list.config.blockChildName')"
+                :addButtonText="$tc('sw-cms.elements.list.config.addChildButton')">
+            </repeater>
+        {% endblock %}
+    </div>
+{% endblock %}

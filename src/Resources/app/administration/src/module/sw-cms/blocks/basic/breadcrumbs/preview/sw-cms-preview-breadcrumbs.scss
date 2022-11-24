@@ -1,0 +1,22 @@
+.sw-cms-block-preview-breadcrumbs {
+    .breadcrumb {
+        display: flex;
+        padding: 20px;
+        list-style: none;
+        font-size: 14px;
+        line-height: 16px;
+    }
+    
+    .breadcrumb-link {
+        color: inherit;
+        text-decoration: none;
+
+        &.is-active {
+            font-weight: 600;
+        }
+    }
+    
+    .breadcrumb-placeholder {
+        padding: 0 4px;
+    }
+}

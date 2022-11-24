@@ -1,0 +1,30 @@
+@import "~scss/variables";
+
+.sw-cms-block-preview-card {
+    padding: 15px;
+
+    &__inner {
+        border: 1px solid #d1d9e0;
+        border-radius: 4px;
+    }
+
+    &__header,
+    &__footer {
+        padding: 6px 10px;
+        background-color: rgba(0, 0, 0, .03);
+        border-bottom: 1px solid #d1d9e0;
+
+        .sw-cms-block-preview__empty-stage {
+            height: 40px;
+        }
+    }
+
+    &__body {
+        padding: 10px;
+    }
+
+    &__footer {
+        border-bottom: 0;
+        border-top: 1px solid #d1d9e0;
+    }
+}

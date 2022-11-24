@@ -1,0 +1,31 @@
+{# Save the current block id #}
+{% set currentBlockId = block.id %}
+
+{# Fetch the child blocks #}
+{% for subBlock in sectionBlocks %}
+    {% if subBlock.customFields.cms_parent_block_id is not empty and block.id == subBlock.customFields.cms_parent_block_id %}
+        {% for columnChildBlockSlot, columnChildBlock in columnChildBlocks %}
+            {% if columnChildBlockSlot == subBlock.customFields.cms_sub_section %}
+                {% set columnChildBlocks = columnChildBlocks|merge({ (columnChildBlockSlot): columnChildBlock|merge([subBlock]) }) %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
+{# Content output #}
+{% block cms_block_group_predefined_content_container %}
+    <div class="col-12">
+        {% block cms_block_group_predefined_content %}
+            {# Output slot items  #}
+            {% for columnChildBlockItems in columnChildBlocks %}
+                {# Output slot blocks #}
+                {% for block in columnChildBlockItems %}
+                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                        sectionBlocks: sectionBlocks,
+                        parentBlockId: currentBlockId
+                    } %}
+                {% endfor %}
+            {% endfor %} 
+        {% endblock %}
+    </div>
+{% endblock %}

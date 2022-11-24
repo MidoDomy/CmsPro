@@ -1,0 +1,56 @@
+{# Added new category options #}
+{% block sw_cms_sidebar_block_overview_category_options %}
+    <option value="structuring">
+        {{ $tc('sw-cms.detail.label.blockStructuringBlocks') }}
+    </option>
+
+    <option value="basic">
+        {{ $tc('sw-cms.detail.label.blockBasicElements') }}
+    </option>
+
+    {% parent %}
+{% endblock %}
+
+{# Added block settings content collase #}
+{% block sw_cms_sidebar_block_settings_content %}
+    {% parent %}
+
+    <sw-sidebar-collapse v-if="hasCmsBlockAdditionalConfig"
+        :expand-on-loading="true"
+    >
+        <span slot="header">
+            {{ $tc('sw-cms.sidebar.contentMenu.contentSettings') }}
+        </span>
+
+        <sw-cms-block-content-config
+            slot="content"
+            :block="selectedBlock"
+        />
+    </sw-sidebar-collapse>
+{% endblock %}
+
+{# Improved navigator tree #}
+{% block sw_cms_sidebar_navigator_main_element %}
+    <cms-navigator-tree
+        :section="section"
+        :searchable="false"
+        :disableContextMenu="true"
+        :onChangeRoute="() => { return false; }"
+        @page-config-open="onPageConfigOpen"
+        @block-duplicate="onBlockDuplicate"
+        @block-delete="onBlockDelete"
+        :items="getMainContentBlocks(section.blocks)"
+        :sortable="true"
+    >
+        <template slot="items" slot-scope="{ treeItems, sortable, draggedItem, disableContextMenu, onChangeRoute }">
+            <cms-navigator-tree-item
+                v-for="(item, index) in treeItems"
+                :key="item.id"
+                :item="item"
+                :disableContextMenu="disableContextMenu"
+                :onChangeRoute="onChangeRoute"
+                :sortable="true"
+            />
+        </template>
+    </cms-navigator-tree>
+{% endblock %}

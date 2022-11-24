@@ -1,0 +1,42 @@
+{% block repeater %}
+    <div
+        class="repeater"
+        ref="repeater"
+    >
+        <div class="repeater-title">
+            {{ $tc('sw-cms.component.repeater.contentElements') }}
+        </div>
+
+        <repeater-drop-zone
+            v-for="(field, index) in pFields"
+            :class="{
+                entered: entered === index
+            }"
+            :key="formName + index"
+        >
+            <repeater-block
+                :isFirst="index === 0"
+                :isLast="index === pFields.length - 1"
+                :index="index"
+                :id="field.id"
+                :count="pFields.length - 1"
+                v-on:remove="remove(index)"
+                v-on:up="move(index, index - 1)"
+                v-on:down="move(index, index + 1)"
+                :blockName="blockName"
+            >
+                <component
+                    :is="formName"
+                    v-model="field.value"
+                    :index="index"
+                    :defaultValue="defaultValue" />
+            </repeater-block>
+        </repeater-drop-zone>
+            
+        <button class="sw-button sw-button--ghost sw-button--small sw-button--block repeater-add-button"  v-on:click.stop="add" title="Add">
+            <span class="sw-button__content">
+                {{ addButtonText }}
+            </span>
+        </button>
+    </div>
+{% endblock %}

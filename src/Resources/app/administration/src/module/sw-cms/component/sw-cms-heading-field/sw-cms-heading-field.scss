@@ -1,0 +1,29 @@
+.sw-cms-heading-field {
+    &__label {
+        margin-bottom: 8px;
+        color: #52667a;
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    &__field-container {
+        display: flex;
+    }
+
+    .sw-field--select {
+        max-width: 70px;
+
+        .sw-block-field__block {
+            border-right: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    .sw-field--text {
+        .sw-block-field__block {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.cms-element-list {
+    .list {
+        &-sm {
+            font-size: 14px;
+    
+            ul {
+                font-size: 12px;
+            }
+        }
+    
+        &-md {
+            font-size: 16px;
+    
+            ul {
+                font-size: 14px;
+            }
+        }
+    
+        &-lg {
+            font-size: 18px;
+    
+            ul {
+                font-size: 16px;
+            }
+        }
+    }
+
+    ul {
+        padding: 0 0 0 20px;
+        list-style-type: inherit;
+    }
+}

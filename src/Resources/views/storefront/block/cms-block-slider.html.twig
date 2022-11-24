@@ -1,0 +1,52 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-group/cms-block-group-dynamic.html.twig' %}
+
+{% block cms_block_group_dynamic_content %}
+    {% block cms_block_slider %}
+        <div>
+            {% set baseSliderOptions = {
+                slider: {
+                    navPosition: 'bottom',
+                    speed: 300,
+                    autoplayTimeout: 300,
+                    autoplay: false,
+                    autoplayButtonOutput: false,
+                    nav: false,
+                    controls: true,
+                    autoHeight: true
+                }
+            } %}
+
+            <div class="base-slider"
+                data-base-slider="true"
+                data-base-slider-options='{{ baseSliderOptions|json_encode }}'
+            >
+                <div class="slider-container"
+                    data-base-slider-container="true"
+                >
+                    {% for panelConfig in panelConfigs %}
+                        <div class="slider-item">
+                            {% for block in panelConfig.subBlocks %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                    sectionBlocks: sectionBlocks,
+                                    parentBlockId: currentBlockId
+                                } %}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+                        
+                <div class="base-slider-controls"
+                    data-base-slider-controls="true"
+                >
+                    <button class="base-slider-controls-prev">
+                        {% sw_icon 'arrow-head-left' %}
+                    </button>
+
+                    <button class="base-slider-controls-next">
+                        {% sw_icon 'arrow-head-right' %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

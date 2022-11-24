@@ -1,0 +1,36 @@
+{% block cms_block_group_dynamic %}
+    {# Save the current block id #}
+    {% set currentBlockId = block.id %}
+
+    {% set panelConfigs = [] %}
+    {% for slotElement in block.slots.elements %}
+        {# Fetch the panel sub blocks #}
+        {% set subBlocks = [] %}
+        {% for subBlock in sectionBlocks %}
+            {% if subBlock.customFields.cms_parent_block_id is not empty
+                and currentBlockId == subBlock.customFields.cms_parent_block_id %}
+                {% if slotElement.slot == subBlock.customFields.cms_sub_section %}
+                    {% set subBlocks = subBlocks|merge([subBlock]) %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {# Fetch the base config #}
+        {% set panelConfig = {
+            'slot': slotElement.slot,
+            'label': slotElement.translated.config.content.value,
+            'position': slotElement.translated.customFields.cms_panel_position,
+            'subBlocks': subBlocks
+        } %}
+
+        {# Merge #}
+        {% set panelConfigs = panelConfigs|merge([panelConfig]) %}
+    {% endfor %}
+
+    {# Sort by position #}
+    {% set panelConfigs = panelConfigs|dreiscCmsSortByPosition %}
+
+    <div class="col-12">
+        {% block cms_block_group_dynamic_content %}{% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% block element_list %}
+    {% set config = element.translated.config %}
+
+    <div class="cms-element-{{ element.type }}">
+        {% sw_include "@Storefront/storefront/element/component/heading.html.twig" with {
+            tagName: config.title.value.tag,
+            text: config.title.value.text
+        } %}
+
+        <ul class="list list-{{ config.size.value }}"
+            style="list-style-type: {% if config.styleType.value == 'customSign' %}'{{ config.customSign.value }}'{% else %}{{ config.styleType.value }}{% endif %};"
+        >
+            {% for item in config.fields.value %}
+                {% sw_include "@Storefront/storefront/element/component/list-item.html.twig" with {
+                    item: item.value,
+                } %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

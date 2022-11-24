@@ -1,0 +1,20 @@
+@import "~scss/variables";
+
+.sw-cms-block-preview-icon {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    font-size: 12px;
+    text-align: center;
+
+    .icon-container {
+        margin-bottom: 5px;
+    }
+
+    .icon {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+}
