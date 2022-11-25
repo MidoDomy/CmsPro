@@ -3,6 +3,11 @@
 .sw-cms-block-row {
     display: flex;
     gap: 40px;
+
+    // For mobile view
+    .is--mobile &{
+        flex-direction: column;
+    }
     
     &__col {
         flex: 1;

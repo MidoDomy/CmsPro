@@ -6,6 +6,10 @@
             max-width: 1400px;
         }
     }
+
+    .sw-cms-section__content {
+        overflow: hidden;
+    }
 }
 
 .sw-cms-block-preview__empty-stage {
