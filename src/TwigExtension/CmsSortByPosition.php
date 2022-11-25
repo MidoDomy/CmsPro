@@ -5,12 +5,12 @@ namespace CmsPro\TwigExtension;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-class DreiscCmsSortByPosition extends AbstractExtension
+class CmsSortByPosition extends AbstractExtension
 {
     public function getFilters()
     {
         return [
-            new TwigFilter('dreiscCmsSortByPosition', [$this, 'sortByPosition'], ['needs_context' => true]),
+            new TwigFilter('cmsSortByPosition', [$this, 'sortByPosition'], ['needs_context' => true]),
         ];
     }
 

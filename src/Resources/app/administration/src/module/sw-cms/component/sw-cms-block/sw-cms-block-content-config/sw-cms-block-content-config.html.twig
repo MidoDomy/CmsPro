@@ -1,19 +1,5 @@
 {% block sw_cms_block_content_config %}
     <div class="cms-block-content-config">
-        {# <div class="dreisc-cms-first-column-width"
-            v-if="true === cmsBlockAdditionalConfig.dreiscCmsFirstColumnWidth">
-            <sw-number-field
-                v-model="block.customFields.dreisc_cms_first_column_width"
-                numberType="float"
-                :label="$tc('dreiscCms.dreiscCmsSwCmsBlockConfig.cmsBlockAdditionalConfig.labels.dreiscCmsFirstColumnWidth')"
-                :helpText="$tc('dreiscCms.dreiscCmsSwCmsBlockConfig.cmsBlockAdditionalConfig.helpText.dreiscCmsFirstColumnWidth')"
-                :min="1"
-                :max="100"
-                :digits="2"
-                @keyup="onKeyUpCustomFieldDreiscCmsFirstColumnWidth($event)">
-            </sw-number-field>
-        </div> #}
-
         {# Dynamic slot items config #}
         <div v-if="true === cmsBlockAdditionalConfig.cmsBlockDynamicSlotItemsManagement"
             class="cms-block-content-config__dynamic-slot-items"

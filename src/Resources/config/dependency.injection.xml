@@ -5,10 +5,6 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-		<service id="CmsPro\Administration\Controller\DreiscCmsBaseController" public="true">
-            <argument type="service" id="CmsPro\Core\PluginConfig\PluginConfigFetcher"/>
-        </service>
-
 		<service id="CmsPro\Core\Content\Cms\Aggregate\CmsBlock\CmsBlockRepository" public="true">
 			<argument type="service" id="cms_block.repository"/>
 		</service>
@@ -17,28 +13,14 @@
 			<argument type="service" id="cms_page.repository"/>
 		</service>
 
-		<service id="CmsPro\Core\Content\Cms\Resolver\DreiscCmsCategoryTeaserResolver">
-            <tag name="shopware.cms.data_resolver"/>
-            <argument type="service" id="Shopware\Core\Content\Media\Cms\ImageCmsElementResolver"/>
-        </service>
-
 		<service id="CmsPro\Core\Foundation\Dal\EntityRepository" abstract="true" public="true"/>
-
-		<service id="CmsPro\Core\PluginConfig\PluginConfigFetcher" public="true">
-            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
-        </service>
 
 		<service id="CmsPro\Decorator\Core\Content\CmsPage\CmsPageRepositoryDecorator" public="true" decorates="cms_page.repository">
             <argument type="service" id="CmsPro\Decorator\Core\Content\CmsPage\CmsPageRepositoryDecorator.inner"/>
             <argument type="service" id="CmsPro\Core\Content\Cms\Aggregate\CmsBlock\CmsBlockRepository"/>
         </service>
 
-		<service id="CmsPro\Subscriber\Installment\PluginConfig\PluginConfigSubscriber" public="true">
-            <tag name="kernel.event_subscriber"/>
-            <argument type="service" id="CmsPro\Core\PluginConfig\PluginConfigFetcher"/>
-        </service>
-
-		<service id="CmsPro\TwigExtension\DreiscCmsSortByPosition" public="true">
+		<service id="CmsPro\TwigExtension\CmsSortByPosition" public="true">
             <tag name="twig.extension"/>
         </service>
 	</services>

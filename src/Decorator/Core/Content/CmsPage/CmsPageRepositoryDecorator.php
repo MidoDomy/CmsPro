@@ -77,7 +77,7 @@ class CmsPageRepositoryDecorator implements EntityRepositoryInterface
                     $this->cmsBlockRepository->update([[
                         'id' => $referencedOriginalBlockEntity->getId(),
                         'customFields' => [
-                            'dreisc_cms_tmp_id' => $referencedOriginalBlockEntity->getId()
+                            'cms_tmp_id' => $referencedOriginalBlockEntity->getId()
                         ]
                     ]]);
                 }
@@ -113,7 +113,7 @@ class CmsPageRepositoryDecorator implements EntityRepositoryInterface
                         new MultiFilter(
                             MultiFilter::CONNECTION_AND,
                             [
-                                new EqualsFilter('customFields.dreisc_cms_tmp_id', $referencedBlockEntity->getId()),
+                                new EqualsFilter('customFields.cms_tmp_id', $referencedBlockEntity->getId()),
                                 new NotFilter(
                                     NotFilter::CONNECTION_AND,
                                     [
@@ -145,7 +145,7 @@ class CmsPageRepositoryDecorator implements EntityRepositoryInterface
                 new NotFilter(
                     NotFilter::CONNECTION_AND,
                     [
-                        new EqualsFilter('customFields.dreisc_cms_tmp_id', null)
+                        new EqualsFilter('customFields.cms_tmp_id', null)
                     ]
                 )
         );
@@ -154,8 +154,8 @@ class CmsPageRepositoryDecorator implements EntityRepositoryInterface
         /** @var CmsBlockEntity $blockEntityWithTmp */
         foreach($blockCollectionWithTmp as $blockEntityWithTmp) {
             $customFields = $blockEntityWithTmp->getCustomFields();
-            if(isset($customFields['dreisc_cms_tmp_id'])) {
-                $customFields['dreisc_cms_tmp_id'] = '';
+            if(isset($customFields['cms_tmp_id'])) {
+                $customFields['cms_tmp_id'] = '';
             }
 
             $this->cmsBlockRepository->update([[

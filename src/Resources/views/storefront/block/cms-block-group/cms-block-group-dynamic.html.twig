@@ -28,7 +28,7 @@
     {% endfor %}
 
     {# Sort by position #}
-    {% set panelConfigs = panelConfigs|dreiscCmsSortByPosition %}
+    {% set panelConfigs = panelConfigs|cmsSortByPosition %}
 
     <div class="col-12">
         {% block cms_block_group_dynamic_content %}{% endblock %}

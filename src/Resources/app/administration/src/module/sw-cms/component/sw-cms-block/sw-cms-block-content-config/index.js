@@ -64,27 +64,6 @@ Component.register('sw-cms-block-content-config', {
     },
 
     methods: {
-        // onKeyUpCustomFieldDreiscCmsFirstColumnWidth(event) {
-        //     let value = event.target.value.replace(',', '.');
-
-        //     if ('' === value || '.' === value.slice(-1)) {
-        //         return;
-        //     }
-
-        //     value = parseFloat(value);
-
-        //     if(value > 0 && value < 101) {
-        //         this.block.customFields.dreisc_cms_first_column_width = value;
-        //     }
-
-        //     /** Cache breaker */
-        //     const blockName = this.block.name;
-        //     this.block.name = '...';
-        //     this.$nextTick().then(() => {
-        //         this.block.name = blockName;
-        //     });
-        // },
-
         movePanelItem(direction, key) {
             const moveSlot = this.block.slots[key];
             let referenceSlot = null
