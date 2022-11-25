@@ -1,92 +1,190 @@
 {% block sw_cms_component_link_field %}
-    <div class="sw-cms-link-field">
+    <div class="sw-cms-component-link-field">
         {% block sw_cms_component_link_field_section_title %}
             <h3>{{ label }}</h3>
         {% endblock %}
 
-        {% block sw_cms_component_link_field_url %}
-            <div class="url-field-container add-margin">
-                <sw-switch-field
-                    :label="$tc('sw-cms.component.sw-cms-link-field.isExternalLabel')"
-                    v-model="linkValue.isExternal">
-                </sw-switch-field>
-                
-                <sw-url-field
-                    v-if="linkValue.isExternal"
-                    v-model="linkValue.url"
-                    :label="$tc('sw-cms.component.sw-cms-link-field.urlLabel')">
-                </sw-url-field>
-            
-                <sw-entity-single-select
-                    v-if="!linkValue.isExternal"
-                    entity="category"
-                    v-model="linkValue.category"
-                    :label="$tc('sw-cms.component.sw-cms-link-field.categoryLabel')"
-                    :placeholder="$tc('sw-cms.component.sw-cms-link-field.categoryPlaceholder')">
-                </sw-entity-single-select>
-            </div>
-        {% endblock %}
-
-        {% block sw_cms_component_link_field_text %}
-            <sw-field
-                v-if="type=='button'"
-                v-model="linkValue.text"
-                type="text"
-                :label="$tc('sw-cms.component.sw-cms-link-field.textLabel')"
-                :placeholder="$tc('sw-cms.component.sw-cms-link-field.textPlaceholder')">
-            </sw-field>
-        {% endblock %}
-
-        {% block sw_cms_component_link_field_title %}
-            <sw-field
-                v-model="linkValue.title"
-                type="text"
-                :label="$tc('sw-cms.component.sw-cms-link-field.titleLabel')"
-                :placeholder="$tc('sw-cms.component.sw-cms-link-field.titlePlaceholder')">
-            </sw-field>
-        {% endblock %}
-
-        {% block sw_cms_component_link_field_style_type %}
-            <sw-select-field
-                v-if="type=='button'"
-                v-model="linkValue.style"
-                :label="$tc('sw-cms.component.sw-cms-link-field.linkStyleLabel')"
+        {% block sw_cms_component_link_field_tabs %}
+            <sw-tabs
+                class="sw-cms-component-link-field__tabs"
+                default-item="content"
             >
-                <option value="link">
-                    {{ $tc('sw-cms.component.sw-cms-link-field.linkStyleLink') }}
-                </option>
-                <option value="primary">
-                    {{ $tc('sw-cms.component.sw-cms-link-field.linkStylePrimary') }}
-                </option>
-                <option value="secondary">
-                    {{ $tc('sw-cms.component.sw-cms-link-field.linkStyleSecondary') }}
-                </option>
-            </sw-select-field>
-        {% endblock %}
+                <template slot-scope="{ active }">
+                    {% block sw_cms_component_link_field_tab_content %}
+                        <sw-tabs-item
+                            :title="$tc('sw-cms.elements.general.config.tab.content')"
+                            name="content"
+                            :active-tab="active"
+                        >
+                            {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                        </sw-tabs-item>
+                    {% endblock %}
 
-        {% block sw_cms_component_link_field_size %}
-            <sw-select-field
-                v-if="type=='button'"
-                v-model="linkValue.size"
-                :label="$tc('sw-cms.component.sw-cms-link-field.linkSizeLabel')"
-            >
-                <option value="sm">
-                    {{ $tc('sw-cms.component.sw-cms-link-field.linkSizeSm') }}
-                </option>
-                <option value="md">
-                    {{ $tc('sw-cms.component.sw-cms-link-field.linkSizeMd') }}
-                </option>
-                <option value="lg">
-                    {{ $tc('sw-cms.component.sw-cms-link-field.linkSizeLg') }}
-                </option>
-            </sw-select-field>
-        {% endblock %}
+                    {% block sw_cms_component_link_field_tab_options %}
+                        <sw-tabs-item
+                            :title="$tc('sw-cms.elements.general.config.tab.settings')"
+                            name="settings"
+                            :active-tab="active"
+                        >
+                            {{ $tc('sw-cms.elements.general.config.tab.settings') }}
+                        </sw-tabs-item>
+                    {% endblock %}
+                </template>
 
-        {% block sw_cms_component_link_field_new_tab %}
-            <sw-switch-field
-                :label="$tc('sw-cms.component.sw-cms-link-field.newTabLabel')"
-                v-model="linkValue.newTab">
-            </sw-switch-field>
+                <template
+                    slot="content"
+                    slot-scope="{ active }"
+                >
+                    {# Content tab #}
+                    {% block sw_cms_component_link_field_content %}
+                        <sw-container
+                            v-if="active === 'content'"
+                            class="sw-cms-component-link-field__tab-content"
+                        >
+                            {# Url #}
+                            {% block sw_cms_component_link_field_url %}
+                                <div class="url-field-container">
+                                    <sw-switch-field
+                                        v-model="linkValue.isExternal"
+                                        :label="$tc('sw-cms.component.sw-cms-link-field.isExternal.label')"
+                                    />
+                                    
+                                    <sw-url-field
+                                        v-if="linkValue.isExternal"
+                                        v-model="linkValue.url"
+                                        :label="$tc('sw-cms.component.sw-cms-link-field.url.label')"
+                                    />
+                                
+                                    <sw-entity-single-select
+                                        v-if="!linkValue.isExternal"
+                                        entity="category"
+                                        v-model="linkValue.category"
+                                        :label="$tc('sw-cms.component.sw-cms-link-field.category.label')"
+                                        :placeholder="$tc('sw-cms.component.sw-cms-link-field.category.placeholder')"
+                                    />
+                                </div>
+                            {% endblock %}
+
+                            <div class="group-two">
+                                {# Text #}
+                                {% block sw_cms_component_link_field_text %}
+                                    <sw-field
+                                        v-if="type=='button'"
+                                        v-model="linkValue.text"
+                                        :label="$tc('sw-cms.component.sw-cms-link-field.text.label')"
+                                        :placeholder="$tc('sw-cms.component.sw-cms-link-field.text.placeholder')"
+                                        type="text"
+                                    />
+                                {% endblock %}
+    
+                                {# Title #}
+                                {% block sw_cms_component_link_field_title %}
+                                    <sw-field
+                                        v-model="linkValue.title"
+                                        :label="$tc('sw-cms.component.sw-cms-link-field.title.label')"
+                                        :placeholder="$tc('sw-cms.component.sw-cms-link-field.title.placeholder')"
+                                        type="text"
+                                    />
+                                {% endblock %}
+                            </div>
+                        </sw-container>
+                    {% endblock %}
+
+                    {# Settings tab #}
+                    {% block sw_cms_component_link_field_settings %}
+                        <sw-container
+                            v-if="active === 'settings'"
+                            class="sw-cms-component-link-field__tab-settings"
+                        >
+                            <div class="group-two">
+                                {# Type #}
+                                {% block sw_cms_component_link_field_type %}
+                                    <sw-select-field
+                                        v-if="type=='button'"
+                                        v-model="linkValue.type"
+                                        :label="$tc('sw-cms.component.sw-cms-link-field.type.label')"
+                                    >
+                                        <option value="primary">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.type.optionPrimary') }}
+                                        </option>
+                                        <option value="secondary">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.type.optionSecondary') }}
+                                        </option>
+                                        <option value="success">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.type.optionSuccess') }}
+                                        </option>
+                                        <option value="danger">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.type.optionDanger') }}
+                                        </option>
+                                        <option value="warning">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.type.optionWarning') }}
+                                        </option>
+                                        <option value="info">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.type.optionInfo') }}
+                                        </option>
+                                        <option value="light">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.type.optionLight') }}
+                                        </option>
+                                        <option value="dark">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.type.optionDark') }}
+                                        </option>
+                                        <option value="link">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.type.optionLink') }}
+                                        </option>
+                                    </sw-select-field>
+                                {% endblock %}
+    
+                                {# Size #}
+                                {% block sw_cms_component_link_field_size %}
+                                    <sw-select-field
+                                        v-if="type=='button'"
+                                        v-model="linkValue.size"
+                                        :label="$tc('sw-cms.component.sw-cms-link-field.size.label')"
+                                    >
+                                        <option value="sm">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.size.optionSmall') }}
+                                        </option>
+                                        <option value="md">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.size.optionMedium') }}
+                                        </option>
+                                        <option value="lg">
+                                            {{ $tc('sw-cms.component.sw-cms-link-field.size.optionLarge') }}
+                                        </option>
+                                    </sw-select-field>
+                                {% endblock %}
+                            </div>
+
+                            <div class="group-three">
+                                {# Outline #}
+                                {% block sw_cms_component_link_field_outline %}
+                                    <sw-switch-field
+                                        v-if="type=='button'"
+                                        v-model="linkValue.outline"
+                                        :label="$tc('sw-cms.component.sw-cms-link-field.outline.label')"
+                                    />
+                                {% endblock %}
+
+                                {# Block #}
+                                {% block sw_cms_component_link_field_block %}
+                                    <sw-switch-field
+                                        v-if="type=='button'"
+                                        v-model="linkValue.block"
+                                        :label="$tc('sw-cms.component.sw-cms-link-field.block.label')"
+                                    />
+                                {% endblock %}
+    
+                                {# New tab #}
+                                {% block sw_cms_component_link_field_new_tab %}
+                                    <sw-switch-field
+                                        v-model="linkValue.newTab"
+                                        :label="$tc('sw-cms.component.sw-cms-link-field.newTab.label')"
+                                    />
+                                {% endblock %}
+                            </div>
+                        </sw-container>
+                    {% endblock %}
+                </template>
+            </sw-tabs>
         {% endblock %}
     </div>
 {% endblock %}

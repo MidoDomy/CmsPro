@@ -24,8 +24,10 @@ Component.register('sw-cms-link-field', {
                 isExternal: true,
                 text: 'Lorem ipsum',
                 title: 'Lorem ipsum',
-                style: 'primary',
+                type: 'primary',
                 size: 'md',
+                outline: false,
+                block: false,
                 newTab: false,                        
             }
         },

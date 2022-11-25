@@ -71,23 +71,51 @@
                 "contentElements": "Content elements"
             },
             "sw-cms-link-field": {
-                "categoryLabel": "Category",
-                "categoryPlaceholder": "Select a category",
-                "isExternalLabel": "Use external URL instead of a category?",
-                "textLabel": "Link Text",
-                "textPlaceholder": "Enter link text...",
-                "titleLabel": "Link Title",
-                "titlePlaceholder": "Enter link title...",
-                "newTabLabel": "Open in a new tab?",
-                "urlLabel": "URL",
-                "linkStyleLabel": "Link style",
-                "linkStyleLink": "Link",
-                "linkStylePrimary": "Primary",
-                "linkStyleSecondary": "Secondary",
-                "linkSizeLabel": "Link size",
-                "linkSizeSm": "Small",
-                "linkSizeMd": "Medium (default)",
-                "linkSizeLg": "Large"
+                "isExternal": {
+                    "label": "Use external URL instead of a category?"
+                },
+                "url": {
+                    "label": "URL"
+                },
+                "category": {
+                    "label": "Category",
+                    "placeholder": "Select category"
+                },
+                "text": {
+                    "label": "Text",
+                    "placeholder": "Enter text.."
+                },
+                "title": {
+                    "label": "Title",
+                    "placeholder": "Enter title.."
+                },
+                "type": {
+                    "label": "Type",
+                    "optionPrimary": "Primary",
+                    "optionSecondary": "Secondary",
+                    "optionSuccess": "Success",
+                    "optionDanger": "Danger",
+                    "optionWarning": "Warning",
+                    "optionInfo": "Info",
+                    "optionLight": "Light",
+                    "optionDark": "Dark",
+                    "optionLink": "Link"
+                },
+                "size": {
+                    "label": "Size",
+                    "optionSmall": "Small",
+                    "optionMedium": "Medium",
+                    "optionLarge": "Large"
+                },
+                "outline": {
+                    "label": "Outline"
+                },
+                "block": {
+                    "label": "Block (full width)"
+                },
+                "newTab": {
+                    "label": "Open in new tab"
+                }
             },
             "sw-cms-heading-field": {
                 "headingTag": {

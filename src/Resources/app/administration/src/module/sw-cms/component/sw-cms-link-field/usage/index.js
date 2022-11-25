@@ -10,10 +10,19 @@ export default {
 
     computed: {
         buttonClass() {
-            const style = this.value.style === 'primary' ? 'sw-button sw-button--primary' : this.value.style === 'secondary' ? 'sw-button sw-button--secondary': 'sw-button--link';
-            const size = this.value.size === 'sm' ? 'sw-button--small' : this.value.size === 'lg' ? 'sw-button--large' : '';
+            var classes = `sw-button sw-button--${this.value.type}`;
 
-            return `${style} ${size}`;
+            // Outline
+            classes += this.value.outline ? ' sw-button--outline' : '';
+
+            // Block
+            classes += this.value.block ? ' sw-button--block' : '';
+            
+            // Size
+            classes += this.value.size === 'sm' ? ' sw-button--small' : 
+                            this.value.size === 'lg' ? ' sw-button--large' : '';
+
+            return classes;
         },
     }
 }
