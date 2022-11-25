@@ -97,5 +97,12 @@ Component.register('cms-block-group', {
                 sectionVueComponent.$emit('page-config-open', 'blocks');
             }
         }
+    },
+
+    watch: {
+        block: {
+            deep: true,
+            handler() {}
+        }
     }
 });

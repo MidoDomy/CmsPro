@@ -87,13 +87,5 @@ Component.extend('sw-cms-block-group-dynamic', 'cms-block-group', {
 
             this.$parent.block.slots.push(element);
         }
-    },
-
-    watch: {
-        block: {
-            deep: true,
-            handler() {
-            }
-        }
     }
 });

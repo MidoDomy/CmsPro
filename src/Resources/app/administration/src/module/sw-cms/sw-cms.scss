@@ -4,12 +4,36 @@
     &.is--boxed {
         .sw-cms-section__wrapper {
             max-width: 1400px;
+            padding: 0;
+
+            .sw-cms-section__content {
+                padding: 20px;
+
+                // for sublocks
+                .sw-cms-section__content {
+                    padding: 0;
+                }
+            }
         }
+    }
+
+    .sw-cms-section__wrapper {
+        padding: 0;
     }
 
     .sw-cms-section__content {
         overflow: hidden;
+        padding: 20px;
+
+        // for sublocks
+        .sw-cms-section__content {
+            padding: 0;
+        }
     }
+}
+
+.sw-cms-stage-add-block {
+    left: 0;
 }
 
 .sw-cms-block-preview__empty-stage {
