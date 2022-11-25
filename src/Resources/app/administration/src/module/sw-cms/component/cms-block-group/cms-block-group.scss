@@ -19,23 +19,28 @@
         grid-template-columns: 1fr;
         background-color: $color-shopware-brand-500;
         border: 1px solid $color-shopware-brand-500;
-        border-radius: 8px;
+        border-bottom-left-radius: 8px;
         z-index: 251;
         opacity: .6;
-        transform: translate(50%, -50%);
+        transform: translate(50%, 0%);
+        transition: .3s;
 
         &:hover {
             opacity: 1;
+            transform: translate(0%, 0%);
         }
 
         &.center {
             right: 50%;
             transform: translateX(50%);
+            border-bottom-right-radius: 8px;
         }
 
         &.left {
             right: auto;
             left: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 8px;
         }
     }
 

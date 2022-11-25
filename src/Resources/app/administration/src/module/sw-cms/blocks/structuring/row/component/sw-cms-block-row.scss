@@ -3,6 +3,7 @@
 .sw-cms-block-row {
     display: flex;
     gap: 40px;
+    padding: 1px;
 
     // For mobile view
     .is--mobile &{
