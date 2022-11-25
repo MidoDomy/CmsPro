@@ -1,14 +1,116 @@
-.sw-button--link  {
-    background: none;
-    border: none;
+.cms-link-field.sw-button  {
+    padding: 2px 12px;
+    border: 1px solid;
     font-size: 14px;
-    text-decoration: underline;
+    line-height: 38px;
 
     &.sw-button--small {
-        font-size: 12px;
+        padding: 2px 12px;
+        font-size: 14px;
+        line-height: 30px;
     }
 
     &.sw-button--large {
+        padding: 2px 12px;
         font-size: 16px;
+        line-height: 38px;
     }
+
+    &.sw-button--outline:not(:hover) {
+        background-color: transparent;
+    }
+
+    /* ---------- Variants -------------- */
+    &.sw-button--primary {
+        background-color: #008490;
+        border-color: #008490;
+        color: #fff;
+
+        &.sw-button--outline:not(:hover) {
+            color: #008490;
+        }
+    }
+
+    &.sw-button--secondary {
+        background-color: #526e7f;
+        border-color: #526e7f;
+        color: #fff;
+
+        &.sw-button--outline:not(:hover) {
+            color: #526e7f;
+        }
+    }
+
+    &.sw-button--success {
+        background-color: #3cc261;
+        border-color: #3cc261;
+        color: #fff;
+
+        &.sw-button--outline:not(:hover) {
+            color: #3cc261;
+        }
+    }
+
+    &.sw-button--danger {
+        background-color: #e52427;
+        border-color: #e52427;
+        color: #fff;
+
+        &.sw-button--outline:not(:hover) {
+            color: #e52427;
+        }
+    }
+
+    &.sw-button--warning {
+        background-color: #ffbd5d;
+        border-color: #ffbd5d;
+        color: #212529;
+
+        &.sw-button--outline:not(:hover) {
+            color: #ffbd5d;
+        }
+    }
+
+    &.sw-button--info {
+        background-color: #26b6cf;
+        border-color: #26b6cf;
+        color: #fff;
+
+        &.sw-button--outline:not(:hover) {
+            color: #26b6cf;
+        }
+    }
+
+    &.sw-button--light {
+        background-color: #f9f9f9;
+        border-color: #f9f9f9;
+        color: #212529;
+
+        &.sw-button--outline:not(:hover) {
+            color: #f9f9f9;
+        }
+    }
+
+    &.sw-button--dark {
+        background-color: #4a545b;
+        border-color: #4a545b;
+        color: #fff;
+
+        &.sw-button--outline:not(:hover) {
+            color: #4a545b;
+        }
+    }
+
+    &.sw-button--link {
+        background-color: transparent;
+        border: 0;
+        color: #008490;
+        text-decoration: none;
+
+        &:hover {
+            color: #003e44;
+            text-decoration: underline;
+        }
+    }
+    /* ------------------------------ */
 }

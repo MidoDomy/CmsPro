@@ -10,7 +10,7 @@ export default {
 
     computed: {
         buttonClass() {
-            var classes = `sw-button sw-button--${this.value.type}`;
+            var classes = `sw-button cms-link-field sw-button--${this.value.type}`;
 
             // Outline
             classes += this.value.outline ? ' sw-button--outline' : '';
