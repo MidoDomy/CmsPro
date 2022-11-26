@@ -1,0 +1,11 @@
+{% block element_code %}
+    {% set config = element.translated.config %}
+
+    <div class="cms-element-{{ element.type }}">
+        <style>
+            {{ config.cssContent.value|raw }}
+        </style>
+        
+        {{ config.htmlContent.value|raw }}
+    </div>
+{% endblock %}

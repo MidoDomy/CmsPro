@@ -1,0 +1,16 @@
+.sw-cms-el-config-code {
+    .sw-highlight-text {
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        background-color: transparent;
+        border: 1px solid #ffbd5d;
+        border-radius: 4px;
+        color: #212529;
+        text-align: center;
+        transition: .2s;
+
+        &:hover {
+            background-color: #ffbd5d;
+        }
+    }
+}

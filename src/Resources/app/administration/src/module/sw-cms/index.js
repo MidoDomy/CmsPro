@@ -19,6 +19,7 @@ import './component/sw-cms-heading-field';
 import './component/sw-cms-link-field';
 
 /*------------- Elements ---------------*/
+import './elements/code';
 import './elements/alert';
 import './elements/table';
 import './elements/list';
@@ -37,6 +38,7 @@ import './blocks/structuring/content-compare';
 import './blocks/structuring/card';
 import './blocks/structuring/card-horizontal';
     /* Basic */
+import './blocks/basic/code';
 import './blocks/basic/alert';
 import './blocks/basic/table';
 import './blocks/basic/list';

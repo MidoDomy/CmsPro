@@ -21,6 +21,9 @@
             }
         },
         "blocks": {
+            "code": {
+                "label": "Code"
+            },
             "alert": {
                 "label": "Alert"
             },
@@ -130,6 +133,18 @@
             }
         },
         "elements": {
+            "code": {
+                "label": "Code",
+                "config": {
+                    "warningText": "The appearance of the element may differ from the storefront, \n because the same style libraries are not used for admin and storefront",
+                    "htmlContent": {
+                        "label": "Html content"
+                    },
+                    "cssContent": {
+                        "label": "Css content"
+                    }
+                }
+            },
             "alert": {
                 "label": "Alert",
                 "config": {

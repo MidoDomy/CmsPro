@@ -1,0 +1,15 @@
+@import "~scss/variables";
+
+.sw-cms-block-preview-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    color: #d1d9e0;
+    font-weight: bold;
+    font-size: 30px;
+
+    &::after {
+        content: '</>';
+    }
+}
