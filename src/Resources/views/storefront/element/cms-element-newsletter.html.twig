@@ -1,0 +1,44 @@
+{% block element_newsletter %}
+    <div class="cms-element-{{ element.type }} cms-element-form">
+        {% block element_newsletter_form %}
+            <form action="{{ path('frontend.form.newsletter.register.handle') }}"
+                method="post"
+                data-form-csrf-handler="true"
+                data-form-validation="true"
+            >
+                {% block element_newsletter_email_label %}
+                    <label class="form-label" for="form-email">{{ "newsletter.labelMail"|trans }}*</label>
+                {% endblock %}
+                {% block element_newsletter_content %}
+                    <div class="form-content">
+                        {% block element_newsletter_input_email %}
+                            {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                                with {
+                                    fieldName: 'email',
+                                    type: 'email',
+                                    required: true,
+                                    placeholder: 'newsletter.placeholderMail'
+                                }
+                            %}
+                        {% endblock %}
+                
+                        {% block element_newsletter_submit %}
+                            {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-submit.html.twig' %}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+        
+                {% block element_newsletter_hidden_fields %}
+                    <div class="form-hidden-fields">
+                        {% block element_newsletter_csrf %}
+                            {{ sw_csrf('frontend.form.newsletter.register.handle') }}
+                        {% endblock %}
+        
+                        <input type="hidden" name="option" value="{{ constant('Shopware\\Storefront\\Controller\\FormController::SUBSCRIBE') }}">
+                        <input type="submit" class="submit--hidden d-none" />
+                    </div>
+                {% endblock %}
+            </form>
+        {% endblock %}
+    </div>
+{% endblock %}

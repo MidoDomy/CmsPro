@@ -36,11 +36,14 @@
             "button": {
                 "label": "Button"
             },
+            "icon": {
+                "label": "Icon"
+            },
             "breadcrumbs": {
                 "label": "Breadcrumbs"
             },
-            "icon": {
-                "label": "Icon"
+            "newsletter": {
+                "label": "Newsletter"
             },
             "row": {
                 "label": "Row (dynamically adding columns)"
@@ -294,6 +297,9 @@
             },
             "breadcrumbs": {
                 "label": "Breadcrumbs"
+            },
+            "newsletter": {
+                "label": "Newsletter"
             }
         }
     }

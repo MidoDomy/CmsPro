@@ -26,6 +26,7 @@ import './elements/list';
 import './elements/button';
 import './elements/icon';
 import './elements/breadcrumbs';
+import './elements/newsletter';
 
 /*-------------- Blocks ----------------*/
     /* Structuring */
@@ -43,8 +44,9 @@ import './blocks/basic/alert';
 import './blocks/basic/table';
 import './blocks/basic/list';
 import './blocks/basic/button';
-import './blocks/basic/breadcrumbs';
 import './blocks/basic/icon';
+import './blocks/basic/breadcrumbs';
+import './blocks/basic/newsletter'
 
 /* Pages */
 import './page/sw-cms-detail';
