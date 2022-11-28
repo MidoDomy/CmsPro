@@ -43,26 +43,9 @@
                         >
                             {# Url #}
                             {% block sw_cms_component_link_field_url %}
-                                <div class="url-field-container">
-                                    <sw-switch-field
-                                        v-model="linkValue.isExternal"
-                                        :label="$tc('sw-cms.component.sw-cms-link-field.isExternal.label')"
-                                    />
-                                    
-                                    <sw-url-field
-                                        v-if="linkValue.isExternal"
-                                        v-model="linkValue.url"
-                                        :label="$tc('sw-cms.component.sw-cms-link-field.url.label')"
-                                    />
-                                
-                                    <sw-entity-single-select
-                                        v-if="!linkValue.isExternal"
-                                        entity="category"
-                                        v-model="linkValue.category"
-                                        :label="$tc('sw-cms.component.sw-cms-link-field.category.label')"
-                                        :placeholder="$tc('sw-cms.component.sw-cms-link-field.category.placeholder')"
-                                    />
-                                </div>
+                                <sw-dynamic-url-field
+                                    v-model="linkValue.url"
+                                />
                             {% endblock %}
 
                             <div class="group-two">

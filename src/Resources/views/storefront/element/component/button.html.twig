@@ -1,7 +1,7 @@
 {% block element_cms_button_component %}
     <a class="btn {% if button.outline %}btn-outline-{{ button.type }}{% else %}btn-{{ button.type }}{% endif %} btn-{{ button.size }}{% if button.block %} btn-block{% endif %}" 
         href="{{ button.url }}" 
-        title="{{ button.title }}"
+        {% if button.title %}title="{{ button.title }}"{% endif %}
         {% if button.newTab %}target="_blank"{% endif %}
     >
         {{ button.text }}

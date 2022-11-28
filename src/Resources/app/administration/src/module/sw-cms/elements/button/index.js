@@ -12,9 +12,7 @@ Shopware.Service('cmsService').registerCmsElement({
         link: {
             source: 'static',
             value: {
-                isExternal: true,
                 url: '',
-                category: '',
                 text: 'Lorem ipsum',
                 title: 'Lorem ipsum',
                 type: 'primary',

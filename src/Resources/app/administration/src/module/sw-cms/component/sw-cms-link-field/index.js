@@ -20,8 +20,6 @@ Component.register('sw-cms-link-field', {
             type: Object,
             default: {
                 url: '',
-                category: '',
-                isExternal: true,
                 text: 'Lorem ipsum',
                 title: 'Lorem ipsum',
                 type: 'primary',
