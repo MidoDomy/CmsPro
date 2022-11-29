@@ -38,6 +38,7 @@ import './blocks/structuring/slider';
 import './blocks/structuring/tabs';
 import './blocks/structuring/accordion';
 import './blocks/structuring/teaser-collapse';
+import './blocks/structuring/timeline';
 import './blocks/structuring/content-compare';
 import './blocks/structuring/card';
 import './blocks/structuring/card-horizontal';

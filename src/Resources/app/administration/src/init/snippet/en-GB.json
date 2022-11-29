@@ -71,6 +71,9 @@
             "contentCompare": {
                 "label": "Content compare"
             },
+            "timeline": {
+                "label": "Timeline"
+            },
             "card": {
                 "label": "Card"
             },

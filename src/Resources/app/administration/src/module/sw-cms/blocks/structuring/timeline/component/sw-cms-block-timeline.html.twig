@@ -1,0 +1,19 @@
+{% block cms_block_group_content %}
+    {% block sw_cms_block_timeline %}
+        <div class="sw-cms-block-timeline">
+            <div v-for="(item, index) in panels"
+                class="sw-cms-block-timeline__item"
+                :class="{'sw-cms-block-timeline__item--right' : index % 2 == 1}"
+            >
+                <div class="sw-cms-block-timeline__item-inner">
+                    <cms-block-sub-section
+                        :childBlocks="childBlocks(`${item.key}`)"
+                        :subSectionName="`${item.key}`"
+                        @stage-block-add="onAddSectionBlock"
+                        @block-overlay-click="onBlockSelection"
+                    />
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
