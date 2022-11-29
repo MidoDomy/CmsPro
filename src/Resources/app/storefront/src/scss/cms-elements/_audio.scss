@@ -1,0 +1,39 @@
+.cms-element-audio {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @include media-breakpoint-up(md) {
+        gap: 24px;
+    }
+
+    img {
+        aspect-ratio: 1 / 1;
+        width: 20%;
+        max-width: 125px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+.cms-element-audio-main-content {
+    flex: 1;
+}
+
+.cms-element-audio-audio-container {
+    margin-top: 10px;
+
+    audio {
+        width: 100%;
+    }
+}
+
+.cms-element-audio-title {
+    margin-bottom: 0;
+    font-size: 18px;
+}
+
+.cms-element-audio-author {
+    margin-bottom: 0;
+    color: #c1c2c3;
+}

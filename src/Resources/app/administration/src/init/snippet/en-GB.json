@@ -45,6 +45,12 @@
             "newsletter": {
                 "label": "Newsletter"
             },
+            "video": {
+                "label": "Video"
+            },
+            "audio": {
+                "label": "Audio"
+            },
             "row": {
                 "label": "Row (dynamically adding columns)"
             },  
@@ -300,6 +306,36 @@
             },
             "newsletter": {
                 "label": "Newsletter"
+            },
+            "video": {
+                "label": "Video",
+                "config": {
+                    "video": {
+                        "label": "Video"
+                    },
+                    "previewImage": {
+                        "label": "Preview image"
+                    }
+                }
+            },
+            "audio": {
+                "label": "Audio",
+                "config": {
+                    "audio": {
+                        "label": "Audio"
+                    },
+                    "previewImage": {
+                        "label": "Thumbnail image"
+                    },
+                    "title": {
+                        "label": "Title",
+                        "placeholder": "Enter title.."
+                    },
+                    "author": {
+                        "label": "Author",
+                        "placeholder": "Enter author name.."
+                    }
+                }
             }
         }
     }

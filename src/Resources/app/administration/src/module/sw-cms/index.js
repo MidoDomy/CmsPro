@@ -6,6 +6,7 @@ import './sw-cms.scss';
 import './component/sw-cms-sidebar';
 import './component/sw-cms-section';
 import './component/sw-cms-block';
+import './component/sw-media-preview-v2';
     /* Created */
 import './component/cms-block-sub-section';
 import './component/cms-block-group';
@@ -27,6 +28,8 @@ import './elements/button';
 import './elements/icon';
 import './elements/breadcrumbs';
 import './elements/newsletter';
+import './elements/video';
+import './elements/audio';
 
 /*-------------- Blocks ----------------*/
     /* Structuring */
@@ -46,7 +49,9 @@ import './blocks/basic/list';
 import './blocks/basic/button';
 import './blocks/basic/icon';
 import './blocks/basic/breadcrumbs';
-import './blocks/basic/newsletter'
+import './blocks/basic/newsletter';
+import './blocks/basic/video';
+import './blocks/basic/audio';
 
 /* Pages */
 import './page/sw-cms-detail';

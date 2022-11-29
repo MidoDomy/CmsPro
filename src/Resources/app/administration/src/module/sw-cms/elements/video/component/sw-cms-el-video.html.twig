@@ -1,0 +1,13 @@
+{% block sw_cms_element_video %}
+    <div class="sw-cms-el-video">
+        <img v-show="mediaUrl" 
+            :src="mediaUrl" 
+            alt="Preview image"
+        >
+
+        <sw-icon 
+            name="multicolor-action-play" 
+            size="50"
+        />
+    </div>
+{% endblock %}

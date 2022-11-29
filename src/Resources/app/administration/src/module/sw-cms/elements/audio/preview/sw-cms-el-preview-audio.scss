@@ -1,0 +1,51 @@
+.sw-cms-el-preview-audio {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+
+    img {
+        height: 36px;
+        width: 36px;
+        border-radius: 50%;
+    }
+
+    &__main-content {
+        flex: 1;
+    }
+
+    &__title {
+        margin-bottom: 4px;
+        font-weight: 600;
+        font-size: 11px;
+    }
+
+    &__audio-container {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+
+        &::before {
+            content: "";
+            display: block;
+            border-style: solid;
+            border-width: 4px 6px;
+            border-color: transparent transparent transparent rgba(0, 0, 0, .6);
+        }
+    }
+
+    &__bar {
+        flex: 1;
+        height: 3px;
+        background-color: rgba(0, 0, 0, .2);
+
+        &::before {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 40%;
+            background-color: rgba(0, 0, 0, .2);
+        }
+    }
+}

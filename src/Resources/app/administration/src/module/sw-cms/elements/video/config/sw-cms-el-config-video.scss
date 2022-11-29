@@ -1,0 +1,11 @@
+.sw-cms-el-config-video {
+    .sw-cms-mapping-field {
+        &:first-child {
+            margin-bottom: 16px;
+        }
+    }
+
+    .sw-media-upload-v2__header {
+        min-height: 30px;
+    }
+}

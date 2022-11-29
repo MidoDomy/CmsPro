@@ -1,0 +1,39 @@
+{% block sw_media_preview_v2_file_type_audio %}
+    {# The icon causes an error, because it does not exis #}
+    {# <sw-icon
+        name="multicolor-file-thumbnail-mp3"
+        class="sw-media-preview-v2__item"
+        size="80%"
+        multicolor
+    /> #}
+    <!-- eslint-disable-next-line vuejs-accessibility/media-has-caption -->
+    <audio
+        :controls="showControls"
+        :autoplay="autoplay"
+        controlsList="nodownload"
+        class="sw-media-preview-v2__item sw-media-preview-v2__item--audio"
+    >
+        <source
+            :src="previewUrl"
+            :type="mimeType"
+        >
+        {{ $tc('global.sw-media-preview-v2.fallbackAudioTagSupport') }}
+    </audio>
+    <button
+        v-if="!showControls"
+        class="sw-media-preview-v2__play-button"
+        @click="onPlayClick"
+    >
+        <sw-icon
+            class="sw-media-preview-v2__play-icon"
+            name="multicolor-action-play"
+            multicolor
+        />
+    </button>
+    <sw-icon
+        v-if="mediaIsPrivate"
+        class="sw-media-preview-v2__locked-icon sw-icon--small"
+        name="regular-lock"
+        multicolor
+    />
+{% endblock %}

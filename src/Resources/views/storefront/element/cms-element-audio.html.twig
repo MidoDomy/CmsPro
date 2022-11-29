@@ -1,0 +1,26 @@
+{% block element_audio %}
+    {% set config = element.translated.config %}
+
+    {% set mediaCollection = searchMedia([config.media.value], context.context) %}
+    {% set media = mediaCollection.get(config.media.value) %}
+
+    {% set mediaCollection = searchMedia([config.previewMedia.value], context.context) %}
+    {% set previewMedia = mediaCollection.get(config.previewMedia.value) %}
+    
+    <div class="cms-element-{{ element.type }}">
+        {% if previewMedia.url %}
+            <img src="{{ previewMedia.url }}" alt="Thumnail image">
+        {% endif %}
+
+        <div class="cms-element-audio-main-content">
+            {% if config.title.value %}<h3 class="cms-element-audio-title">{{ config.title.value }}</h3>{% endif %}
+            {% if config.author.value %}<p class="cms-element-audio-author">{{ config.author.value }}</p>{% endif %}
+            
+            <div class="cms-element-audio-audio-container">
+                <audio controls>
+                    <source src="{{ media.url }}">
+                </audio> 
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% block sw_cms_element_config_video %}
+    <div class="sw-cms-el-config-video">
+        {# Video #}
+        {% block sw_cms_element_config_video_video_upload %}
+            <sw-cms-mapping-field 
+                v-model="element.config.media"
+                valueTypes="entity" 
+                entity="media"
+            >
+                <sw-upload-listener
+                    :uploadTag="uploadTag"
+                    autoUpload
+                    @media-upload-finish="onImageUpload"
+                />
+
+                <sw-media-upload-v2 
+                    :label="$tc('sw-cms.elements.video.config.video.label')" 
+                    variant="regular"
+                    :uploadTag="uploadTag"
+                    :source="previewSource('media')"
+                    :allowMultiSelect="false"
+                    fileAccept="video/*"
+                    :defaultFolder="cmsPageState.pageEntityName"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    @media-upload-sidebar-open="onOpenMediaModal('media')"
+                    @media-upload-remove-image="onMediaRemove" 
+                />
+            </sw-cms-mapping-field>
+        {% endblock %}
+
+        {# Preview image #}
+        {% block sw_cms_element_config_video_image_upload %}
+            <sw-cms-mapping-field 
+                v-model="element.config.previewMedia"
+                valueTypes="entity" 
+                entity="media"
+            >
+                <sw-upload-listener
+                    :uploadTag="previewUploadTag"
+                    autoUpload
+                    @media-upload-finish="onPreviewUpload" 
+                />
+
+                <sw-media-upload-v2 
+                    :label="$tc('sw-cms.elements.video.config.previewImage.label')" 
+                    variant="regular"
+                    :uploadTag="previewUploadTag"
+                    :source="previewMedia"
+                    :allowMultiSelect="false"
+                    :defaultFolder="cmsPageState.pageEntityName"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    @media-upload-sidebar-open="onOpenMediaModal('previewMedia')"
+                    @media-upload-remove-image="onPreviewRemove"
+                />
+            </sw-cms-mapping-field>
+        {% endblock %}
+
+        <sw-media-modal-v2
+            variant="regular"
+            v-if="mediaModalIsOpen"
+            :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+            :entityContext="cmsPageState.entityName"
+            :allowMultiSelect="false"
+            :initialFolderId="cmsPageState.defaultMediaFolderId"
+            @media-upload-remove-image="onMediaModalRemove"
+            @media-modal-selection-change="onSelectionChanges"
+            @modal-close="onCloseModal"
+        />
+    </div>
+{% endblock %}

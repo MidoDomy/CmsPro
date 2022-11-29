@@ -1,0 +1,19 @@
+{% block sw_cms_element_audio %}
+    <div class="sw-cms-el-audio">
+        <img v-show="mediaUrl" 
+            :src="mediaUrl" 
+            alt="Thumnail image"
+        >
+
+        <div class="sw-cms-el-audio__main-content">
+            <h3 v-show="title" class="sw-cms-el-audio__title">{{ title }}</h3>
+            <p v-show="author" class="sw-cms-el-audio__author">{{ author }}</p>
+
+            <div class="sw-cms-el-audio__audio-container">
+                <audio controls>
+                    <source src="">
+                </audio> 
+            </div>
+        </div>
+    </div>
+{% endblock %}
