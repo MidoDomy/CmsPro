@@ -9,29 +9,38 @@
         <div class="cms-teaser-collapse" 
             data-teaser-collapse="true"
         >
-            <div class="cms-teaser-collapse-content">
-                <div>
-                    {# Output slot blocks #}
-                    {% for block in columnChildBlocks.mainContent %}
-                        {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                            sectionBlocks: sectionBlocks,
-                            parentBlockId: currentBlockId
-                        } %}
-                    {% endfor %}
+            {% block cms_block_teaser_collapse_content %}
+                <div class="cms-teaser-collapse-content">
+                    <div>
+                        {% block cms_block_teaser_collapse_content_subBlocks %}
+                            {% for block in columnChildBlocks.mainContent %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                    sectionBlocks: sectionBlocks,
+                                    parentBlockId: currentBlockId
+                                } %}
+                            {% endfor %}
+                        {% endblock %}
+                    </div>
                 </div>
-            </div>
+            {% endblock %}
 
-            <div class="cms-teaser-collapse-btn-container">
-                <a class="cms-teaser-collapse-btn show-more">
-                    <span>{{ 'cmsPro.blocks.teaserCollapse.showMore'|trans }}</span>
-                    {% sw_icon 'arrow-head-down' %}
-                </a>
-        
-                <a class="cms-teaser-collapse-btn show-less">
-                    {% sw_icon 'arrow-head-up' %}
-                    <span>{{ 'cmsPro.blocks.teaserCollapse.showLess'|trans }}</span>
-                </a>
-            </div>
+            {% block cms_block_teaser_collapse_controls %}
+                <div class="cms-teaser-collapse-btn-container">
+                    {% block cms_block_teaser_collapse_control_showMore %}
+                        <a class="cms-teaser-collapse-btn show-more">
+                            <span>{{ 'cmsPro.blocks.teaserCollapse.showMore'|trans }}</span>
+                            {% sw_icon 'arrow-head-down' %}
+                        </a>
+                    {% endblock %}
+            
+                    {% block cms_block_teaser_collapse_control_showLess %}
+                        <a class="cms-teaser-collapse-btn show-less">
+                            {% sw_icon 'arrow-head-up' %}
+                            <span>{{ 'cmsPro.blocks.teaserCollapse.showLess'|trans }}</span>
+                        </a>
+                    {% endblock %}
+                </div>
+            {% endblock %}
         </div>
     {% endblock %}
 {% endblock %}

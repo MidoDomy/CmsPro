@@ -9,41 +9,52 @@
 {% block cms_block_group_predefined_content %}
     {% block cms_block_card %}
         <div class="cms-card card">
-            {% if columnChildBlocks.headerContent %}
-                <div class="card-header">
-                    {# Output slot blocks #}
-                    {% for block in columnChildBlocks.headerContent %}
-                        {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                            sectionBlocks: sectionBlocks,
-                            parentBlockId: currentBlockId
-                        } %}
-                    {% endfor %}
-                </div>
-            {% endif %}
+            {% block cms_block_card_inner %}
+                {% if columnChildBlocks.headerContent %}
+                    {% block cms_block_card_header %}
+                        <div class="card-header">
+                            {% block cms_block_card_header_subBlocks %}
+                                {% for block in columnChildBlocks.headerContent %}
+                                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                        sectionBlocks: sectionBlocks,
+                                        parentBlockId: currentBlockId
+                                    } %}
+                                {% endfor %}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endif %}
 
-            {% if columnChildBlocks.bodyContent %}
-                <div class="card-body">
-                    {# Output slot blocks #}
-                    {% for block in columnChildBlocks.bodyContent %}
-                        {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                            sectionBlocks: sectionBlocks,
-                            parentBlockId: currentBlockId
-                        } %}
-                    {% endfor %}
-                </div>
-            {% endif %}
+                {% if columnChildBlocks.bodyContent %}
+                    {% block cms_block_card_body %}
+                        <div class="card-body">
+                            {% block cms_block_card_body_subBlocks %}
+                                {% for block in columnChildBlocks.bodyContent %}
+                                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                        sectionBlocks: sectionBlocks,
+                                        parentBlockId: currentBlockId
+                                    } %}
+                                {% endfor %}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endif %}
 
-            {% if columnChildBlocks.footerContent %}
-                <div class="card-footer">
-                    {# Output slot blocks #}
-                    {% for block in columnChildBlocks.footerContent %}
-                        {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                            sectionBlocks: sectionBlocks,
-                            parentBlockId: currentBlockId
-                        } %}
-                    {% endfor %}
-                </div>
-            {% endif %}
+                {% if columnChildBlocks.footerContent %}
+                    {% block cms_block_card_footer %}
+                        <div class="card-footer">
+                            {% block cms_block_card_footer_subBlocks %}
+                                {% for block in columnChildBlocks.footerContent %}
+                                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                        sectionBlocks: sectionBlocks,
+                                        parentBlockId: currentBlockId
+                                    } %}
+                                {% endfor %}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endif %}
+            {% endblock %}
         </div>
     {% endblock %}
 {% endblock %}

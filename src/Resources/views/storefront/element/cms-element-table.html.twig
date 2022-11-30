@@ -2,33 +2,49 @@
     {% set config = element.translated.config %}
     
     <div class="cms-element-{{ element.type }}">
-        <table class="table table-{{ config.type.value }}{% if config.small.value %} table-sm{% endif %}{% if config.striped.value %} table-striped{% endif %}{% if config.bordered.value %} table-bordered{% endif %}{% if config.hoverEffect.value %} table-hover{% endif %}">
-            {% if config.caption.value %}<caption>{{ config.caption.value }}</caption>{% endif %}
+        {% block element_table_table %}
+            <table class="table table-{{ config.type.value }}{% if config.small.value %} table-sm{% endif %}{% if config.striped.value %} table-striped{% endif %}{% if config.bordered.value %} table-bordered{% endif %}{% if config.hoverEffect.value %} table-hover{% endif %}">
+                {% block element_table_caption %}
+                    {% if config.caption.value %}
+                        <caption>{{ config.caption.value }}</caption>
+                    {% endif %}
+                {% endblock %}
 
-            <thead>
-                <tr>
-                    {% if config.showNumeric.value %}<th scope="col">#</th>{% endif %}
-                    {% for heading in config.fields.value|first %}
-                        <th scope="col">{{ heading }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-
-            <tbody>
-                {% for row in config.fields.value %}
-                    {% if not loop.first %}
+                {% block element_table_head %}
+                    <thead>
                         <tr>
-                            {% if config.showNumeric.value %}
-                                <th scope="row">{{ loop.index - 1 }}</th>
-                            {% endif %}
-
-                            {% for cell in row %}
-                                <td>{{ cell }}</td>
+                            {% if config.showNumeric.value %}<th scope="col">#</th>{% endif %}
+                            {% for heading in config.fields.value|first %}
+                                {% block element_table_head_col %}
+                                    <th scope="col">{{ heading }}</th>
+                                {% endblock %}
                             {% endfor %}
                         </tr>
-                    {% endif %}
-                {% endfor %}
-            </tbody>
-        </table>
+                    </thead>
+                {% endblock %}
+
+                {% block element_table_body %}
+                    <tbody>
+                        {% for row in config.fields.value %}
+                            {% block element_table_body_row %}
+                                {% if not loop.first %}
+                                    <tr>
+                                        {% if config.showNumeric.value %}
+                                            <th scope="row">{{ loop.index - 1 }}</th>
+                                        {% endif %}
+
+                                        {% for cell in row %}
+                                            {% block element_table_body_col %}
+                                                <td>{{ cell }}</td>
+                                            {% endblock %}
+                                        {% endfor %}
+                                    </tr>
+                                {% endif %}
+                            {% endblock %}
+                        {% endfor %}
+                    </tbody>
+                {% endblock %}
+            </table>
+        {% endblock %}
     </div>
 {% endblock %}

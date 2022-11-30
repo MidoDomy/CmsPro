@@ -6,36 +6,50 @@
             id="accordion{{ currentBlockId }}"
         >
             {% for panelConfig in panelConfigs %}
-                <div class="accordion-item">
-                    <div id="heading{{ currentBlockId }}{{ loop.index }}">
-                        <h4 class="accordion-item-trigger{% if not loop.first %} collapsed{% endif %}"
-                            data-toggle="collapse" 
-                            data-target="#collapse{{ currentBlockId }}{{ loop.index }}" 
-                            aria-expanded="true" 
-                            aria-controls="collapse{{ currentBlockId }}{{ loop.index }}"
-                        >
-                            <span>{{ panelConfig.label }}</span>
-    
-                            {% sw_icon 'plus' %}
-                            {% sw_icon 'minus' %}
-                        </h4>
-                    </div>
+                {% block cms_block_accordion_item %}
+                    <div class="accordion-item">
+                        {% block cms_block_accordion_item_heading %}
+                            <div id="heading{{ currentBlockId }}{{ loop.index }}">
+                                {% block cms_block_accordion_item_trigger %}
+                                    <h4 class="accordion-item-trigger{% if not loop.first %} collapsed{% endif %}"
+                                        data-toggle="collapse" 
+                                        data-target="#collapse{{ currentBlockId }}{{ loop.index }}" 
+                                        aria-expanded="true" 
+                                        aria-controls="collapse{{ currentBlockId }}{{ loop.index }}"
+                                    >
+                                        <span>{{ panelConfig.label }}</span>
+                
+                                        {% block cms_block_accordion_item_trigger_icons %}
+                                            {% sw_icon 'plus' %}
+                                            {% sw_icon 'minus' %}
+                                        {% endblock %}
+                                    </h4>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
 
-                    <div class="accordion-item-content collapse{% if loop.first %} show{% endif %}"
-                        id="collapse{{ currentBlockId }}{{ loop.index }}" 
-                        aria-labelledby="heading{{ currentBlockId }}{{ loop.index }}" 
-                        data-parent="#accordion{{ currentBlockId }}"
-                    >
-                        <div class="accordion-item-content-inner">
-                            {% for block in panelConfig.subBlocks %}
-                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                    sectionBlocks: sectionBlocks,
-                                    parentBlockId: currentBlockId
-                                } %}
-                            {% endfor %}
-                        </div>
+                        {% block cms_block_accordion_item_content %}
+                            <div class="accordion-item-content collapse{% if loop.first %} show{% endif %}"
+                                id="collapse{{ currentBlockId }}{{ loop.index }}" 
+                                aria-labelledby="heading{{ currentBlockId }}{{ loop.index }}" 
+                                data-parent="#accordion{{ currentBlockId }}"
+                            >
+                                {% block cms_block_accordion_item_content_inner %}
+                                    <div class="accordion-item-content-inner">
+                                        {% block cms_block_accordion_item_content_subBlocks %}
+                                            {% for block in panelConfig.subBlocks %}
+                                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                                    sectionBlocks: sectionBlocks,
+                                                    parentBlockId: currentBlockId
+                                                } %}
+                                            {% endfor %}
+                                        {% endblock %}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
                     </div>
-                </div>
+                {% endblock %}
             {% endfor %}
         </div>
     {% endblock %}

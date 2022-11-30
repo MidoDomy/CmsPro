@@ -1,15 +1,19 @@
 {% block element_cms_list_item_component %}
     <li>
-        <span>{{ item.name }}</span>
+        {% block element_cms_list_item_component_name %}
+            <span>{{ item.name }}</span>
+        {% endblock %}
 
-        {% if item.hasChildren %}
-            <ul>
-                {% for child in item.children %}
-                    {% sw_include "@Storefront/storefront/element/component/list-item.html.twig" with {
-                        item: child.value,
-                    } %}
-                {% endfor %}
-            </ul>
-        {% endif %}
+        {% block element_cms_list_item_component_children %}
+            {% if item.hasChildren %}
+                <ul>
+                    {% for child in item.children %}
+                        {% sw_include "@Storefront/storefront/element/component/list-item.html.twig" with {
+                            item: child.value,
+                        } %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endblock %}
     </li>
 {% endblock %}

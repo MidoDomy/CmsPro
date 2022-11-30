@@ -10,35 +10,47 @@
         <div class="cms-content-compare" 
             data-content-compare="true"
         >
-            <div class="cms-content-compare-slot left-content">
-                <div>
-                    {# Output slot blocks #}
-                    {% for block in columnChildBlocks.leftContent %}
-                        {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                            sectionBlocks: sectionBlocks,
-                            parentBlockId: currentBlockId
-                        } %}
-                    {% endfor %}
+            {% block cms_block_content_compare_leftContent %}
+                <div class="cms-content-compare-slot left-content">
+                    <div>
+                        {% block cms_block_content_compare_leftContent_subBlocks %}
+                            {% for block in columnChildBlocks.leftContent %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                    sectionBlocks: sectionBlocks,
+                                    parentBlockId: currentBlockId
+                                } %}
+                            {% endfor %}
+                        {% endblock %}
+                    </div>
                 </div>
-            </div>
+            {% endblock %}
 
-            <div class="cms-content-compare-slot right-content">
-                <div>
-                    {# Output slot blocks #}
-                    {% for block in columnChildBlocks.rightContent %}
-                        {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                            sectionBlocks: sectionBlocks,
-                            parentBlockId: currentBlockId
-                        } %}
-                    {% endfor %}
+            {% block cms_block_content_compare_rightContent %}
+                <div class="cms-content-compare-slot right-content">
+                    <div>
+                        {% block cms_block_content_compare_rightContent_subBlocks %}
+                            {% for block in columnChildBlocks.rightContent %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                    sectionBlocks: sectionBlocks,
+                                    parentBlockId: currentBlockId
+                                } %}
+                            {% endfor %}
+                        {% endblock %}
+                    </div>
                 </div>
-            </div>
+            {% endblock %}
 
-            <div class="cms-content-compare-divider">
-                <div class="cms-content-compare-divider-button">
-                    {% sw_icon 'arrow-move-vertical-axis' %}
+            {% block cms_block_content_compare_divider %}
+                <div class="cms-content-compare-divider">
+                    {% block cms_block_content_compare_divider_button %}
+                        <div class="cms-content-compare-divider-button">
+                            {% block cms_block_content_compare_divider_button_icon %}
+                                {% sw_icon 'arrow-move-vertical-axis' %}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
                 </div>
-            </div>
+            {% endblock %}
         </div>
     {% endblock %}
 {% endblock %}

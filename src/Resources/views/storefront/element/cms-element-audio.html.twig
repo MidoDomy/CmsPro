@@ -8,19 +8,30 @@
     {% set previewMedia = mediaCollection.get(config.previewMedia.value) %}
     
     <div class="cms-element-{{ element.type }}">
-        {% if previewMedia.url %}
-            <img src="{{ previewMedia.url }}" alt="Thumnail image">
-        {% endif %}
+        {% block element_audio_thumbnail %}
+            {% if previewMedia.url %}
+                <img src="{{ previewMedia.url }}" alt="Thumnail image">
+            {% endif %}
+        {% endblock %}
 
-        <div class="cms-element-audio-main-content">
-            {% if config.title.value %}<h3 class="cms-element-audio-title">{{ config.title.value }}</h3>{% endif %}
-            {% if config.author.value %}<p class="cms-element-audio-author">{{ config.author.value }}</p>{% endif %}
-            
-            <div class="cms-element-audio-audio-container">
-                <audio controls>
-                    <source src="{{ media.url }}">
-                </audio> 
+        {% block element_audio_main %}
+            <div class="cms-element-audio-main-content">
+                {% block element_audio_title %}
+                    {% if config.title.value %}<h3 class="cms-element-audio-title">{{ config.title.value }}</h3>{% endif %}
+                {% endblock %}
+
+                {% block element_audio_author %}
+                    {% if config.author.value %}<p class="cms-element-audio-author">{{ config.author.value }}</p>{% endif %}
+                {% endblock %}
+                
+                {% block element_audio_container %}
+                    <div class="cms-element-audio-audio-container">
+                        <audio controls>
+                            <source src="{{ media.url }}">
+                        </audio> 
+                    </div>
+                {% endblock %}
             </div>
-        </div>
+        {% endblock %}
     </div>
 {% endblock %}

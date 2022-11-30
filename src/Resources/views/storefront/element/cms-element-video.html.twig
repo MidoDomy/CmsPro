@@ -8,21 +8,29 @@
     {% set previewMedia = mediaCollection.get(config.previewMedia.value) %}
     
     <div class="cms-element-{{ element.type }}" data-custom-video="true">
-        <video width="100%" 
-            data-src="{{ media.url }}" 
-            muted 
-            controls 
-        ></video>
+        {% block element_video_video %}
+            <video width="100%" 
+                data-src="{{ media.url }}" 
+                muted 
+                controls 
+            ></video>
+        {% endblock %}
 
-        <div class="preview-content">
-            <button class="btn play-button"></button>
+        {% block element_video_preview %}
+            <div class="preview-content">
+                {% block element_video_preview_play %}
+                    <button class="btn play-button"></button>
+                {% endblock %}
 
-            {% if previewMedia.url %}
-                <img class="preview-image" 
-                    src="{{ previewMedia.url }}" 
-                    alt="Preview image"
-                >
-            {% endif %}
-        </div>
+                {% if previewMedia.url %}
+                    {% block element_video_preview_image %}
+                        <img class="preview-image" 
+                            src="{{ previewMedia.url }}" 
+                            alt="Preview image"
+                        >
+                    {% endblock %}
+                {% endif %}
+            </div>
+        {% endblock %}
     </div>
 {% endblock %}

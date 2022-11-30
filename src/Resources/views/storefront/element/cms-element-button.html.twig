@@ -2,8 +2,10 @@
     {% set config = element.translated.config %}
 
     <div class="cms-element-{{ element.type }}">
-        {% sw_include "@Storefront/storefront/element/component/button.html.twig" with {
-            button: config.link.value,
-        } %}
+        {% block element_button_main %}
+            {% sw_include "@Storefront/storefront/element/component/button.html.twig" with {
+                button: config.link.value,
+            } %}
+        {% endblock %}
     </div>
 {% endblock %}

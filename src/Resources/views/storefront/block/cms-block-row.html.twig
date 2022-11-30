@@ -4,14 +4,18 @@
     {% block cms_block_row %}
         <div class="cms-custom-row row">
             {% for panelConfig in panelConfigs %}
-                <div class="col">
-                    {% for block in panelConfig.subBlocks %}
-                        {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                            sectionBlocks: sectionBlocks,
-                            parentBlockId: currentBlockId
-                        } %}
-                    {% endfor %}
-                </div>
+                {% block cms_block_row_col %}
+                    <div class="col">
+                        {% block cms_block_row_col_subBlocks %}
+                            {% for block in panelConfig.subBlocks %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                    sectionBlocks: sectionBlocks,
+                                    parentBlockId: currentBlockId
+                                } %}
+                            {% endfor %}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
             {% endfor %}
         </div>
     {% endblock %}

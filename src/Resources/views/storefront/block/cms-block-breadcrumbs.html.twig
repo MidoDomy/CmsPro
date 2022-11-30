@@ -1,5 +1,6 @@
 {% block cms_block_breadcrumbs %}
     {% set element = block.slots.getSlot('slot') %}
+    {% set columns = 1 %}
 
     <div class="col-12" data-cms-element-id="{{ element.id }}">
         {% block cms_block_breadcrumbs_inner %}

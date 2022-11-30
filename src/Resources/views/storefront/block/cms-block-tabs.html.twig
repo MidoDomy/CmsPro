@@ -3,44 +3,60 @@
 {% block cms_block_group_dynamic_content %}
     {% block cms_block_tabs %}
         <div class="cms-tabs card card-tabs">
-            <div class="card-header">
-                <ul class="nav nav-tabs" id="tab{{ currentBlockId }}" role="tablist">
-                    {% for panelConfig in panelConfigs %}
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link{% if loop.first %} active{% endif %}"
-                                id="tab{{ currentBlockId }}{{ panelConfig.slot }}" 
-                                data-toggle="tab" 
-                                data-target="#{{ currentBlockId }}{{ panelConfig.slot }}" 
-                                type="button" 
-                                role="tab" 
-                                aria-controls="{{ currentBlockId }}{{ panelConfig.slot }}" 
-                                aria-selected="{% if loop.first %}true{% else %}false{% endif %}"
-                            >
-                                <span>{{ panelConfig.label }}</span>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+            {% block cms_block_tabs_header %}
+                <div class="card-header">
+                    {% block cms_block_tabs_header_navTabs %}
+                        <ul class="nav nav-tabs" id="tab{{ currentBlockId }}" role="tablist">
+                            {% for panelConfig in panelConfigs %}
+                                {% block cms_block_tabs_header_navTabs_item %}
+                                    <li class="nav-item" role="presentation">
+                                        {% block cms_block_tabs_header_navTabs_link %}
+                                            <a class="nav-link{% if loop.first %} active{% endif %}"
+                                                id="tab{{ currentBlockId }}{{ panelConfig.slot }}" 
+                                                data-toggle="tab" 
+                                                data-target="#{{ currentBlockId }}{{ panelConfig.slot }}" 
+                                                type="button" 
+                                                role="tab" 
+                                                aria-controls="{{ currentBlockId }}{{ panelConfig.slot }}" 
+                                                aria-selected="{% if loop.first %}true{% else %}false{% endif %}"
+                                            >
+                                                <span>{{ panelConfig.label }}</span>
+                                            </a>
+                                        {% endblock %}
+                                    </li>
+                                {% endblock %}
+                            {% endfor %}
+                        </ul>
+                    {% endblock %}
+                </div>
+            {% endblock %}
 
-            <div class="card-body">
-                <div class="tab-content" id="tab{{ currentBlockId }}Content">
-                    {% for panelConfig in panelConfigs %}
-                        <div class="tab-pane fade{% if loop.first %} show active{% endif %}"
-                            id="{{ currentBlockId }}{{ panelConfig.slot }}" 
-                            role="tabpanel" 
-                            aria-labelledby="tab{{ currentBlockId }}{{ panelConfig.slot }}"
-                        >
-                            {% for block in panelConfig.subBlocks %}
-                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                    sectionBlocks: sectionBlocks,
-                                    parentBlockId: currentBlockId
-                                } %}
+            {% block cms_block_tabs_body %}
+                <div class="card-body">
+                    {% block cms_block_tabs_content %}
+                        <div class="tab-content" id="tab{{ currentBlockId }}Content">
+                            {% for panelConfig in panelConfigs %}
+                                {% block cms_block_tabs_panel %}
+                                    <div class="tab-pane fade{% if loop.first %} show active{% endif %}"
+                                        id="{{ currentBlockId }}{{ panelConfig.slot }}" 
+                                        role="tabpanel" 
+                                        aria-labelledby="tab{{ currentBlockId }}{{ panelConfig.slot }}"
+                                    >
+                                        {% block cms_block_tabs_panel_subBlocks %}
+                                            {% for block in panelConfig.subBlocks %}
+                                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                                    sectionBlocks: sectionBlocks,
+                                                    parentBlockId: currentBlockId
+                                                } %}
+                                            {% endfor %}
+                                        {% endblock %}
+                                    </div>
+                                {% endblock %}
                             {% endfor %}
                         </div>
-                    {% endfor %}
+                    {% endblock %}
                 </div>
-            </div>
+            {% endblock %}
         </div>
     {% endblock %}
 {% endblock %}

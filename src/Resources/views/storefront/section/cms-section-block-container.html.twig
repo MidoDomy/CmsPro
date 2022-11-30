@@ -14,8 +14,8 @@
 
 {% block section_content_block_container %}
     <div class="cms-block-container"
-        style="{% if top or right or bottom or left %}padding: {{ padding }};{% endif %}">
-
+        style="{% if top or right or bottom or left %}padding: {{ padding }};{% endif %}"
+    >
         {% block section_content_block_row %}
             {{ parent() }}
         {% endblock %}

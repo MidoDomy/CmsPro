@@ -2,10 +2,14 @@
     {% set config = element.translated.config %}
 
     <div class="cms-element-{{ element.type }}">
-        <style>
-            {{ config.cssContent.value|raw }}
-        </style>
+        {% block element_code_css %}
+            <style>
+                {{ config.cssContent.value|raw }}
+            </style>
+        {% endblock %}
         
-        {{ config.htmlContent.value|raw }}
+        {% block element_code_html %}
+            {{ config.htmlContent.value|raw }}
+        {% endblock %}
     </div>
 {% endblock %}
