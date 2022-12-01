@@ -1,4 +1,5 @@
 import template from './sw-cms-sidebar.html.twig';
+import './sw-cms-sidebar.scss';
 
 const { Component } = Shopware;
 
@@ -22,9 +23,15 @@ Component.override('sw-cms-sidebar', {
             return parentNode;
         },
 
-        hasCmsBlockAdditionalConfig() {
-            return typeof this.selectedBlock.cmsBlockAdditionalConfig === 'object' ? true : false;
+        hasCmsBlockDynamicContentManagement() {
+            return typeof this.selectedBlock.cmsBlockCustomConfig === 'object' 
+                && this.selectedBlock.cmsBlockCustomConfig.cmsBlockDynamicContentManagement ? true : false;
         },
+
+        hasCmsBlockAdditionalManagement() {
+            return typeof this.selectedBlock.cmsBlockCustomConfig === 'object' 
+                && this.selectedBlock.cmsBlockCustomConfig.cmsBlockAdditionaManagement ? true : false;
+        }
     },
 
     methods: {
@@ -33,7 +40,7 @@ Component.override('sw-cms-sidebar', {
                 return;
             }
 
-            if (!dropData.cmsParentBlock || 'object' !== typeof dropData.section.blocks) {
+            if (!dropData.cmsParentBlock || typeof dropData.section.blocks !== 'object') {
                 /** We call the super method and abort, because there is no parent block */
                 this.$super('onBlockStageDrop', dragData, dropData);
                 return;

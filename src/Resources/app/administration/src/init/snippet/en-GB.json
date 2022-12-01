@@ -5,7 +5,7 @@
         },
         "sidebar": {
             "contentMenu": {
-                "contentSettings": "Content"
+                "customSettings": "Custom settings"
             },
             "block": {
                 "dynamicSlotItems": {
@@ -66,7 +66,17 @@
                 "showLess": "Show less"
             },
             "slider": {
-                "label": "Slider"
+                "label": "Slider",
+                "config": {
+                    "numberOfDisplayedSlides": "Number od displayed slides",
+                    "gap": "Gap",
+                    "startIndex": "Start index",
+                    "speed": "Speed",
+                    "autoplay": "Autoplay",
+                    "autoHeight": "Autoheight",
+                    "mouseDrag": "Mouse drag",
+                    "controls": "Show arrows"
+                }
             },
             "contentCompare": {
                 "label": "Content compare"

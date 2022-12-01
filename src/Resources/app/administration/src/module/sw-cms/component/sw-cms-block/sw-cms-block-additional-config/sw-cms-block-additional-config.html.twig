@@ -1,0 +1,13 @@
+{% block sw_cms_block_additional_config %}
+    <div class="cms-block-additional-config">
+        <sw-cms-block-row-additional-config 
+            v-if="block.type == 'row'"
+            :block="block"
+        />
+        
+        <sw-cms-block-slider-additional-config 
+            v-if="block.type == 'slider'"
+            :block="block"
+        />
+    </div>
+{% endblock %}

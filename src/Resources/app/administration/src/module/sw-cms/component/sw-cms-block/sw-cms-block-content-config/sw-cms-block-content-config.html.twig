@@ -1,8 +1,6 @@
 {% block sw_cms_block_content_config %}
     <div class="cms-block-content-config">
-        {# Dynamic slot items config #}
-        <div v-if="true === cmsBlockAdditionalConfig.cmsBlockDynamicSlotItemsManagement"
-            class="cms-block-content-config__dynamic-slot-items"
+        <div class="cms-block-content-config__dynamic-slot-items"
             :class="{ 'not-system-default-language' : !isSystemDefaultLanguage }"
         >
             {# Slot items #}

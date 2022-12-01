@@ -8,6 +8,11 @@
 
     &__content {
         flex: 1;
+        overflow: hidden;
+    }
+
+    &__content-inner {
+        display: flex;
     }
 
     &__prev,

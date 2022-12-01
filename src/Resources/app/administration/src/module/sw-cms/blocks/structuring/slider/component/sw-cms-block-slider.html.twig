@@ -1,26 +1,36 @@
 {% block cms_block_group_content %}
     {% block sw_cms_block_slider %}
         <div class="sw-cms-block-slider">
-            <sw-icon class="sw-cms-block-slider__prev"
+            <sw-icon 
+                v-if="showArrows"
+                class="sw-cms-block-slider__prev"
                 name="default-arrow-head-left"
                 size="24"
                 @click="slidePrev"
             />
 
             <div class="sw-cms-block-slider__content">
-                <div v-for="(slide, index) in panels"
-                    v-show="index === activePanelIndex"
+                <div class="sw-cms-block-slider__content-inner"
+                    :style="sliderContentStyles"
                 >
-                    <cms-block-sub-section
-                        :childBlocks="childBlocks(`${slide.key}`)"
-                        :subSectionName="`${slide.key}`"
-                        @stage-block-add="onAddSectionBlock"
-                        @block-overlay-click="onBlockSelection"
-                    />
+                    <div v-for="(slide, index) in panels"
+                        v-show="showSlide(index)"
+                        class="sw-cms-block-slider__item"
+                        :style="sliderItemStyles"
+                    >
+                        <cms-block-sub-section
+                            :childBlocks="childBlocks(`${slide.key}`)"
+                            :subSectionName="`${slide.key}`"
+                            @stage-block-add="onAddSectionBlock"
+                            @block-overlay-click="onBlockSelection"
+                        />
+                    </div>
                 </div>
             </div>
 
-            <sw-icon class="sw-cms-block-slider__next"
+            <sw-icon 
+                v-if="showArrows"
+                class="sw-cms-block-slider__next"
                 name="default-arrow-head-right"
                 size="24"
                 @click="slideNext"

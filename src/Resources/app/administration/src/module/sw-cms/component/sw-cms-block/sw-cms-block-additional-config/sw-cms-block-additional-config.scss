@@ -1,0 +1,17 @@
+@import "~scss/variables";
+
+.cms-block-additional-config {
+    .sw-field {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    
+    .sw-field--small {
+        margin-bottom: 16px;
+
+        &.sw-field--switch {
+            margin-top: 16px;
+        }
+    }
+}

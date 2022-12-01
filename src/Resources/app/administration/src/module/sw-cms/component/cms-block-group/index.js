@@ -21,6 +21,9 @@ Component.register('cms-block-group', {
          * @type {boolean}
          */
         this.$parent.fixBlockOverlayZIndex = true;
+
+        /** Init block custom config */
+        this.$parent.block.cmsBlockCustomConfig = {};
     },
 
     computed: {

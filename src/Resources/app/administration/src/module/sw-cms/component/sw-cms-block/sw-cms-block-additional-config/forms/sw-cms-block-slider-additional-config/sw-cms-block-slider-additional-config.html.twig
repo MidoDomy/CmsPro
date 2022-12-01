@@ -1,0 +1,79 @@
+{% block sw_cms_block_slider_additional_config %}
+    <div class="sw-cms-block-slider-additional-config">
+        {# Number of displayed slides #}
+        <sw-number-field
+            v-model="block.customFields.numberOfDisplayedSlides"
+            :label="$tc('sw-cms.blocks.slider.config.numberOfDisplayedSlides')"
+            :min="1"
+            :max="5"
+            :step="1"
+            size="small"
+        />
+
+        {# Gap #}
+        <sw-number-field
+            v-model="block.customFields.gap"
+            :label="$tc('sw-cms.blocks.slider.config.gap')"
+            :min="0"
+            :max="100"
+            :step="1"
+            size="small"
+        >
+            <template v-slot:suffix="{  identification  }">px</template>
+        </sw-number-field>
+
+        {# Start index #}
+        <sw-number-field
+            v-model="block.customFields.startIndex"
+            :label="$tc('sw-cms.blocks.slider.config.startIndex')"
+            :min="0"
+            :step="1"
+            size="small"
+        />
+
+        {# Speed #}
+        <sw-number-field
+            v-model="block.customFields.speed"
+            :label="$tc('sw-cms.blocks.slider.config.speed')"
+            :step="50"
+            size="small"
+        />
+
+        {# Autoplay #}
+        <sw-switch-field
+            v-model="block.customFields.autoplay" 
+            :label="$tc('sw-cms.blocks.slider.config.autoplay')"
+            size="small"
+        />
+
+        {# Autoplay Timeout #}
+        <sw-number-field
+            v-if="block.customFields.autoplay"
+            v-model="block.customFields.autoplayTimeout"
+            :label="$tc('sw-cms.blocks.slider.config.autoplay')"
+            :step="50"
+            size="small"
+        />
+
+        {# AutoHeight #}
+        <sw-switch-field
+            v-model="block.customFields.autoHeight" 
+            :label="$tc('sw-cms.blocks.slider.config.autoHeight')"
+            size="small"
+        />
+
+        {# Mouse drag #}
+        <sw-switch-field
+            v-model="block.customFields.mouseDrag" 
+            :label="$tc('sw-cms.blocks.slider.config.mouseDrag')"
+            size="small"
+        />
+
+        {# Show arrows #}
+        <sw-switch-field
+            v-model="block.customFields.controls" 
+            :label="$tc('sw-cms.blocks.slider.config.controls')"
+            size="small"
+        />
+    </div>
+{% endblock %}

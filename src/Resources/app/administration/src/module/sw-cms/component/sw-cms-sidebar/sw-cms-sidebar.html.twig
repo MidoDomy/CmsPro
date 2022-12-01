@@ -11,21 +11,72 @@
     {% parent %}
 {% endblock %}
 
-{# Added block settings content collase #}
+{# Added block custom settings collase #}
 {% block sw_cms_sidebar_block_settings_content %}
     {% parent %}
 
-    <sw-sidebar-collapse v-if="hasCmsBlockAdditionalConfig"
+    {# Custom settings collapse #}
+    <sw-sidebar-collapse
+        v-if="hasCmsBlockDynamicContentManagement || hasCmsBlockAdditionalManagement"
         :expand-on-loading="true"
+        class="sw-sidebar-collapse__custom-settings"
     >
         <span slot="header">
-            {{ $tc('sw-cms.sidebar.contentMenu.contentSettings') }}
+            {{ $tc('sw-cms.sidebar.contentMenu.customSettings') }}
         </span>
 
-        <sw-cms-block-content-config
-            slot="content"
-            :block="selectedBlock"
-        />
+        <div slot="content"
+            class="sw-sidebar-collapse__custom-settings-content"
+        >
+            <sw-tabs :default-item="hasCmsBlockDynamicContentManagement ? 'content' : 'settings'">
+                <template slot-scope="{ active }">
+                    {# Content tab #}
+                    <sw-tabs-item
+                        v-if="hasCmsBlockDynamicContentManagement"
+                        :title="$tc('sw-cms.elements.general.config.tab.content')"
+                        name="content"
+                        :active-tab="active"
+                    >
+                        {{ $tc('sw-cms.elements.general.config.tab.content') }}
+                    </sw-tabs-item>
+
+                    {# Additional tab #}
+                    <sw-tabs-item
+                        v-if="hasCmsBlockAdditionalManagement"
+                        :title="$tc('sw-cms.elements.general.config.tab.settings')"
+                        name="settings"
+                        :active-tab="active"
+                    >
+                        {{ $tc('sw-cms.elements.general.config.tab.settings') }}
+                    </sw-tabs-item>
+                </template>
+
+                <template
+                    slot="content"
+                    slot-scope="{ active }"
+                >
+                    {# Content config #}
+                    <sw-container
+                        v-if="active === 'content'"
+                        class="sw-cms-el-config-icon__tab-content"
+                    >
+                        <sw-cms-block-content-config
+                            :block="selectedBlock"
+                        />
+                    </sw-container>
+                    
+                    {# Additional config #}
+                    <sw-container
+                        v-if="active === 'settings'"
+                        class="sw-cms-el-config-icon__tab-settings"
+                    >
+                        <sw-cms-block-additional-config
+                            :block="selectedBlock"
+                        />
+                    </sw-container>
+                </template>
+            </sw-tabs>
+        </div>
     </sw-sidebar-collapse>
 {% endblock %}
 

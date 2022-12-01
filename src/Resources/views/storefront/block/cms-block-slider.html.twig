@@ -5,14 +5,16 @@
         <div class="cms-slider">
             {% set baseSliderOptions = {
                 slider: {
-                    navPosition: 'bottom',
-                    speed: 300,
-                    autoplayTimeout: 300,
-                    autoplay: false,
-                    autoplayButtonOutput: false,
+                    items: block.customFields.numberOfDisplayedSlides,
+                    gutter: block.customFields.gap,
+                    startIndex: block.customFields.startIndex,
+                    speed: block.customFields.speed,
+                    autoplay: block.customFields.autoplay,
+                    autoplayTimeout: block.customFields.autoplayTimeout,
+                    autoHeight: block.customFields.autoHeight,
+                    controls: block.customFields.controls,
                     nav: false,
-                    controls: true,
-                    autoHeight: true
+                    mouseDrag: block.customFields.mouseDrag
                 }
             } %}
 

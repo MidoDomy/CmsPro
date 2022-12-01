@@ -14,9 +14,8 @@ Component.extend('sw-cms-block-group-dynamic', 'cms-block-group', {
 
     created() {
         /** Activate slot items settings */
-        this.$parent.block.cmsBlockAdditionalConfig = {
-            cmsBlockDynamicSlotItemsManagement: true
-        };
+        this.$parent.block.cmsBlockCustomConfig.cmsBlockDynamicContentManagement = true;
+
         this.$parent.block.slotItemPrefix = this.slotItemPrefix;
     },
 

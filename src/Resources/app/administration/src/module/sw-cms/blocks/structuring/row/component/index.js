@@ -11,4 +11,9 @@ Component.extend('sw-cms-block-row', 'sw-cms-block-group-dynamic', {
             slotItemPrefix: 'Col'
         }
     },
+
+    created() {
+        /** Activate additional settings */
+        this.$parent.block.cmsBlockCustomConfig.cmsBlockAdditionaManagement = true;
+    }
 });
