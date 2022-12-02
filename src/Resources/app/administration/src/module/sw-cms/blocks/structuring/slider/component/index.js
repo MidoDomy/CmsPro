@@ -20,7 +20,7 @@ Component.extend('sw-cms-block-slider', 'sw-cms-block-group-dynamic', {
                 edgePadding: 0,
                 md_edgePadding: 0,
                 sm_edgePadding: 0,
-                startIndex: 0,
+                startIndex: 1,
                 speed: 300,
                 autoplay: false,
                 autoplayTimeout: 1000,
