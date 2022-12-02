@@ -26,10 +26,6 @@ Component.register('sw-cms-block-content-config', {
             return this.repositoryFactory.create('cms_slot');
         },
 
-        cmsBlockAdditionalConfig() {
-            return this.block.cmsBlockAdditionalConfig;
-        },
-
         panelItems: {
             get() {
                 return this.block.slots.sort((itemA, itemB) => {

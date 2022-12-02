@@ -24,13 +24,11 @@ Component.override('sw-cms-sidebar', {
         },
 
         hasCmsBlockDynamicContentManagement() {
-            return typeof this.selectedBlock.cmsBlockCustomConfig === 'object' 
-                && this.selectedBlock.cmsBlockCustomConfig.cmsBlockDynamicContentManagement ? true : false;
+            return this.selectedBlock.cmsBlockDynamicContentManagement ? true : false;
         },
 
         hasCmsBlockAdditionalManagement() {
-            return typeof this.selectedBlock.cmsBlockCustomConfig === 'object' 
-                && this.selectedBlock.cmsBlockCustomConfig.cmsBlockAdditionaManagement ? true : false;
+            return this.selectedBlock.cmsBlockAdditionaManagement ? true : false;
         }
     },
 

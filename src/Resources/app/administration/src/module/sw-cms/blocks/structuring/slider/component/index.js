@@ -8,68 +8,73 @@ Component.extend('sw-cms-block-slider', 'sw-cms-block-group-dynamic', {
 
     data() {
         return {
-            slotItemPrefix: 'Slide'
-        }
-    },
-
-    created() {
-        /** Activate additional settings */
-        this.$parent.block.cmsBlockCustomConfig.cmsBlockAdditionaManagement = true;
-
-        /** Additional settings */
-        if (!this.block.customFields) {
-            this.block.customFields = {
-                numberOfDisplayedSlides: 3,
-                gap: 30,
+            slotItemPrefix: 'Slide',
+            activeAdditionalSettings: true,
+            additionalSettings: {
+                numberOfDisplayedSlides: 1,
+                md_numberOfDisplayedSlides: 1,
+                sm_numberOfDisplayedSlides: 1,
+                gutter: 60,
+                md_gutter: 30,
+                sm_gutter: 0,
+                edgePadding: 0,
+                md_edgePadding: 0,
+                sm_edgePadding: 0,
                 startIndex: 0,
                 speed: 300,
                 autoplay: false,
                 autoplayTimeout: 1000,
                 autoHeight: false,
                 mouseDrag: false,
-                controls: true
+                controls: true,
+                controlsPosition: 'inside'
             }
         }
     },
 
     computed: {
-        sliderOptions() {
-            return {
-                numberOfDisplayedSlides: this.block.customFields.numberOfDisplayedSlides,
-                gap: this.block.customFields.gap,
-                controls: this.block.customFields.controls
-            }
+        numberOfDisplayedSlides() {
+            return this.getCFValue('numberOfDisplayedSlides', true);
         },
 
-        numberOfDisplayedSlides() {
-            return this.sliderOptions.numberOfDisplayedSlides;
+        gutter() {
+            return this.getCFValue('gutter', true);
+        },
+
+        edgePadding() {
+            return this.getCFValue('edgePadding', true);
+        },
+
+        controls() {
+            return this.getCFValue('controls');
+        },
+
+        controlsPosition() {
+            return this.getCFValue('controlsPosition');
         },
 
         sliderContentStyles() {
             return {
-                marginRight: -this.sliderOptions.gap + 'px'
+                marginRight: -this.gutter + 'px',
+                padding: `0 ${this.edgePadding}px`
             }
         },
 
         sliderItemStyles() {
             return {
-                flex: `0 0 ${100 / this.sliderOptions.numberOfDisplayedSlides}%`,
-                paddingRight: this.sliderOptions.gap + 'px'
+                flex: `0 0 ${100 / this.numberOfDisplayedSlides}%`,
+                paddingRight: this.gutter + 'px'
             }
-        },
-
-        showArrows() {
-            return this.sliderOptions.controls;
         }
     },
 
     methods: {
         slidePrev() {
-            this.activePanelIndex = this.activePanelIndex == 0 ? this.panels.length - this.numberOfDisplayedSlides : this.activePanelIndex - 1;
+            this.activePanelIndex = this.activePanelIndex == 0 ? this.panels.length - 1 : this.activePanelIndex - 1;
         },
 
         slideNext() {
-            this.activePanelIndex = this.activePanelIndex == this.panels.length - this.numberOfDisplayedSlides ? 0 : this.activePanelIndex + 1;
+            this.activePanelIndex = this.activePanelIndex == this.panels.length - 1 ? 0 : this.activePanelIndex + 1;
         },
 
         showSlide(index) {

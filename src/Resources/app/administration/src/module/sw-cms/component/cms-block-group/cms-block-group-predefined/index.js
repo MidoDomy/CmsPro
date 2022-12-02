@@ -9,6 +9,6 @@ Component.extend('sw-cms-block-group-predefined', 'cms-block-group', {
 
     created() {
         /** Set the availables sub sections for the navigation tree */
-        this.$parent.block.subSectionNames = this.subSectionNames;
+        this.block.subSectionNames = this.subSectionNames;
     }
 });

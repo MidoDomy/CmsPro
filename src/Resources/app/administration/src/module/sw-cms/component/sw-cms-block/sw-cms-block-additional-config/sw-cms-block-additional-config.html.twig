@@ -1,12 +1,6 @@
 {% block sw_cms_block_additional_config %}
-    <div class="cms-block-additional-config">
-        <sw-cms-block-row-additional-config 
-            v-if="block.type == 'row'"
-            :block="block"
-        />
-        
-        <sw-cms-block-slider-additional-config 
-            v-if="block.type == 'slider'"
+    <div class="sw-cms-block-additional-config">
+        <component :is="`sw-cms-block-config-${block.type}`"
             :block="block"
         />
     </div>

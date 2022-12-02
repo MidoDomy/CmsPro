@@ -25,10 +25,6 @@ Component.register('cms-block-sub-section', {
         }
     },
 
-    data() {
-        return {}
-    },
-
     computed: {
         isEmpty() {
             return this.childBlocks.length === 0;

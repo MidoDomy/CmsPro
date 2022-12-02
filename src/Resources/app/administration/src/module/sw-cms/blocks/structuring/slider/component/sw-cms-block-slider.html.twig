@@ -1,8 +1,10 @@
 {% block cms_block_group_content %}
     {% block sw_cms_block_slider %}
-        <div class="sw-cms-block-slider">
+        <div class="sw-cms-block-slider"
+            :class="{'sw-cms-block-slider--controls-outside' : controlsPosition == 'outside'}"
+        >
             <sw-icon 
-                v-if="showArrows"
+                v-if="controls"
                 class="sw-cms-block-slider__prev"
                 name="default-arrow-head-left"
                 size="24"
@@ -29,7 +31,7 @@
             </div>
 
             <sw-icon 
-                v-if="showArrows"
+                v-if="controls"
                 class="sw-cms-block-slider__next"
                 name="default-arrow-head-right"
                 size="24"

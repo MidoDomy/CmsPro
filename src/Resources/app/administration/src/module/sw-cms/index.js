@@ -16,6 +16,7 @@ import './component/cms-navigator-tree';
 import './component/cms-navigator-tree/cms-navigator-tree-item';
 import './component/sw-cms-block/sw-cms-block-content-config';
 import './component/sw-cms-block/sw-cms-block-additional-config';
+import './component/sw-cms-block/sw-cms-block-additional-config/sw-cms-block-additional-config-base-form';
 import './component/repeater';
 import './component/sw-cms-heading-field';
 import './component/sw-cms-link-field';

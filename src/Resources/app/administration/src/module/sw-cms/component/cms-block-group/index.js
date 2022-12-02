@@ -15,6 +15,14 @@ Component.register('cms-block-group', {
         Mixin.getByName('cms-parent-finder')
     ],
 
+    data() {
+        return {
+            menuPosition: 'right',
+            activeAdditionalSettings: false,
+            additionalSettings: {}
+        }
+    },
+
     created() {
         /**
          * Make sure, that the z-index of the block overlay is smaller than the slider
@@ -22,23 +30,30 @@ Component.register('cms-block-group', {
          */
         this.$parent.fixBlockOverlayZIndex = true;
 
-        /** Init block custom config */
-        this.$parent.block.cmsBlockCustomConfig = {};
+        /** Activate additional settings */
+        this.block.cmsBlockAdditionaManagement = this.activeAdditionalSettings;
+
+        /** Assign additional settings */
+        if (!this.block.customFields) {
+            this.block.customFields = this.additionalSettings;
+        }
     },
 
     computed: {
         block() {
             return this.$parent.block;
-        }
-    },
+        },
 
-    data() {
-        return {
-            menuPosition: 'right'
+        customFields() {
+            return this.block.customFields;
         }
     },
 
     methods: {
+        /**
+         * @param {*} subSection 
+         * @returns 
+         */
         childBlocks(subSection) {
             if ('' === subSection || null === subSection) {
                 return [];
@@ -79,7 +94,7 @@ Component.register('cms-block-group', {
 
         /**
          * First, the active block is set. Furthermore, the Block Settings tab is opened via the cms sector
-         * @param block
+         * @param {*} block 
          */
         onBlockSelection(block) {
             const sectionVueComponent = this.findParent('sw-cms-section', this);
@@ -99,6 +114,26 @@ Component.register('cms-block-group', {
             if (null !== sectionVueComponent) {
                 sectionVueComponent.$emit('page-config-open', 'blocks');
             }
+        },
+
+        /** 
+         * Sends prefix of the current viewport
+         * prefixes are used for dynamic variables
+         * @returns 
+         */
+        currentViewportPrefix() {
+            return this.currentDeviceView === 'mobile' ? 'sm_' : 
+                this.currentDeviceView === 'tablet-landscape' ? 'md_' : '';
+        },
+
+        /**
+         * Returns custom field value
+         * @param {*} name 
+         * @param {*} responsive 
+         * @returns 
+         */
+        getCFValue(name, responsive = false) {
+            return responsive ? this.customFields[this.currentViewportPrefix() + name] : this.customFields[name];
         }
     },
 

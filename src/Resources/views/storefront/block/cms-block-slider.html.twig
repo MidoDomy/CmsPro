@@ -6,20 +6,39 @@
             {% set baseSliderOptions = {
                 slider: {
                     items: block.customFields.numberOfDisplayedSlides,
-                    gutter: block.customFields.gap,
+                    gutter: block.customFields.gutter,
+                    edgePadding: block.customFields.edgePadding,
                     startIndex: block.customFields.startIndex,
                     speed: block.customFields.speed,
                     autoplay: block.customFields.autoplay,
+                    autoplayButtonOutput: false,
                     autoplayTimeout: block.customFields.autoplayTimeout,
                     autoHeight: block.customFields.autoHeight,
                     controls: block.customFields.controls,
                     nav: false,
-                    mouseDrag: block.customFields.mouseDrag
+                    mouseDrag: block.customFields.mouseDrag,
+                    responsive: {
+                        xs: {
+                            items: block.customFields.sm_numberOfDisplayedSlides,
+                            gutter: block.customFields.sm_gutter,
+                            edgePadding: block.customFields.sm_edgePadding
+                        },
+                        sm: {
+                            items: block.customFields.sm_numberOfDisplayedSlides,
+                            gutter: block.customFields.sm_gutter,
+                            edgePadding: block.customFields.sm_edgePadding
+                        },
+                        md: {
+                            items: block.customFields.md_numberOfDisplayedSlides,
+                            gutter: block.customFields.md_gutter,
+                            edgePadding: block.customFields.md_edgePadding
+                        }
+                    }
                 }
             } %}
 
             {% block cms_block_slider_baseSlider %}
-                <div class="base-slider"
+                <div class="base-slider{% if block.customFields.controlsPosition == 'outside' %} base-slider--controls-outside{% endif %}"
                     data-base-slider="true"
                     data-base-slider-options='{{ baseSliderOptions|json_encode }}'
                 >

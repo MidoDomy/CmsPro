@@ -1,4 +1,18 @@
+.cms-block-slider {
+    overflow: visible;
+}
+
 .cms-slider {
+    .base-slider--controls-outside {
+        .base-slider-controls-prev {
+            transform: translate(-100%, -50%);
+        }
+        
+        .base-slider-controls-next {
+            transform: translate(100%, -50%);
+        }
+    }
+
     .base-slider-controls-prev {
         left: 0;
     }

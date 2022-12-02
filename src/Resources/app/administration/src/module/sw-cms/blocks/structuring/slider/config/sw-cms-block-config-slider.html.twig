@@ -1,0 +1,120 @@
+{% block sw_cms_block_additional_config_base_form %}
+    {% block sw_cms_block_config_slider %}
+        <div class="sw-cms-block-config-slider">
+            {# Number of displayed slides #}
+            <sw-number-field
+                v-model="customFields[currentViewportPrefix + 'numberOfDisplayedSlides']"
+                :label="$tc('sw-cms.blocks.slider.config.numberOfDisplayedSlides.label')"
+                :min="1"
+                :max="5"
+                :step="1"
+                size="small"
+            />
+
+            {# Gap #}
+            <sw-number-field
+                v-model="customFields[currentViewportPrefix + 'gutter']"
+                :label="$tc('sw-cms.blocks.slider.config.gutter.label')"
+                :min="0"
+                :max="100"
+                :step="1"
+                size="small"
+            >
+                <template v-slot:suffix="{  identification  }">px</template>
+            </sw-number-field>
+
+            {# Edge padding #}
+            <sw-number-field
+                v-model="customFields[currentViewportPrefix + 'edgePadding']"
+                :label="$tc('sw-cms.blocks.slider.config.edgePadding.label')"
+                :min="0"
+                :max="100"
+                :step="1"
+                size="small"
+            >
+                <template v-slot:suffix="{  identification  }">px</template>
+            </sw-number-field>
+
+            {# Start index #}
+            <sw-number-field
+                v-model="customFields.startIndex"
+                :label="$tc('sw-cms.blocks.slider.config.startIndex.label')"
+                :min="0"
+                :step="1"
+                size="small"
+                :disabled="notResponsive"
+            />
+
+            {# Speed #}
+            <sw-number-field
+                v-model="customFields.speed"
+                :label="$tc('sw-cms.blocks.slider.config.speed.label')"
+                :step="50"
+                size="small"
+                :disabled="notResponsive"
+            >
+                <template v-slot:suffix="{  identification  }">ms</template>
+            </sw-number-field>
+
+            {# Autoplay #}
+            <sw-switch-field
+                v-model="customFields.autoplay" 
+                :label="$tc('sw-cms.blocks.slider.config.autoplay.label')"
+                size="small"
+                :disabled="notResponsive"
+            />
+
+            {# Autoplay Timeout #}
+            <sw-number-field
+                v-if="customFields.autoplay"
+                v-model="customFields.autoplayTimeout"
+                :label="$tc('sw-cms.blocks.slider.config.autoplayTimeout.label')"
+                :step="50"
+                size="small"
+                :disabled="notResponsive"
+            >
+                <template v-slot:suffix="{  identification  }">ms</template>
+            </sw-number-field>
+
+            {# AutoHeight #}
+            <sw-switch-field
+                v-model="customFields.autoHeight" 
+                :label="$tc('sw-cms.blocks.slider.config.autoHeight.label')"
+                size="small"
+                :disabled="notResponsive"
+            />
+
+            {# Mouse drag #}
+            <sw-switch-field
+                v-model="customFields.mouseDrag" 
+                :label="$tc('sw-cms.blocks.slider.config.mouseDrag.label')"
+                size="small"
+                :disabled="notResponsive"
+            />
+
+            {# Show arrows #}
+            <sw-switch-field
+                v-model="customFields.controls" 
+                :label="$tc('sw-cms.blocks.slider.config.controls.label')"
+                size="small"
+                :disabled="notResponsive"
+            />
+
+            {# Arrows position #}
+            <sw-select-field
+                v-if="customFields.controls"
+                v-model="customFields.controlsPosition"
+                :label="$tc('sw-cms.blocks.slider.config.controlsPosition.label')"
+                size="small"
+                :disabled="notResponsive"
+            >
+                <option value="inside">
+                    {{ $tc('sw-cms.blocks.slider.config.controlsPosition.optionInside') }}
+                </option>
+                <option value="outside">
+                    {{ $tc('sw-cms.blocks.slider.config.controlsPosition.optionOutside') }}
+                </option>
+            </sw-select-field>
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -52,7 +52,12 @@
                 "label": "Audio"
             },
             "row": {
-                "label": "Row (dynamically adding columns)"
+                "label": "Row (dynamically adding columns)",
+                "config": {
+                    "gutter": {
+                        "label": "Gutter"
+                    }
+                }
             },  
             "tabs": {
                 "label": "Tabs"
@@ -68,14 +73,41 @@
             "slider": {
                 "label": "Slider",
                 "config": {
-                    "numberOfDisplayedSlides": "Number od displayed slides",
-                    "gap": "Gap",
-                    "startIndex": "Start index",
-                    "speed": "Speed",
-                    "autoplay": "Autoplay",
-                    "autoHeight": "Autoheight",
-                    "mouseDrag": "Mouse drag",
-                    "controls": "Show arrows"
+                    "numberOfDisplayedSlides": {
+                        "label": "Number od displayed slides"
+                    },
+                    "gutter": {
+                        "label": "Gutter"
+                    },
+                    "edgePadding": {
+                        "label": "Edge padding"
+                    },
+                    "startIndex": {
+                        "label": "Start index"
+                    },
+                    "speed": {
+                        "label": "Speed"
+                    },
+                    "autoplay": {
+                        "label": "Autoplay"
+                    },
+                    "autoplayTimeout": {
+                        "label": "Autoplay Timeout"
+                    },
+                    "autoHeight": {
+                        "label": "Autoheight"
+                    },
+                    "mouseDrag": {
+                        "label": "Mouse drag"
+                    },
+                    "controls": {
+                        "label": "Show arrows"
+                    },
+                    "controlsPosition": {
+                        "label": "Arrows position",
+                        "optionInside": "Inside",
+                        "optionOutside": "Outside"
+                    }
                 }
             },
             "contentCompare": {

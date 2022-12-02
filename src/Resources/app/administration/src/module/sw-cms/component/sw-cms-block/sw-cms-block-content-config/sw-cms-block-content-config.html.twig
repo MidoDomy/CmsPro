@@ -1,11 +1,11 @@
 {% block sw_cms_block_content_config %}
-    <div class="cms-block-content-config">
-        <div class="cms-block-content-config__dynamic-slot-items"
+    <div class="sw-cms-block-content-config">
+        <div class="sw-cms-block-content-config__dynamic-slot-items"
             :class="{ 'not-system-default-language' : !isSystemDefaultLanguage }"
         >
             {# Slot items #}
             <div v-for="(slotItem, key) in panelItems" 
-                class="cms-block-content-config__dynamic-slot-items__item"
+                class="sw-cms-block-content-config__dynamic-slot-items__item"
             >
                 {# Slot item name #}
                 <sw-text-field 
@@ -15,9 +15,9 @@
                 />
 
                 {# Slot item actions #}
-                <div class="cms-block-content-config__dynamic-slot-items__item-actions">
+                <div class="sw-cms-block-content-config__dynamic-slot-items__item-actions">
                     {# Slot item remove #}
-                    <sw-button class="cms-block-content-config__dynamic-slot-items__item-delete"
+                    <sw-button class="sw-cms-block-content-config__dynamic-slot-items__item-delete"
                         variant="ghost-danger" 
                         size="small"
                         :square="true"
@@ -28,9 +28,9 @@
                         <sw-icon name="default-action-trash" size="16" />
                     </sw-button>
 
-                    <div class="cms-block-content-config__dynamic-slot-items__item-arrows">
+                    <div class="sw-cms-block-content-config__dynamic-slot-items__item-arrows">
                         {# Slot item move up #}
-                        <sw-button class="cms-block-content-config__dynamic-slot-items__item-arrow"
+                        <sw-button class="sw-cms-block-content-config__dynamic-slot-items__item-arrow"
                             size="x-small"
                             :disabled="key == 0"
                             @click="movePanelItem('up', key)"
@@ -39,7 +39,7 @@
                         </sw-button>
 
                         {# Slot item move down #}
-                        <sw-button class="cms-block-content-config__dynamic-slot-items__item-arrow"
+                        <sw-button class="sw-cms-block-content-config__dynamic-slot-items__item-arrow"
                             size="x-small"
                             :disabled="key == panelItems.length - 1"
                             @click="movePanelItem('down', key)"
@@ -51,7 +51,7 @@
             </div>
 
             {# Add slot item btn #}
-            <sw-button class="cms-block-content-config__dynamic-slot-items__add-btn"
+            <sw-button class="sw-cms-block-content-config__dynamic-slot-items__add-btn"
                 variant="ghost" 
                 size="small"
                 :block="true"

@@ -14,9 +14,9 @@ Component.extend('sw-cms-block-group-dynamic', 'cms-block-group', {
 
     created() {
         /** Activate slot items settings */
-        this.$parent.block.cmsBlockCustomConfig.cmsBlockDynamicContentManagement = true;
+        this.block.cmsBlockDynamicContentManagement = true;
 
-        this.$parent.block.slotItemPrefix = this.slotItemPrefix;
+        this.block.slotItemPrefix = this.slotItemPrefix;
     },
 
     computed: {
@@ -27,11 +27,11 @@ Component.extend('sw-cms-block-group-dynamic', 'cms-block-group', {
         panels() {
             const panels = [];
 
-            if(0 === this.$parent.block.slots.length) {
+            if(0 === this.block.slots.length) {
                 this.addInitialPanel();
             }
 
-            this.$parent.block.slots.forEach(item => {
+            this.block.slots.forEach(item => {
                 let position = 0;
 
                 if (item.customFields && item.customFields.cms_panel_position) {
@@ -60,8 +60,8 @@ Component.extend('sw-cms-block-group-dynamic', 'cms-block-group', {
                 subSectionNamesAlias[panel.key] = panel.headline;
             });
 
-            this.$parent.block.subSectionNames = panelKeys;
-            this.$parent.block.subSectionNamesAlias = subSectionNamesAlias;
+            this.block.subSectionNames = panelKeys;
+            this.block.subSectionNamesAlias = subSectionNamesAlias;
 
             return panels;
         }
@@ -70,7 +70,7 @@ Component.extend('sw-cms-block-group-dynamic', 'cms-block-group', {
     methods: {
         addInitialPanel() {
             const element = this.slotRepository.create();
-            element.blockId = this.$parent.block.id;
+            element.blockId = this.block.id;
             element.slot = 'panel0';
             element.type = 'text';
             element.data = {};
@@ -84,7 +84,7 @@ Component.extend('sw-cms-block-group-dynamic', 'cms-block-group', {
                 cms_panel_position: 1
             }
 
-            this.$parent.block.slots.push(element);
+            this.block.slots.push(element);
         }
     }
 });

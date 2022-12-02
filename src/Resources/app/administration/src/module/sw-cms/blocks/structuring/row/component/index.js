@@ -8,12 +8,8 @@ Component.extend('sw-cms-block-row', 'sw-cms-block-group-dynamic', {
 
     data() {
         return {
-            slotItemPrefix: 'Col'
+            slotItemPrefix: 'Col',
+            activeAdditionalSettings: true,
         }
-    },
-
-    created() {
-        /** Activate additional settings */
-        this.$parent.block.cmsBlockCustomConfig.cmsBlockAdditionaManagement = true;
     }
 });
