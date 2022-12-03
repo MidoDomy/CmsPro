@@ -68,7 +68,13 @@
                 }
             },
             "accordion": {
-                "label": "Accordion"
+                "label": "Accordion",
+                "config": {
+                    "activeIndex": {
+                        "label": "Active index",
+                        "helpText": "Enter 0 if none should be active."
+                    }
+                }
             },
             "teaserCollapse": {
                 "label": "Teaser collapse",

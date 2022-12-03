@@ -8,8 +8,16 @@ Component.extend('sw-cms-block-accordion', 'sw-cms-block-group-dynamic', {
 
     data() {
         return {
-            slotItemPrefix: 'Collapse'
+            slotItemPrefix: 'Collapse',
+            activeAdditionalSettings: true,
+            additionalSettings: {
+                activeIndex: 1
+            }
         }
+    },
+
+    created() {
+        this.activePanelIndex = this.getCFValue('activeIndex') <= this.panels.length ? this.getCFValue('activeIndex') - 1 : -1;
     },
 
     methods: {
