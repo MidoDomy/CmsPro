@@ -1,0 +1,14 @@
+{% block sw_cms_block_additional_config_base_form %}
+    {% block sw_cms_block_config_teaser_collapse %}
+        <div class="sw-cms-block-config-teaser-collapse">
+            {# Teaser closed height #}
+            <sw-number-field
+                v-model="customFields[currentViewportPrefix + 'closedHeight']"
+                :label="$tc('sw-cms.blocks.teaserCollapse.config.closedHeight.label')"
+                :min="50"
+                :step="1"
+                size="small"
+            />
+        </div>
+    {% endblock %}
+{% endblock %}

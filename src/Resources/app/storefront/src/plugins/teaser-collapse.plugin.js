@@ -1,11 +1,13 @@
 import Plugin from 'src/plugin-system/plugin.class';
 import DomAccess from 'src/helper/dom-access.helper';
+import ViewportDetection from 'src/helper/viewport-detection.helper';
 
 export default class TeaserCollapsePlugin extends Plugin {
 
     static options = {
         contentSelector: '.cms-teaser-collapse-content',
-        toggleBtnSelector: '.cms-teaser-collapse-btn'
+        toggleBtnSelector: '.cms-teaser-collapse-btn',
+        showClass: 'cms-teaser-collapse--show'
     };
 
     init() {
@@ -13,39 +15,71 @@ export default class TeaserCollapsePlugin extends Plugin {
         this.content = DomAccess.querySelector(this.el, this.options.contentSelector);
         this.toggleBtns = DomAccess.querySelectorAll(this.el, this.options.toggleBtnSelector);
 
-        // Functions as variables so they can be removed from listeners
-        this.setInitialHeght = this._setInitialHeght.bind(this);
-        this.onToggleHeight = this._onToggleHeight.bind(this);
-
-        // Set initial width
         setTimeout(() => {
-            this._setInitialHeght();
+            // Set initial height
+            this._setHeghts();
+
+            // Close 
+            this.isOpen = false;
+            this.content.style.height = this.minHeight + 'px';
         }, 100)
 
         // Register events
         this._registerEvents();
     }
 
-    _setInitialHeght() {
-        this.contentHeight = this.content.firstElementChild.offsetHeight;
-    }
-
-    // Registers required events
+    /**
+     * Register events
+     */
     _registerEvents() {
         // On viewport resize resets initial height
-        window.addEventListener('resize', this.setInitialHeght);
+        window.addEventListener('resize', this._setHeghts.bind(this));
 
         this.toggleBtns.forEach(btn => {
-            btn.addEventListener('click', this.onToggleHeight);
+            btn.addEventListener('click', this._onToggleOpen.bind(this));
         });
     }
 
-    _onToggleHeight() {
-        this.content.style.height != '' ? 
-            this.content.style.removeProperty('height')
+    /**
+     * Sets heights
+     */
+    _setHeghts() {
+        this.minHeight = this._getMinHeght();
+        this.maxHeight = this.content.firstElementChild.offsetHeight;
+
+        // Reset height of the content
+        this.isOpen ? 
+            this.content.style.height = this.maxHeight + 'px'
             :
-            this.content.style.height = this.contentHeight + 'px';
+            this.content.style.height = this.minHeight + 'px';
+    }
+
+    /**
+     * Returns current viewport min height
+     */
+    _getMinHeght() {
+        const currentViewport = ViewportDetection.getCurrentViewport().toLowerCase();
+
+        if (currentViewport == 'xs' || currentViewport == 'sm') {
+            return this.options.sm_closedHeight;
+        }
+        if (currentViewport == 'md') {
+            return this.options.md_closedHeight;
+        }
+
+        return this.options.closedHeight;
+    }
+
+    /**
+     * Toggle height of the inner content
+     */
+    _onToggleOpen() {
+        this.isOpen ? 
+            this.content.style.height = this.minHeight + 'px'
+            :
+            this.content.style.height = this.maxHeight + 'px';
         
-            this.el.classList.toggle('show');
+        this.el.classList.toggle(this.options.showClass);
+        this.isOpen = !this.isOpen;
     }
 }

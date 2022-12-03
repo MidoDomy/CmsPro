@@ -79,7 +79,12 @@
             "teaserCollapse": {
                 "label": "Teaser collapse",
                 "showMore": "Show more",
-                "showLess": "Show less"
+                "showLess": "Show less",
+                "config": {
+                    "closedHeight": {
+                        "label": "Closed height"
+                    }
+                }
             },
             "slider": {
                 "label": "Slider",

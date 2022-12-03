@@ -7,20 +7,8 @@
     &--open {
         .sw-cms-block-teaser-collapse {
             &__content {
-                height: auto;
-
                 &::after {
                     height: 0px;
-                }
-            }
-
-            &__link {
-                &.show-less {
-                    display: flex;
-                }
-
-                &.show-more {
-                    display: none;
                 }
             }
         }
@@ -28,7 +16,6 @@
 
     &__content {
         position: relative;
-        height: 200px;
         overflow: hidden;
 
         &::after {
@@ -39,7 +26,6 @@
             right: 0;
             height: 80px;
             background-image: linear-gradient(0deg, #fff, transparent);
-            transition: .3s;
             z-index: 100;
         }
     }
@@ -58,10 +44,6 @@
         &:hover {
             text-decoration: underline;
             color: #118cff;
-        }
-            
-        &.show-less {
-            display: none;
         }
 
         .sw-icon {
