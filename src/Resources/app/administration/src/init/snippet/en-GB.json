@@ -60,7 +60,12 @@
                 }
             },  
             "tabs": {
-                "label": "Tabs"
+                "label": "Tabs",
+                "config": {
+                    "activeIndex": {
+                        "label": "Active index"
+                    }
+                }
             },
             "accordion": {
                 "label": "Accordion"

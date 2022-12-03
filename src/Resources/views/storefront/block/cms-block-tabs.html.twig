@@ -11,14 +11,14 @@
                                 {% block cms_block_tabs_header_navTabs_item %}
                                     <li class="nav-item" role="presentation">
                                         {% block cms_block_tabs_header_navTabs_link %}
-                                            <a class="nav-link{% if loop.first %} active{% endif %}"
+                                            <a class="nav-link{% if loop.index == block.customFields.activeIndex %} active{% endif %}"
                                                 id="tab{{ currentBlockId }}{{ panelConfig.slot }}" 
                                                 data-toggle="tab" 
                                                 data-target="#{{ currentBlockId }}{{ panelConfig.slot }}" 
                                                 type="button" 
                                                 role="tab" 
                                                 aria-controls="{{ currentBlockId }}{{ panelConfig.slot }}" 
-                                                aria-selected="{% if loop.first %}true{% else %}false{% endif %}"
+                                                aria-selected="{% if loop.index == block.customFields.activeIndex %}true{% else %}false{% endif %}"
                                             >
                                                 <span>{{ panelConfig.label }}</span>
                                             </a>
@@ -37,7 +37,7 @@
                         <div class="tab-content" id="tab{{ currentBlockId }}Content">
                             {% for panelConfig in panelConfigs %}
                                 {% block cms_block_tabs_panel %}
-                                    <div class="tab-pane fade{% if loop.first %} show active{% endif %}"
+                                    <div class="tab-pane fade{% if loop.index == block.customFields.activeIndex %} show active{% endif %}"
                                         id="{{ currentBlockId }}{{ panelConfig.slot }}" 
                                         role="tabpanel" 
                                         aria-labelledby="tab{{ currentBlockId }}{{ panelConfig.slot }}"

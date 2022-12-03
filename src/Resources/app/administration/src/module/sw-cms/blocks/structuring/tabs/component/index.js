@@ -8,7 +8,15 @@ Component.extend('sw-cms-block-tabs', 'sw-cms-block-group-dynamic', {
 
     data() {
         return {
-            slotItemPrefix: 'Tab'
+            slotItemPrefix: 'Tab',
+            activeAdditionalSettings: true,
+            additionalSettings: {
+                activeIndex: 1
+            }
         }
+    },
+
+    created() {
+        this.activePanelIndex = this.getCFValue('activeIndex') <= this.panels.length ? this.getCFValue('activeIndex') - 1 : 0;
     }
 });
