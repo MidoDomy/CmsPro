@@ -9,6 +9,10 @@ Component.extend('sw-cms-block-content-compare', 'sw-cms-block-group-predefined'
     data() {
         return {
             subSectionNames: [ 'leftContent', 'rightContent' ],
+            activeAdditionalSettings: true,
+            additionalSettings: {
+                posX: 50
+            },
 
             // for handle movements
             posX: 0, 
@@ -23,6 +27,7 @@ Component.extend('sw-cms-block-content-compare', 'sw-cms-block-group-predefined'
     mounted() {
         window.addEventListener('resize', this.init)
         this.init()
+        this.setWidth(this.block.customFields.posX)
     },
 
     beforeDestroy() {
@@ -78,7 +83,7 @@ Component.extend('sw-cms-block-content-compare', 'sw-cms-block-group-predefined'
             leftValue = leftValue < this.minLeft ? this.minLeft :
                 leftValue > this.maxLeft ? this.maxLeft : leftValue;
             
-            // Getvalue in pertentage
+            // Get value in pertentage
             var widthValue = (leftValue + this.dragWidth/2 - this.containerOffset)*100/this.containerWidth;
             
             // Set the new values for the slider and the handle. 

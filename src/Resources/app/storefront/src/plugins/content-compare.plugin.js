@@ -25,6 +25,7 @@ export default class ContentComparePlugin extends Plugin {
         setTimeout(() => {
             this._setInitialWidth();
         }, 100)
+        this._setWidth(this.options.posX)
 
         // Register events
         this._registerEvents();

@@ -7,8 +7,13 @@
 
 {% block cms_block_group_predefined_content %}
     {% block cms_block_content_compare %}
+        {% set contentCompareOptions = {
+            posX: block.customFields.posX
+        } %}
+
         <div class="cms-content-compare" 
             data-content-compare="true"
+            data-content-compare-options='{{ contentCompareOptions|json_encode }}'
         >
             {% block cms_block_content_compare_leftContent %}
                 <div class="cms-content-compare-slot left-content">

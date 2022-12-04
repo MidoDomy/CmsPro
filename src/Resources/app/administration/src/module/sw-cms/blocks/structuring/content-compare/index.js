@@ -1,4 +1,5 @@
 import './component';
+import './config';
 import './preview';
 
 Shopware.Service('cmsService').registerCmsBlock({

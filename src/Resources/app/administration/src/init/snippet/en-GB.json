@@ -141,7 +141,12 @@
                 }
             },
             "contentCompare": {
-                "label": "Content compare"
+                "label": "Content compare",
+                "config": {
+                    "posX": {
+                        "label": "Start x-position"
+                    }
+                }
             },
             "card": {
                 "label": "Card"

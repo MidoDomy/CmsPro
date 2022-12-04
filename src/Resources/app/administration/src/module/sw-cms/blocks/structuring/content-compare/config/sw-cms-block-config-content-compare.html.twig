@@ -1,0 +1,18 @@
+{% block sw_cms_block_additional_config_base_form %}
+    {% block sw_cms_block_config_content_compare %}
+        <div class="sw-cms-block-config-content-compare">
+            {# X-position #}
+            <sw-number-field
+                v-model="customFields.posX"
+                :label="$tc('sw-cms.blocks.contentCompare.config.posX.label')"
+                :min="0"
+                :max="100"
+                :step="1"
+                size="small"
+                :disabled="notResponsive"
+            >
+                <template v-slot:suffix="{  identification  }">%</template>
+            </sw-number-field>
+        </div>
+    {% endblock %}
+{% endblock %}
