@@ -6,9 +6,13 @@
 
     &__header,
     &__footer {
-        padding: 12px 20px 2px;
+        padding: 12px 20px;
         background-color: rgba(0, 0, 0, .03);
         border-bottom: 1px solid #d1d9e0;
+
+        .cms-block-sub-section {
+            margin-bottom: -10px;
+        }
 
         .sw-cms-section__content.is--empty {
             min-height: 80px;

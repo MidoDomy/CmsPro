@@ -1,0 +1,31 @@
+{% block sw_cms_block_additional_config_base_form %}
+    {% block sw_cms_block_config_card %}
+        <div class="sw-cms-block-config-card">
+            {# Remove header padding #}
+            <sw-switch-field
+                v-model="customFields.removeHeaderPadding" 
+                :label="$tc('sw-cms.blocks.card.config.removeHeaderPadding.label')"
+                size="small"
+                :disabled="notResponsive"
+            />
+
+            {# Show header #}
+            <sw-switch-field
+                v-model="customFields.showHeader" 
+                :label="$tc('sw-cms.blocks.card.config.showHeader.label')"
+                size="small"
+                :disabled="notResponsive"
+                :helpText="$tc('sw-cms.blocks.card.config.showHeader.helpText')"
+            />
+
+            {# Show footer #}
+            <sw-switch-field
+                v-model="customFields.showFooter" 
+                :label="$tc('sw-cms.blocks.card.config.showFooter.label')"
+                size="small"
+                :disabled="notResponsive"
+                :helpText="$tc('sw-cms.blocks.card.config.showFooter.helpText')"
+            />
+        </div>
+    {% endblock %}
+{% endblock %}

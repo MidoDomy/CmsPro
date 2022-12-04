@@ -13,9 +13,13 @@
                     {% block cms_block_card_horizontal_row_inner %}
                         {% if columnChildBlocks.headerContent %}
                             {% block cms_block_card_horizontal_header_col %}
-                                <div class="col-md-4">
+                                <div class="cms-card-horizontal-left-col"
+                                    style="min-width: {{ block.customFields.leftColMinWidth }}px;"
+                                >
                                     {% block cms_block_card_horizontal_header %}
-                                        <div class="card-header">
+                                        <div class="card-header"
+                                            {% if block.customFields.removeLeftColPadding %}style="padding: 0;"{% endif %}
+                                        >
                                             {% block cms_block_card_horizontal_header_subBlocks %}
                                                 {% for block in columnChildBlocks.headerContent %}
                                                     {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
@@ -32,7 +36,7 @@
 
                         {% if columnChildBlocks.bodyContent %}
                             {% block cms_block_card_horizontal_body_col %}
-                                <div class="col-md-8">
+                                <div class="cms-card-horizontal-right-col">
                                     {% block cms_block_card_horizontal_body %}
                                         <div class="card-body">
                                             {% block cms_block_card_horizontal_body_subBlocks %}

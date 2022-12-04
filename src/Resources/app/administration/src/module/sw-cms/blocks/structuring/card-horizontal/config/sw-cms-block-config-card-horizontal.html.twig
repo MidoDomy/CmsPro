@@ -1,0 +1,24 @@
+{% block sw_cms_block_additional_config_base_form %}
+    {% block sw_cms_block_config_card_horizontal %}
+        <div class="sw-cms-block-config-card-horizontal">
+            {# Remove left column padding #}
+            <sw-switch-field
+                v-model="customFields.removeLeftColPadding" 
+                :label="$tc('sw-cms.blocks.cardHorizontal.config.removeLeftColPadding.label')"
+                size="small"
+                :disabled="notResponsive"
+            />
+
+            {# Left column min. width #}
+            <sw-number-field
+                v-model="customFields.leftColMinWidth"
+                :label="$tc('sw-cms.blocks.cardHorizontal.config.leftColMinWidth.label')"
+                :min="0"
+                :step="1"
+                size="small"
+            >
+                <template v-slot:suffix="{  identification  }">px</template>
+            </sw-number-field>
+        </div>
+    {% endblock %}
+{% endblock %}

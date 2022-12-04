@@ -1,4 +1,12 @@
 .cms-card-horizontal {
+    .cms-card-horizontal-left-col {
+        flex: 1 1 33%;
+    }
+
+    .cms-card-horizontal-right-col {
+        flex: 1 1 66%;
+    }
+
     .card-body {
         padding: $card-spacer-x;
     }

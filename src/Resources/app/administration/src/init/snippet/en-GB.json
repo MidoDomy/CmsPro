@@ -149,10 +149,31 @@
                 }
             },
             "card": {
-                "label": "Card"
+                "label": "Card",
+                "config": {
+                    "removeHeaderPadding": {
+                        "label": "Remove header padding"
+                    },
+                    "showHeader": {
+                        "label": "Show header",
+                        "helpText": "If there is no content in this slot, it will not be displayed on the storefront."
+                    },
+                    "showFooter": {
+                        "label": "Show footer",
+                        "helpText": "If there is no content in this slot, it will not be displayed on the storefront."
+                    }
+                }
             },
             "cardHorizontal": {
-                "label": "Card horizontal"
+                "label": "Card horizontal",
+                "config": {
+                    "removeLeftColPadding": {
+                        "label": "Remove padding in left column"
+                    },
+                    "leftColMinWidth": {
+                        "label": "Left column min. width"
+                    }
+                }
             }
         },
         "component": {

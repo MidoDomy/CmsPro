@@ -2,7 +2,9 @@
     {% block sw_cms_block_card_horizontal %}
         <div class="sw-cms-block-card-horizontal">
             {# Card header #}
-            <div class="sw-cms-block-card-horizontal__header">
+            <div class="sw-cms-block-card-horizontal__header"
+                :style="cardLeftColStyles"
+            >
                 <cms-block-sub-section
                     :childBlocks="childBlocks('headerContent')"
                     subSectionName="headerContent"

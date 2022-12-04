@@ -10,9 +10,11 @@
     {% block cms_block_card %}
         <div class="cms-card card">
             {% block cms_block_card_inner %}
-                {% if columnChildBlocks.headerContent %}
+                {% if block.customFields.showHeader and columnChildBlocks.headerContent %}
                     {% block cms_block_card_header %}
-                        <div class="card-header">
+                        <div class="card-header"
+                            {% if block.customFields.removeHeaderPadding %}style="padding: 0;"{% endif %}
+                        >
                             {% block cms_block_card_header_subBlocks %}
                                 {% for block in columnChildBlocks.headerContent %}
                                     {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
@@ -40,7 +42,7 @@
                     {% endblock %}
                 {% endif %}
 
-                {% if columnChildBlocks.footerContent %}
+                {% if block.cutomFields.showFooter and columnChildBlocks.footerContent %}
                     {% block cms_block_card_footer %}
                         <div class="card-footer">
                             {% block cms_block_card_footer_subBlocks %}

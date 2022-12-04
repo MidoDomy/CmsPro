@@ -2,7 +2,10 @@
     {% block sw_cms_block_card %}
         <div class="sw-cms-block-card">
             {# Card header #}
-            <div class="sw-cms-block-card__header">
+            <div v-if="showHeader" 
+                class="sw-cms-block-card__header"
+                :style="cardHeaderStyles"
+            >
                 <cms-block-sub-section
                     :childBlocks="childBlocks('headerContent')"
                     subSectionName="headerContent"
@@ -22,7 +25,9 @@
             </div>
 
             {# Card footer #}
-            <div class="sw-cms-block-card__footer">
+            <div v-if="showFooter" 
+                class="sw-cms-block-card__footer"
+            >
                 <cms-block-sub-section
                     :childBlocks="childBlocks('footerContent')"
                     subSectionName="footerContent"
