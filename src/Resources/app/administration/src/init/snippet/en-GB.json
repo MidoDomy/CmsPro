@@ -56,6 +56,11 @@
                 "config": {
                     "gutter": {
                         "label": "Gutter"
+                    },
+                    "direction": {
+                        "label": "Flex direction",
+                        "optionRow": "Row",
+                        "optionColumn": "Column"
                     }
                 }
             },

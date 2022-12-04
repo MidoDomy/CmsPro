@@ -3,16 +3,29 @@
         <div class="sw-cms-block-config-row">
             {# Gutter #}
             <sw-number-field
-                v-model="customFields.gutter"
+                v-model="customFields[currentViewportPrefix + 'gutter']"
                 :label="$tc('sw-cms.blocks.row.config.gutter.label')"
                 :min="0"
-                :max="100"
+                :max="300"
                 :step="1"
                 size="small"
-                :disabled="notResponsive"
             >
                 <template v-slot:suffix="{  identification  }">px</template>
             </sw-number-field>
+
+            {# Flex direction #}
+            <sw-select-field
+                v-model="customFields[currentViewportPrefix + 'direction']"
+                :label="$tc('sw-cms.blocks.row.config.direction.label')"
+                size="small"
+            >
+                <option value="row">
+                    {{ $tc('sw-cms.blocks.row.config.direction.optionRow') }}
+                </option>
+                <option value="column">
+                    {{ $tc('sw-cms.blocks.row.config.direction.optionColumn') }}
+                </option>
+            </sw-select-field>
         </div>
     {% endblock %}
 {% endblock %}

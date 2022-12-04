@@ -1,6 +1,8 @@
 {% block cms_block_group_content %}
     {% block sw_cms_block_row %}
-        <div class="sw-cms-block-row">
+        <div class="sw-cms-block-row"
+            :style="rowStyles"
+        >
             <div v-for="(col, index) in panels" 
                 class="sw-cms-block-row__col"
             >

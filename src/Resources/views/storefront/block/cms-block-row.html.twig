@@ -2,7 +2,19 @@
 
 {% block cms_block_group_dynamic_content %}
     {% block cms_block_row %}
-        <div class="cms-custom-row row">
+        {% set rowOptions = {
+            direction: block.customFields.direction,
+            md_direction: block.customFields.md_direction,
+            sm_direction: block.customFields.sm_direction,
+            gap: block.customFields.gutter,
+            md_gap: block.customFields.md_gutter,
+            sm_gap: block.customFields.sm_gutter,
+        } %}
+
+        <div class="cms-custom-row row no-gutters"
+            data-row="true"
+            data-row-options='{{ rowOptions|json_encode }}'
+        >
             {% for panelConfig in panelConfigs %}
                 {% block cms_block_row_col %}
                     <div class="col">

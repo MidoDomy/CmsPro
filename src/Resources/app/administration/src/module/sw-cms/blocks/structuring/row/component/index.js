@@ -10,6 +10,31 @@ Component.extend('sw-cms-block-row', 'sw-cms-block-group-dynamic', {
         return {
             slotItemPrefix: 'Col',
             activeAdditionalSettings: true,
+            additionalSettings: {
+                gutter: 40,
+                md_gutter: 40,
+                sm_gutter: 40,
+                direction: 'row',
+                md_direction: 'row',
+                sm_direction: 'column'
+            }
+        }
+    },
+
+    computed: {
+        gutter() {
+            return this.getCFValue('gutter', true);
+        },
+
+        direction() {
+            return this.getCFValue('direction', true);
+        },
+
+        rowStyles() {
+            return {
+                gap: `${this.gutter}px`, 
+                flexDirection: this.direction
+            }
         }
     }
 });
