@@ -1,11 +1,16 @@
 {% block cms_block_group_content %}
     {% block sw_cms_block_timeline %}
-        <div class="sw-cms-block-timeline">
+        <div class="sw-cms-block-timeline" 
+            :class="'sw-cms-block-timeline--' + position"
+        >
             <div v-for="(item, index) in panels"
                 class="sw-cms-block-timeline__item"
-                :class="{'sw-cms-block-timeline__item--right' : index % 2 == 1}"
+                :class="itemClasses(index)"
+                :style="itemStyles"
             >
-                <div class="sw-cms-block-timeline__item-inner">
+                <div class="sw-cms-block-timeline__item-inner" 
+                    :style="itemInnerStyles"
+                >
                     <cms-block-sub-section
                         :childBlocks="childBlocks(`${item.key}`)"
                         :subSectionName="`${item.key}`"

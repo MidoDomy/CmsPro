@@ -58,33 +58,6 @@
                         "label": "Gutter"
                     }
                 }
-            },  
-            "tabs": {
-                "label": "Tabs",
-                "config": {
-                    "activeIndex": {
-                        "label": "Active index"
-                    }
-                }
-            },
-            "accordion": {
-                "label": "Accordion",
-                "config": {
-                    "activeIndex": {
-                        "label": "Active index",
-                        "helpText": "Enter 0 if none should be active."
-                    }
-                }
-            },
-            "teaserCollapse": {
-                "label": "Teaser collapse",
-                "showMore": "Show more",
-                "showLess": "Show less",
-                "config": {
-                    "closedHeight": {
-                        "label": "Closed height"
-                    }
-                }
             },
             "slider": {
                 "label": "Slider",
@@ -126,11 +99,49 @@
                     }
                 }
             },
-            "contentCompare": {
-                "label": "Content compare"
+            "tabs": {
+                "label": "Tabs",
+                "config": {
+                    "activeIndex": {
+                        "label": "Active index"
+                    }
+                }
+            },
+            "accordion": {
+                "label": "Accordion",
+                "config": {
+                    "activeIndex": {
+                        "label": "Active index",
+                        "helpText": "Enter 0 if none should be active."
+                    }
+                }
+            },
+            "teaserCollapse": {
+                "label": "Teaser collapse",
+                "showMore": "Show more",
+                "showLess": "Show less",
+                "config": {
+                    "closedHeight": {
+                        "label": "Closed height"
+                    }
+                }
             },
             "timeline": {
-                "label": "Timeline"
+                "label": "Timeline",
+                "config": {
+                    "position": {
+                        "label": "Position",
+                        "optionLeft": "Left",
+                        "optionCenter": "Center",
+                        "optionRight": "Right"
+                    },
+                    "padding": {
+                        "label": "Item padding"
+                    }
+                }
+            },
+            "contentCompare": {
+                "label": "Content compare"
             },
             "card": {
                 "label": "Card"

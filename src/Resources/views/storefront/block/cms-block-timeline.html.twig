@@ -2,23 +2,39 @@
 
 {% block cms_block_group_dynamic_content %}
     {% block cms_block_timeline %}
-        {% for panelConfig in panelConfigs %}
-            {% block cms_block_timeline_item %}
-                <div class="cms-block-timeline-item{% if loop.index % 2 == 0 %} cms-block-timeline-item--right{% endif %}">
-                    {% block cms_block_timeline_item_inner %}
-                        <div class="cms-block-timeline-item-inner">
-                            {% block cms_block_timeline_item_inner_subBlocks %}
-                                {% for block in panelConfig.subBlocks %}
-                                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                        sectionBlocks: sectionBlocks,
-                                        parentBlockId: currentBlockId
-                                    } %}
-                                {% endfor %}
+        {% set timelineOptions = {
+            position: block.customFields.position,
+            md_position: block.customFields.md_position,
+            sm_position: block.customFields.sm_position,
+            padding: block.customFields.padding,
+            md_padding: block.customFields.md_padding,
+            sm_padding: block.customFields.sm_padding
+        } %}
+
+        <div class="cms-timeline" 
+            data-timeline="true"
+            data-timeline-options='{{ timelineOptions|json_encode }}'
+        >
+            {% block cms_block_timeline_content %}
+                {% for panelConfig in panelConfigs %}
+                    {% block cms_block_timeline_item %}
+                        <div class="cms-block-timeline-item">
+                            {% block cms_block_timeline_item_inner %}
+                                <div class="cms-block-timeline-item-inner">
+                                    {% block cms_block_timeline_item_inner_subBlocks %}
+                                        {% for block in panelConfig.subBlocks %}
+                                            {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                                                sectionBlocks: sectionBlocks,
+                                                parentBlockId: currentBlockId
+                                            } %}
+                                        {% endfor %}
+                                    {% endblock %}
+                                </div>
                             {% endblock %}
                         </div>
                     {% endblock %}
-                </div>
+                {% endfor %}
             {% endblock %}
-        {% endfor %}
+        </div>
     {% endblock %}
 {% endblock %}

@@ -1,0 +1,34 @@
+{% block sw_cms_block_additional_config_base_form %}
+    {% block sw_cms_block_config_timeline %}
+        <div class="sw-cms-block-config-timeline">
+            {# Position #}
+            <sw-select-field
+                v-model="customFields[currentViewportPrefix + 'position']"
+                :label="$tc('sw-cms.blocks.timeline.config.position.label')"
+                size="small"
+            >
+                <option value="left">
+                    {{ $tc('sw-cms.blocks.timeline.config.position.optionLeft') }}
+                </option>
+                <option value="center" :disabled="currentDeviceView === 'mobile'">
+                    {{ $tc('sw-cms.blocks.timeline.config.position.optionCenter') }}
+                </option>
+                <option value="right">
+                    {{ $tc('sw-cms.blocks.timeline.config.position.optionRight') }}
+                </option>
+            </sw-select-field>
+
+            {# Item padding #}
+            <sw-number-field
+                v-model="customFields[currentViewportPrefix + 'padding']"
+                :label="$tc('sw-cms.blocks.timeline.config.padding.label')"
+                :min="0"
+                :max="100"
+                :step="1"
+                size="small"
+            >
+                <template v-slot:suffix="{  identification  }">px</template>
+            </sw-number-field>
+        </div>
+    {% endblock %}
+{% endblock %}
