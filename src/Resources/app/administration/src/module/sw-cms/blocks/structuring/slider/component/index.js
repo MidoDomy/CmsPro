@@ -34,23 +34,23 @@ Component.extend('sw-cms-block-slider', 'sw-cms-block-group-dynamic', {
 
     computed: {
         numberOfDisplayedSlides() {
-            return this.getCFValue('numberOfDisplayedSlides', true);
+            return this.getAdditionalSettingValue('numberOfDisplayedSlides', true);
         },
 
         gutter() {
-            return this.getCFValue('gutter', true);
+            return this.getAdditionalSettingValue('gutter', true);
         },
 
         edgePadding() {
-            return this.getCFValue('edgePadding', true);
+            return this.getAdditionalSettingValue('edgePadding', true);
         },
 
         controls() {
-            return this.getCFValue('controls');
+            return this.getAdditionalSettingValue('controls');
         },
 
         controlsPosition() {
-            return this.getCFValue('controlsPosition');
+            return this.getAdditionalSettingValue('controlsPosition');
         },
 
         sliderContentStyles() {

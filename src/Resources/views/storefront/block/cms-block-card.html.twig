@@ -10,10 +10,10 @@
     {% block cms_block_card %}
         <div class="cms-card card">
             {% block cms_block_card_inner %}
-                {% if block.customFields.showHeader and columnChildBlocks.headerContent %}
+                {% if block.customFields.additionalSettings.showHeader and columnChildBlocks.headerContent %}
                     {% block cms_block_card_header %}
                         <div class="card-header"
-                            {% if block.customFields.removeHeaderPadding %}style="padding: 0;"{% endif %}
+                            {% if block.customFields.additionalSettings.removeHeaderPadding %}style="padding: 0;"{% endif %}
                         >
                             {% block cms_block_card_header_subBlocks %}
                                 {% for block in columnChildBlocks.headerContent %}

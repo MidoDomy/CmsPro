@@ -22,6 +22,8 @@
     }
 
     .sw-cms-section__content {
+        display: flex;
+        flex-wrap: wrap;
         overflow: hidden;
         padding: 20px;
 
@@ -34,6 +36,7 @@
 
 .sw-cms-stage-add-block {
     left: 0;
+    order: -1;
 }
 
 .sw-cms-block-preview__empty-stage {
@@ -48,4 +51,8 @@
     text-align: center;
     border-radius: 10px;
     border: 1px dashed #d1d9e0;
+}
+
+.sw-text-editor .sw-text-editor__content {
+    background-color: transparent;
 }

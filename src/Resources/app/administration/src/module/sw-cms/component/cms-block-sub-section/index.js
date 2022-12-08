@@ -35,6 +35,14 @@ Component.register('cms-block-sub-section', {
          */
         appendPositionId() {
             return this.childBlocks[this.childBlocks.length - 1].position + 1;
+        },
+
+        /** Sends prefix of the current viewport
+         * prefixes are used for dynamic variables
+         * example: customFields.[currentViewportPrefix + 'variableName'] */ 
+        currentViewportPrefix() {
+            return this.currentDeviceView === 'mobile' ? 'sm_' : 
+                this.currentDeviceView === 'tablet-landscape' ? 'md_' : '';
         }
     },
 
@@ -80,6 +88,19 @@ Component.register('cms-block-sub-section', {
                 subSectionName: this.subSectionName,
                 cmsParentBlock: cmsParentBlock
             };
+        },
+
+        isBlockFullWidth(block) {
+            if (!block.customFields) 
+                return true;
+
+            const width = block.customFields[this.currentViewportPrefix + 'width'];
+
+            if (width && width < 12) {
+                return false;
+            }
+
+            return true;
         }
     }
 });

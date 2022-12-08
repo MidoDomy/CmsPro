@@ -3,12 +3,12 @@
 {% block cms_block_group_dynamic_content %}
     {% block cms_block_row %}
         {% set rowOptions = {
-            direction: block.customFields.direction,
-            md_direction: block.customFields.md_direction,
-            sm_direction: block.customFields.sm_direction,
-            gap: block.customFields.gutter,
-            md_gap: block.customFields.md_gutter,
-            sm_gap: block.customFields.sm_gutter,
+            direction: block.customFields.additionalSettings.direction,
+            md_direction: block.customFields.additionalSettings.md_direction,
+            sm_direction: block.customFields.additionalSettings.sm_direction,
+            gap: block.customFields.additionalSettings.gutter,
+            md_gap: block.customFields.additionalSettings.md_gutter,
+            sm_gap: block.customFields.additionalSettings.sm_gutter,
         } %}
 
         <div class="cms-custom-row row no-gutters"

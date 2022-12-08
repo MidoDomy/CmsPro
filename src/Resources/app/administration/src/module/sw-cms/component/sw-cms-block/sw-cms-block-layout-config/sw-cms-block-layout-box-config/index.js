@@ -1,27 +1,25 @@
-import template from './sw-cms-block-additional-config-base-form.html.twig';
+import template from './sw-cms-block-layout-box-config.html.twig';
+import './sw-cms-block-layout-box-config.scss';
 
 const { Component, Mixin } = Shopware;
 
-Component.register('sw-cms-block-additional-config-base-form', {
+Component.register('sw-cms-block-layout-box-config', {
     template,
-    
+
+    inject: [ 'cmsService' ],
+
     mixins: [
-        Mixin.getByName('cms-state'),
+      Mixin.getByName('cms-state')
     ],
 
     props: {
         block: {
             type: Object,
-            required: true,
-        },
+            required: true
+        }
     },
 
     computed: {
-        // Checks if the current viewport is desktop
-        notResponsive() {
-            return this.currentDeviceView != 'desktop';
-        },
-
         /** Sends prefix of the current viewport
          * prefixes are used for dynamic variables
          * example: customFields.[currentViewportPrefix + 'variableName'] */ 
@@ -30,8 +28,8 @@ Component.register('sw-cms-block-additional-config-base-form', {
                 this.currentDeviceView === 'tablet-landscape' ? 'md_' : '';
         },
 
-        additionalSettingsFields() {
-            return this.block.customFields.additionalSettings;
+        customFields() {
+            return this.block.customFields;
         }
     }
 });

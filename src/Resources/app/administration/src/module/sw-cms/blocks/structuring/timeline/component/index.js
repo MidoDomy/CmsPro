@@ -23,11 +23,11 @@ Component.extend('sw-cms-block-timeline', 'sw-cms-block-group-dynamic', {
 
     computed: {
         position() {
-            return this.getCFValue('position', true);
+            return this.getAdditionalSettingValue('position', true);
         },
 
         padding() {
-            return this.getCFValue('padding', true);
+            return this.getAdditionalSettingValue('padding', true);
         },
 
         itemStyles() {

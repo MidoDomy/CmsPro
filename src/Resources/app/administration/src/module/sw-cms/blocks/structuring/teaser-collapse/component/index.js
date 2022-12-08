@@ -22,7 +22,7 @@ Component.extend('sw-cms-block-teaser-collapse', 'sw-cms-block-group-predefined'
 
     computed: {
         closedHeight() {
-            return this.getCFValue('closedHeight', true);
+            return this.getAdditionalSettingValue('closedHeight', true);
         },
 
         contentStyles() {

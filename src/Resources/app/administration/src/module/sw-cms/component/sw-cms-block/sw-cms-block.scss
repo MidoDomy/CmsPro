@@ -8,4 +8,21 @@
     .sw-cms-block {
         z-index: 100;
     }
+
+    .sw-cms-stage-add-block {
+        &:not(.sw-cms-stage-add-block--full-width) {
+            top: 0;
+            left: auto;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            width: 32px;
+            transform: translateX(50%);
+
+            .sw-cms-stage-add-block__handle {
+                height: 100%;
+                width: 2px;
+            }
+        }
+    }
 }

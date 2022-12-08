@@ -17,7 +17,7 @@ Component.register('cms-block-group', {
 
     data() {
         return {
-            menuPosition: 'right',
+            menuPosition: 'left',
             activeAdditionalSettings: false,
             additionalSettings: {}
         }
@@ -35,7 +35,11 @@ Component.register('cms-block-group', {
 
         /** Assign additional settings */
         if (!this.block.customFields) {
-            this.block.customFields = this.additionalSettings;
+            this.block.customFields = {};
+            this.block.customFields.additionalSettings = this.additionalSettings;
+        }
+        else if (!this.block.customFields.additionalSettings) {
+            this.block.customFields.additionalSettings = this.additionalSettings;
         }
     },
 
@@ -43,9 +47,13 @@ Component.register('cms-block-group', {
         block() {
             return this.$parent.block;
         },
-
+        
         customFields() {
             return this.block.customFields;
+        },
+
+        additionalSettingsFields() {
+            return this.block.customFields.additionalSettings;
         }
     },
 
@@ -127,13 +135,13 @@ Component.register('cms-block-group', {
         },
 
         /**
-         * Returns custom field value
+         * Returns additional setting value
          * @param {*} name 
          * @param {*} responsive 
          * @returns 
          */
-        getCFValue(name, responsive = false) {
-            return responsive ? this.customFields[this.currentViewportPrefix() + name] : this.customFields[name];
+        getAdditionalSettingValue(name, responsive = false) {
+            return responsive ? this.customFields.additionalSettings[this.currentViewportPrefix() + name] : this.customFields.additionalSettings[name];
         }
     },
 

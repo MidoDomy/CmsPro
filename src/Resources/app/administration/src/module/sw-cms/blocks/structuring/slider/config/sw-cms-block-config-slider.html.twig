@@ -3,7 +3,7 @@
         <div class="sw-cms-block-config-slider">
             {# Number of displayed slides #}
             <sw-number-field
-                v-model="customFields[currentViewportPrefix + 'numberOfDisplayedSlides']"
+                v-model="additionalSettingsFields[currentViewportPrefix + 'numberOfDisplayedSlides']"
                 :label="$tc('sw-cms.blocks.slider.config.numberOfDisplayedSlides.label')"
                 :min="1"
                 :max="5"
@@ -13,7 +13,7 @@
 
             {# Gap #}
             <sw-number-field
-                v-model="customFields[currentViewportPrefix + 'gutter']"
+                v-model="additionalSettingsFields[currentViewportPrefix + 'gutter']"
                 :label="$tc('sw-cms.blocks.slider.config.gutter.label')"
                 :min="0"
                 :max="100"
@@ -25,7 +25,7 @@
 
             {# Edge padding #}
             <sw-number-field
-                v-model="customFields[currentViewportPrefix + 'edgePadding']"
+                v-model="additionalSettingsFields[currentViewportPrefix + 'edgePadding']"
                 :label="$tc('sw-cms.blocks.slider.config.edgePadding.label')"
                 :min="0"
                 :max="100"
@@ -37,7 +37,7 @@
 
             {# Start index #}
             <sw-number-field
-                v-model="customFields.startIndex"
+                v-model="additionalSettingsFields.startIndex"
                 :label="$tc('sw-cms.blocks.slider.config.startIndex.label')"
                 :min="1"
                 :step="1"
@@ -47,7 +47,7 @@
 
             {# Speed #}
             <sw-number-field
-                v-model="customFields.speed"
+                v-model="additionalSettingsFields.speed"
                 :label="$tc('sw-cms.blocks.slider.config.speed.label')"
                 :step="50"
                 size="small"
@@ -58,7 +58,7 @@
 
             {# Autoplay #}
             <sw-switch-field
-                v-model="customFields.autoplay" 
+                v-model="additionalSettingsFields.autoplay" 
                 :label="$tc('sw-cms.blocks.slider.config.autoplay.label')"
                 size="small"
                 :disabled="notResponsive"
@@ -66,8 +66,8 @@
 
             {# Autoplay Timeout #}
             <sw-number-field
-                v-if="customFields.autoplay"
-                v-model="customFields.autoplayTimeout"
+                v-if="additionalSettingsFields.autoplay"
+                v-model="additionalSettingsFields.autoplayTimeout"
                 :label="$tc('sw-cms.blocks.slider.config.autoplayTimeout.label')"
                 :step="50"
                 size="small"
@@ -78,7 +78,7 @@
 
             {# AutoHeight #}
             <sw-switch-field
-                v-model="customFields.autoHeight" 
+                v-model="additionalSettingsFields.autoHeight" 
                 :label="$tc('sw-cms.blocks.slider.config.autoHeight.label')"
                 size="small"
                 :disabled="notResponsive"
@@ -86,7 +86,7 @@
 
             {# Mouse drag #}
             <sw-switch-field
-                v-model="customFields.mouseDrag" 
+                v-model="additionalSettingsFields.mouseDrag" 
                 :label="$tc('sw-cms.blocks.slider.config.mouseDrag.label')"
                 size="small"
                 :disabled="notResponsive"
@@ -94,7 +94,7 @@
 
             {# Show arrows #}
             <sw-switch-field
-                v-model="customFields.controls" 
+                v-model="additionalSettingsFields.controls" 
                 :label="$tc('sw-cms.blocks.slider.config.controls.label')"
                 size="small"
                 :disabled="notResponsive"
@@ -102,8 +102,8 @@
 
             {# Arrows position #}
             <sw-select-field
-                v-if="customFields.controls"
-                v-model="customFields.controlsPosition"
+                v-if="additionalSettingsFields.controls"
+                v-model="additionalSettingsFields.controlsPosition"
                 :label="$tc('sw-cms.blocks.slider.config.controlsPosition.label')"
                 size="small"
                 :disabled="notResponsive"

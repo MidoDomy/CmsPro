@@ -27,7 +27,7 @@ Component.extend('sw-cms-block-content-compare', 'sw-cms-block-group-predefined'
     mounted() {
         window.addEventListener('resize', this.init)
         this.init()
-        this.setWidth(this.block.customFields.posX)
+        this.setWidth(this.getAdditionalSettingValue('posX'))
     },
 
     beforeDestroy() {

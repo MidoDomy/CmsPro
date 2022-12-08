@@ -1,0 +1,14 @@
+{% block sw_cms_section_content_block_component %}
+    {% parent %}
+    
+    <sw-cms-stage-add-block
+        v-if="isSystemDefaultLanguage && !disabled"
+        :key="index + 1"
+        :class="{'sw-cms-stage-add-block--full-width' : isBlockFullWidth(block)}"
+        v-droppable="{ dragGroup: 'cms-stage', data: getDropData(block.position + 1) }"
+        @stage-block-add="onAddSectionBlock"
+    />
+{% endblock %}
+
+{% block sw_cms_section_add_content_block %}
+{% endblock %}

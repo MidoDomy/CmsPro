@@ -3,7 +3,7 @@
         <div class="sw-cms-block-config-timeline">
             {# Position #}
             <sw-select-field
-                v-model="customFields[currentViewportPrefix + 'position']"
+                v-model="additionalSettingsFields[currentViewportPrefix + 'position']"
                 :label="$tc('sw-cms.blocks.timeline.config.position.label')"
                 size="small"
             >
@@ -20,7 +20,7 @@
 
             {# Item padding #}
             <sw-number-field
-                v-model="customFields[currentViewportPrefix + 'padding']"
+                v-model="additionalSettingsFields[currentViewportPrefix + 'padding']"
                 :label="$tc('sw-cms.blocks.timeline.config.padding.label')"
                 :min="0"
                 :max="100"

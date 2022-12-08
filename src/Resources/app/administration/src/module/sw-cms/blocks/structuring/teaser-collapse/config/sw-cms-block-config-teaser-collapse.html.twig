@@ -3,7 +3,7 @@
         <div class="sw-cms-block-config-teaser-collapse">
             {# Teaser closed height #}
             <sw-number-field
-                v-model="customFields[currentViewportPrefix + 'closedHeight']"
+                v-model="additionalSettingsFields[currentViewportPrefix + 'closedHeight']"
                 :label="$tc('sw-cms.blocks.teaserCollapse.config.closedHeight.label')"
                 :min="50"
                 :step="1"

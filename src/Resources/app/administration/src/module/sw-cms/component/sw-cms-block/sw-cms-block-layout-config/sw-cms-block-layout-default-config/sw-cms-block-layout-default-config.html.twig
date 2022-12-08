@@ -1,0 +1,60 @@
+{% block sw_cms_block_layout_default_config %}
+    <div class="sw-cms-block-layout-default-config">
+        {# Width #}
+        {% block sw_cms_block_layout_default_config_width_field %}
+            <div class="sw-cms-block-layout-default-config__width">
+                <sw-label>
+                    {{ $tc('sw-cms.sidebar.block.layout.config.width.label') }}
+                </sw-label>
+                <sw-radio-field
+                    v-model="customFields[currentViewportPrefix + 'width']"
+                    :options="blockWidthOptions"
+                />
+            </div>
+        {% endblock %}
+
+        {# Sort #}
+        {% block sw_cms_block_layout_default_config_sort_field %}
+            <sw-number-field 
+                v-model="customFields[currentViewportPrefix + 'sort']"
+                :label="$tc('sw-cms.sidebar.block.layout.config.sort.label')"
+                :step="1" 
+                :min="0"
+                size="small"
+                :help-text="$tc('sw-cms.sidebar.block.layout.config.sort.helpText')"
+            />
+        {% endblock %}
+
+        {# Vertical align #}
+        {% block sw_cms_block_layout_default_config_vertical_align_field %}
+            <sw-select-field
+                v-model="customFields[currentViewportPrefix + 'verticalAlign']"
+                :label="$tc('sw-cms.sidebar.block.layout.config.verticalAlign.label')"
+                size="small"
+            >
+                <option value="flex-start">
+                    {{ $tc('sw-cms.sidebar.block.layout.config.verticalAlign.optionTop') }}
+                </option>
+                <option value="center">
+                    {{ $tc('sw-cms.sidebar.block.layout.config.verticalAlign.optionMiddle') }}
+                </option>
+                <option value="flex-end">
+                    {{ $tc('sw-cms.sidebar.block.layout.config.verticalAlign.optionBottom') }}
+                </option>
+            </sw-select-field>
+        {% endblock %}
+
+        {# Min height #}
+        {% block sw_cms_block_layout_default_config_min_height_field %}
+            <sw-number-field
+                v-model="customFields[currentViewportPrefix + 'minHeight']"
+                :label="$tc('sw-cms.sidebar.block.layout.config.minHeight.label')"
+                :step="1" 
+                :min="0" 
+                size="small"
+            >
+                <template v-slot:suffix="{  identification  }">px</template>
+            </sw-number-field>
+        {% endblock %}
+    </div>
+{% endblock %}

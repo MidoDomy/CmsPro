@@ -8,7 +8,7 @@
 {% block cms_block_group_predefined_content %}
     {% block cms_block_content_compare %}
         {% set contentCompareOptions = {
-            posX: block.customFields.posX
+            posX: block.customFields.additionalSettings.posX
         } %}
 
         <div class="cms-content-compare" 

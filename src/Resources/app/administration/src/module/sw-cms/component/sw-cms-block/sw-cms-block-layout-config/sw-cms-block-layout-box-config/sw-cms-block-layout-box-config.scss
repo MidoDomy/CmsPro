@@ -1,0 +1,61 @@
+.sw-cms-block-layout-box-config {
+    &__margin,
+    &__border,
+    &__padding,
+    &__content {
+        position: relative;
+        display: grid;
+        grid-template-columns: 28px auto 28px;
+        align-items: center;
+        border-width: 1px;
+    }
+
+    &__margin {
+        background-color: #f9cb9c;
+        border-style: dashed;
+    }
+
+    &__border {
+        background-color: #fddb9a;
+        border-style: solid;
+    }
+
+    &__padding {
+        background-color: #c1cd8a;
+        border-style: dashed;
+    }
+
+    &__content {
+        background-color: #c1c1c1;
+        border-style: solid;
+    }
+
+    .sw-label {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        margin: 0;
+        color: #000000;
+        font-size: 12px;
+    }
+
+    .sw-field--small {
+        margin: 0;
+        width: auto;
+        min-height: 26px;
+
+        .sw-block-field__block {
+            border: 0;
+        }
+
+        input {
+            padding: 0;
+            background-color: transparent;
+            text-align: center;
+
+            &::placeholder {
+                color: black;
+            }
+        }
+    }
+}

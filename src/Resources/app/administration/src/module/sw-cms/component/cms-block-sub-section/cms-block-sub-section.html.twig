@@ -16,13 +16,13 @@
 
         {% block cms_block_sub_section__content %}
             <template v-else>
-                <template v-for="(block, index) in childBlocks">
-                    <sw-cms-stage-add-block
-                        :key="index"
-                        v-droppable="{ dragGroup: 'cms-stage', data: getDropData(block.position) }"
-                        @stage-block-add="onAddSectionBlock"
-                    />
+                <sw-cms-stage-add-block
+                    class="sw-cms-stage-add-block--full-width"
+                    v-droppable="{ dragGroup: 'cms-stage', data: getDropData(0) }"
+                    @stage-block-add="onAddSectionBlock"
+                />
 
+                <template v-for="(block, index) in childBlocks">
                     <sw-cms-block 
                         class="sw-cms-stage-block"
                         :key="block.id"
@@ -39,16 +39,15 @@
                                 :active="selectedBlock !== null && selectedBlock.id === block.id"
                             />
                         </component>
+
+                        <sw-cms-stage-add-block
+                            :key="index"
+                            :class="{'sw-cms-stage-add-block--full-width' : isBlockFullWidth(block)}"
+                            v-droppable="{ dragGroup: 'cms-stage', data: getDropData(block.position + 1) }"
+                            @stage-block-add="onAddSectionBlock"
+                        />
                     </sw-cms-block>
                 </template>
-
-                <div class="last-stage-add-block">
-                    <sw-cms-stage-add-block
-                        :key="appendPositionId"
-                        v-droppable="{ dragGroup: 'cms-stage', data: getDropData(appendPositionId) }"
-                        @stage-block-add="onAddSectionBlock"
-                    />
-                </div>
             </template>
         {% endblock %}
     </div>

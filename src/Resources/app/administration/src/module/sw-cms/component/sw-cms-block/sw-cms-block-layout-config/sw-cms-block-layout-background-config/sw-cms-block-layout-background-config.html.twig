@@ -1,0 +1,57 @@
+{% block sw_cms_block_layout_style_config %}
+    <div class="sw-cms-block-layout-style-config">
+        {# Background color #}
+        {% block sw_cms_block_layout_style_config_background_color_field %}
+            <sw-colorpicker
+                v-model="block.backgroundColor"
+                :label="$tc('sw-cms.detail.label.backgroundColorLabel')"
+                :placeholder="$tc('sw-cms.detail.label.backgroundColorField')"
+                size="small"
+                :disabled="notResponsive"
+            />
+        {% endblock %}
+
+        {# Background image #}
+        {% block sw_cms_block_layout_style_config_background_image_field %}
+            <div class="sw-field sw-block-field sw-field--small">
+                <sw-media-compact-upload-v2
+                    :source="backgroundImage"
+                    :upload-tag="uploadTag"
+                    :label="$tc('sw-cms.detail.label.backgroundMediaLabel')"
+                    :default-folder="cmsPageState.pageEntityName"
+                    :allow-multi-select="false"
+                    @media-upload-remove-image="removeMedia"
+                    @selection-change="onSetBackgroundMedia"
+                />
+                <sw-upload-listener
+                    :upload-tag="uploadTag"
+                    auto-upload
+                    @media-upload-finish="successfulUpload"
+                />
+            </div>
+        {% endblock %}
+
+        {# Background image mode #}
+        {% block sw_cms_block_layout_style_config_background_image_mode_field %}
+            <sw-select-field
+                v-show="backgroundImage"
+                v-model="block.backgroundMediaMode"
+                :label="$tc('sw-cms.detail.label.backgroundMediaMode')"
+                size="small"
+                :disabled="notResponsive"
+            >
+                <option value="auto">
+                    {{ $tc('sw-cms.detail.label.backgroundMediaModeAuto') }}
+                </option>
+                <option value="contain">
+                    {{ $tc('sw-cms.detail.label.backgroundMediaModeContain') }}
+                </option>
+                <option value="cover">
+                    {{ $tc('sw-cms.detail.label.backgroundMediaModeCover') }}
+                </option>
+            </sw-select-field>
+        {% endblock %}
+
+        {# TODO: background position box #}
+    </div>
+{% endblock %}

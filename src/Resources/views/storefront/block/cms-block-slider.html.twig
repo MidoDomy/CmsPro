@@ -5,40 +5,40 @@
         <div class="cms-slider">
             {% set baseSliderOptions = {
                 slider: {
-                    items: block.customFields.numberOfDisplayedSlides,
-                    gutter: block.customFields.gutter,
-                    edgePadding: block.customFields.edgePadding,
-                    startIndex: block.customFields.startIndex,
-                    speed: block.customFields.speed,
-                    autoplay: block.customFields.autoplay,
+                    items: block.customFields.additionalSettings.numberOfDisplayedSlides,
+                    gutter: block.customFields.additionalSettings.gutter,
+                    edgePadding: block.customFields.additionalSettings.edgePadding,
+                    startIndex: block.customFields.additionalSettings.startIndex,
+                    speed: block.customFields.additionalSettings.speed,
+                    autoplay: block.customFields.additionalSettings.autoplay,
                     autoplayButtonOutput: false,
-                    autoplayTimeout: block.customFields.autoplayTimeout,
-                    autoHeight: block.customFields.autoHeight,
-                    controls: block.customFields.controls,
+                    autoplayTimeout: block.customFields.additionalSettings.autoplayTimeout,
+                    autoHeight: block.customFields.additionalSettings.autoHeight,
+                    controls: block.customFields.additionalSettings.controls,
                     nav: false,
-                    mouseDrag: block.customFields.mouseDrag,
+                    mouseDrag: block.customFields.additionalSettings.mouseDrag,
                     responsive: {
                         xs: {
-                            items: block.customFields.sm_numberOfDisplayedSlides,
-                            gutter: block.customFields.sm_gutter,
-                            edgePadding: block.customFields.sm_edgePadding
+                            items: block.customFields.additionalSettings.sm_numberOfDisplayedSlides,
+                            gutter: block.customFields.additionalSettings.sm_gutter,
+                            edgePadding: block.customFields.additionalSettings.sm_edgePadding
                         },
                         sm: {
-                            items: block.customFields.sm_numberOfDisplayedSlides,
-                            gutter: block.customFields.sm_gutter,
-                            edgePadding: block.customFields.sm_edgePadding
+                            items: block.customFields.additionalSettings.sm_numberOfDisplayedSlides,
+                            gutter: block.customFields.additionalSettings.sm_gutter,
+                            edgePadding: block.customFields.additionalSettings.sm_edgePadding
                         },
                         md: {
-                            items: block.customFields.md_numberOfDisplayedSlides,
-                            gutter: block.customFields.md_gutter,
-                            edgePadding: block.customFields.md_edgePadding
+                            items: block.customFields.additionalSettings.md_numberOfDisplayedSlides,
+                            gutter: block.customFields.additionalSettings.md_gutter,
+                            edgePadding: block.customFields.additionalSettings.md_edgePadding
                         }
                     }
                 }
             } %}
 
             {% block cms_block_slider_baseSlider %}
-                <div class="base-slider{% if block.customFields.controlsPosition == 'outside' %} base-slider--controls-outside{% endif %}"
+                <div class="base-slider{% if block.customFields.additionalSettings.controlsPosition == 'outside' %} base-slider--controls-outside{% endif %}"
                     data-base-slider="true"
                     data-base-slider-options='{{ baseSliderOptions|json_encode }}'
                 >

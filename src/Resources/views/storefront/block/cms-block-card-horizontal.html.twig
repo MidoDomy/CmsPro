@@ -14,11 +14,11 @@
                         {% if columnChildBlocks.headerContent %}
                             {% block cms_block_card_horizontal_header_col %}
                                 <div class="cms-card-horizontal-left-col"
-                                    style="min-width: {{ block.customFields.leftColMinWidth }}px;"
+                                    style="min-width: {{ block.customFields.additionalSettings.leftColMinWidth }}px;"
                                 >
                                     {% block cms_block_card_horizontal_header %}
                                         <div class="card-header"
-                                            {% if block.customFields.removeLeftColPadding %}style="padding: 0;"{% endif %}
+                                            {% if block.customFields.additionalSettings.removeLeftColPadding %}style="padding: 0;"{% endif %}
                                         >
                                             {% block cms_block_card_horizontal_header_subBlocks %}
                                                 {% for block in columnChildBlocks.headerContent %}

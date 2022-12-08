@@ -11,6 +11,60 @@
                 "dynamicSlotItems": {
                     "addBtn": "Add item",
                     "slotItemPlaceholder": "Enter item name.."
+                },
+                "layout": {
+                    "tabs": {
+                        "default": "Default",
+                        "background": "Background",
+                        "style": "Style",
+                        "box": "Box model"
+                    },
+                    "config": {
+                        "width": {
+                            "label": "Block width"
+                        },
+                        "sort": {
+                            "label": "Block sort nb.",
+                            "helpText": "Be careful with this because the arrangement of the blocks in the navigation and in the layout will be different."
+                        },
+                        "verticalAlign": {
+                            "label": "Block vertical align",
+                            "optionTop": "Top",
+                            "optionMiddle": "Middle",
+                            "optionBottom": "Bottom"
+                        },
+                        "minHeight": {
+                            "label": "Block min. height"
+                        },
+                        "borderRadius": {
+                            "label": "Border radius"
+                        },
+                        "margin": {
+                            "label": "Margin"
+                        },
+                        "padding": {
+                            "label": "Padding"
+                        },
+                        "border": {
+                            "label": "Border"
+                        },
+                        "borderStyle": {
+                            "label": "Border style",
+                            "optionSolid": "Solid",
+                            "optionDashed": "Dashed"
+                        },
+                        "borderColor": {
+                            "label": "Border color",
+                            "helpText": "If no color is selected, then the color will be the default border color."
+                        },
+                        "boxShadow": {
+                            "label": "Box shadow",
+                            "xOffset": "X-offset",
+                            "yOffset": "Y-offset",
+                            "blur": "Blur",
+                            "spread": "Spread"
+                        }
+                    }
                 }
             }
         },

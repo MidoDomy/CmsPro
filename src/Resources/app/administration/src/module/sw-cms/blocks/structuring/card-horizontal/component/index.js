@@ -19,11 +19,11 @@ Component.extend('sw-cms-block-card-horizontal', 'sw-cms-block-group-predefined'
 
     computed: {
         removeLeftColPadding() {
-            return this.getCFValue('removeLeftColPadding');
+            return this.getAdditionalSettingValue('removeLeftColPadding');
         },
 
         leftColMinWidth() {
-            return this.getCFValue('leftColMinWidth');
+            return this.getAdditionalSettingValue('leftColMinWidth');
         },
 
         cardLeftColStyles() {

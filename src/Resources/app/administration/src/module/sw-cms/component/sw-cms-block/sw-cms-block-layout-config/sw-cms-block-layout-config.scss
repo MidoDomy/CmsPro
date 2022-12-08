@@ -1,0 +1,43 @@
+@import "~scss/variables";
+
+.sw-cms-block-layout-config {
+    padding: 0 25px;
+
+    .sw-tabs {
+        &__content {
+            font-size: 14px;
+        }
+
+        &-item {
+            padding: 8px 12px;
+        }
+    }
+   
+    .sw-label {
+        height: auto;
+        margin-bottom: 8px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .sw-field--small {
+        margin-bottom: 16px;
+
+        &.sw-field--switch {
+            margin-top: 16px;
+        }
+    }
+
+    .two-columns,
+    .four-columns {
+        display: grid;
+        gap: 16px;
+    }
+
+    .two-columns {
+        grid-template-columns: 1fr 1fr;
+    }
+}

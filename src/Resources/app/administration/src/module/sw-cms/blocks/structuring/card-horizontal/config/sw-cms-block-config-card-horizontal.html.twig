@@ -3,7 +3,7 @@
         <div class="sw-cms-block-config-card-horizontal">
             {# Remove left column padding #}
             <sw-switch-field
-                v-model="customFields.removeLeftColPadding" 
+                v-model="additionalSettingsFields.removeLeftColPadding" 
                 :label="$tc('sw-cms.blocks.cardHorizontal.config.removeLeftColPadding.label')"
                 size="small"
                 :disabled="notResponsive"
@@ -11,7 +11,7 @@
 
             {# Left column min. width #}
             <sw-number-field
-                v-model="customFields.leftColMinWidth"
+                v-model="additionalSettingsFields.leftColMinWidth"
                 :label="$tc('sw-cms.blocks.cardHorizontal.config.leftColMinWidth.label')"
                 :min="0"
                 :step="1"

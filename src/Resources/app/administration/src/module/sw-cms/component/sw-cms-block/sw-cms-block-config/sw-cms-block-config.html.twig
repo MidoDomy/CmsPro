@@ -1,0 +1,22 @@
+{% block sw_cms_block_config__settings %}
+    <div class="sw-cms-section-config__settings">
+        {# Name #}
+        {% block sw_cms_block_config_name_field %}
+            <sw-text-field
+                v-model="block.name"
+                :label="$tc('sw-cms.detail.label.blockNameField')"
+                :placeholder="$tc('sw-cms.detail.label.blockNameFieldPlaceholder')"
+                :help-text="$tc('sw-cms.detail.tooltip.blockNameField')"
+            />
+        {% endblock %}
+
+        {# Classes #}
+        {% block sw_cms_block_config_class_field %}
+            <sw-text-field
+                v-model="block.cssClass"
+                :label="$tc('sw-cms.detail.label.cssClassField')"
+                :help-text="$tc('sw-cms.detail.helpText.cssClassField')"
+            />
+        {% endblock %}
+    </div>
+{% endblock %}

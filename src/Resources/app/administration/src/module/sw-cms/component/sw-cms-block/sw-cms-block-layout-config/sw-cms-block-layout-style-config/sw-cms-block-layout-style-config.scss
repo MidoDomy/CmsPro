@@ -1,0 +1,99 @@
+.sw-cms-block-layout-style-config {
+    &__box-shadow {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 16px;
+
+        .sw-field--small {
+            .sw-field__label {
+                margin-bottom: 4px;
+                font-size: 12px;
+                line-height: 14px;
+            }
+
+            input {
+                padding: 4px 8px;
+            }
+
+            .sw-field__addition {
+                padding: 4px 8px;
+                min-width: auto;
+            }
+        }
+    }
+
+    &__box-shadow-type {
+        .sw-field__radio-group {
+            display: flex;
+        }
+
+        .sw-field__radio-option {
+            flex: 1 1 50%;
+            grid-template-columns: 1fr;
+
+            &:first-child {
+                .sw-field__radio-option-label {
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                }
+            }
+
+            &:last-child {
+                .sw-field__radio-option-label {
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                }
+            }
+
+            &-checked {
+                .sw-field__radio-option-label  {
+                    background-color: #199fff;
+                    border-color: #199fff;
+                    color: white;
+                }
+            }
+        }
+
+        .sw-field__radio-input {
+            display: none;
+        }
+
+        .sw-field__radio-option-label {
+            padding: 6px;
+            border: 1px solid #d2d9e0;
+            text-align: center;
+        }
+    }
+
+    &__border-radius {
+        .sw-field--small {
+            margin-bottom: 0;
+        }
+    }
+
+    .custom-icon-border-radius {
+        height: 12px;
+        width: 10px;
+        border: 1px solid transparent;
+
+        &.top-left {
+            border-color: currentColor transparent transparent currentColor;
+            border-top-left-radius: 4px;
+        }
+
+        &.top-right {
+            border-color: currentColor currentColor transparent transparent;
+            border-top-right-radius: 4px;
+        }
+
+        &.bottom-right {
+            border-color: transparent currentColor currentColor transparent;
+            border-bottom-right-radius: 4px;
+        }
+
+        &.bottom-left {
+            border-color: transparent transparent currentColor currentColor;
+            border-bottom-left-radius: 4px;
+        }
+    }
+}

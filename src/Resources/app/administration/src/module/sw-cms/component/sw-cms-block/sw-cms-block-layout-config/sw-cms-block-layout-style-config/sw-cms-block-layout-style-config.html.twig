@@ -1,0 +1,203 @@
+{% block sw_cms_block_layout_style_config %}
+    <div class="sw-cms-block-layout-style-config">
+        {# Box shadow #}
+        {% block sw_cms_block_layout_style_config_box_shadow %}
+            {# Label #}
+            {% block sw_cms_block_layout_style_config_box_shadow_label %}
+                <sw-label>
+                    {{ $tc('sw-cms.sidebar.block.layout.config.boxShadow.label') }}
+                </sw-label>
+            {% endblock %}
+
+            <div class="sw-cms-block-layout-style-config__box-shadow">
+                {# Shadow x-offset #}
+                {% block sw_cms_block_layout_style_config_box_shadow_x_offset_field %}
+                    <sw-number-field
+                        v-model="customFields[currentViewportPrefix + 'boxShadowXOffset']"
+                        :label="$tc('sw-cms.sidebar.block.layout.config.boxShadow.xOffset')"
+                        :step="1" 
+                        :min="0" 
+                        :max="9999" 
+                        size="small"
+                    >
+                        <template v-slot:suffix="{  identification  }">px</template>
+                    </sw-number-field>
+                {% endblock %}
+
+                {# Shadow y-offset #}
+                {% block sw_cms_block_layout_style_config_box_shadow_y_offset_field %}
+                    <sw-number-field
+                        v-model="customFields[currentViewportPrefix + 'boxShadowYOffset']"
+                        :label="$tc('sw-cms.sidebar.block.layout.config.boxShadow.yOffset')"
+                        :step="1" 
+                        :min="0" 
+                        :max="9999" 
+                        size="small"
+                    >
+                        <template v-slot:suffix="{  identification  }">px</template>
+                    </sw-number-field>
+                {% endblock %}
+
+                {# Shadow blur #}
+                {% block sw_cms_block_layout_style_config_box_shadow_blur_field %}
+                    <sw-number-field
+                        v-model="customFields[currentViewportPrefix + 'boxShadowBlur']"
+                        :label="$tc('sw-cms.sidebar.block.layout.config.boxShadow.blur')"
+                        :step="1" 
+                        :min="0" 
+                        :max="9999" 
+                        size="small"
+                    >
+                        <template v-slot:suffix="{  identification  }">px</template>
+                    </sw-number-field>
+                {% endblock %}
+
+                {# Shadow spread #}
+                {% block sw_cms_block_layout_style_config_box_shadow_spread_field %}
+                    <sw-number-field
+                        v-model="customFields[currentViewportPrefix + 'boxShadowSpread']"
+                        :label="$tc('sw-cms.sidebar.block.layout.config.boxShadow.spread')"
+                        :step="1" 
+                        :min="0" 
+                        :max="9999" 
+                        size="small"
+                    >
+                        <template v-slot:suffix="{  identification  }">px</template>
+                    </sw-number-field>
+                {% endblock %}
+            </div>
+
+            <div class="two-columns">
+                {# Type #}
+                {% block sw_cms_block_layout_style_config_box_shadow_type_field %}
+                    <div class="sw-cms-block-layout-style-config__box-shadow-type">
+                        <sw-radio-field
+                            v-model="customFields[currentViewportPrefix + 'boxShadowType']"
+                            :options="boxShadowTypeOptions"
+                        />
+                    </div>
+                {% endblock %}
+    
+                {# Color #}
+                {% block sw_cms_block_layout_style_config_box_shadow_color_field %}
+                    <sw-colorpicker
+                        v-model="customFields[currentViewportPrefix + 'boxShadowColor']"
+                        colorOutput="auto"
+                        :alpha="true"
+                        :zIndex="100"
+                        size="small"
+                    />
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {# Border style and color #}
+        {% block sw_cms_block_layout_style_config_border_styles %}
+            <div class="two-columns">
+                {# Color #}
+                {% block sw_cms_block_layout_style_config_border_color_field %}
+                    <sw-colorpicker
+                        v-model="customFields[currentViewportPrefix + 'borderColor']"
+                        :label="$tc('sw-cms.sidebar.block.layout.config.borderColor.label')"
+                        colorOutput="auto"
+                        :alpha="true"
+                        :zIndex="100"
+                        size="small"
+                        :help-text="$tc('sw-cms.sidebar.block.layout.config.borderColor.helpText')"
+                    />
+                {% endblock %}
+
+                {# Style #}
+                {% block sw_cms_block_layout_style_config_border_style_field %}
+                    <sw-select-field
+                        v-model="customFields[currentViewportPrefix + 'borderStyle']"
+                        :label="$tc('sw-cms.sidebar.block.layout.config.borderStyle.label')"
+                        size="small"
+                    >
+                        <option value="solid">
+                            {{ $tc('sw-cms.sidebar.block.layout.config.borderStyle.optionSolid') }}
+                        </option>
+                        <option value="dashed">
+                            {{ $tc('sw-cms.sidebar.block.layout.config.borderStyle.optionDashed') }}
+                        </option>
+                    </sw-select-field>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {# Border radius #}
+        {% block sw_cms_block_layout_style_config_border_radius %}
+            {# Label #}
+            {% block sw_cms_block_layout_style_config_border_radius_label %}
+                <sw-label>
+                    {{ $tc('sw-cms.sidebar.block.layout.config.borderRadius.label') }}
+                </sw-label>
+            {% endblock %}
+
+            {# Border radius #}
+            {% block sw_cms_block_layout_style_config_border_radius %}
+                <div class="two-columns sw-cms-block-layout-style-config__border-radius">
+                    {# Top left #}
+                    {% block sw_cms_block_layout_style_config_border_radius_top_left_field %}
+                        <sw-number-field
+                            v-model="customFields[currentViewportPrefix + 'borderRadiusTopLeft']"
+                            :step="1" 
+                            :min="0" 
+                            size="small"
+                        >
+                            <template v-slot:prefix="{  identification  }">
+                                <div class="custom-icon-border-radius top-left"></div>
+                            </template>
+                            <template v-slot:suffix="{  identification  }">px</template>
+                        </sw-number-field>
+                    {% endblock %}
+
+                    {# Top right #}
+                    {% block sw_cms_block_layout_style_config_border_radius_top_right_field %}
+                        <sw-number-field  
+                            v-model="customFields[currentViewportPrefix + 'borderRadiusTopRight']"
+                            :step="1" 
+                            :min="0" 
+                            size="small"
+                        >
+                            <template v-slot:prefix="{  identification  }">
+                                <div class="custom-icon-border-radius top-right"></div>
+                            </template>
+                            <template v-slot:suffix="{  identification  }">px</template>
+                        </sw-number-field>
+                    {% endblock %}
+
+                    {# Bottom left #}
+                    {% block sw_cms_block_layout_style_config_border_radius_bottom_left_field %}
+                        <sw-number-field
+                            v-model="customFields[currentViewportPrefix + 'borderRadiusBottomLeft']"
+                            :step="1" 
+                            :min="0" 
+                            size="small"
+                        >
+                            <template v-slot:prefix="{  identification  }">
+                                <div class="custom-icon-border-radius bottom-left"></div>
+                            </template>
+                            <template v-slot:suffix="{  identification  }">px</template>
+                        </sw-number-field>
+                    {% endblock %}
+
+                    {# Bottom right #}
+                    {% block sw_cms_block_layout_style_config_bottom_border_radius_bottom_right_field %}
+                        <sw-number-field
+                            v-model="customFields[currentViewportPrefix + 'borderRadiusBottomRight']"
+                            :step="1" 
+                            :min="0" 
+                            size="small"
+                        >
+                            <template v-slot:prefix="{  identification  }">
+                                <div class="custom-icon-border-radius bottom-right"></div>
+                            </template>
+                            <template v-slot:suffix="{  identification  }">px</template>
+                        </sw-number-field>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endblock %}
+    </div>
+{% endblock %}

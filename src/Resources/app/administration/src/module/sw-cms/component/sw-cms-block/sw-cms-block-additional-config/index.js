@@ -18,6 +18,6 @@ Component.register('sw-cms-block-additional-config', {
         block: {
             type: Object,
             required: true,
-        },
+        }
     }
 });

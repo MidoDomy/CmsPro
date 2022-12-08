@@ -1,0 +1,80 @@
+{% block sw_cms_block_layout_config %}
+    <div class="sw-cms-block-layout-config">
+        <sw-tabs
+            class="sw-cms-block-layout-config__tabs"
+            default-item="default"
+        >
+            <template slot-scope="{ active }">
+                {% block sw_cms_block_config_modal_tab_navs %}
+                    <sw-tabs-item
+                        :title="$tc('sw-cms.sidebar.block.layout.tabs.default')"
+                        name="default"
+                        :active-tab="active"
+                    >
+                        {{ $tc('sw-cms.sidebar.block.layout.tabs.default') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item
+                        :title="$tc('sw-cms.sidebar.block.layout.tabs.background')"
+                        name="background"
+                        :active-tab="active"
+                    >
+                        {{ $tc('sw-cms.sidebar.block.layout.tabs.background') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item
+                        :title="$tc('sw-cms.sidebar.block.layout.tabs.box')"
+                        name="box"
+                        :active-tab="active"
+                    >
+                        {{ $tc('sw-cms.sidebar.block.layout.tabs.box') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item
+                        :title="$tc('sw-cms.sidebar.block.layout.tabs.style')"
+                        name="style"
+                        :active-tab="active"
+                    >
+                        {{ $tc('sw-cms.sidebar.block.layout.tabs.style') }}
+                    </sw-tabs-item>
+                {% endblock %}
+            </template>
+
+            <template
+                slot="content"
+                slot-scope="{ active }"
+            >
+                {# Default tab #}
+                <sw-container v-if="active === 'default'">
+                    <sw-cms-block-layout-default-config
+                        :block="block"
+                    />
+                </sw-container>
+
+                {# Background tab #}
+                <sw-container v-if="active === 'background'">
+                    <sw-cms-block-layout-background-config
+                        :block="block"
+                    />
+                </sw-container>
+
+                {# Box model tab #}
+                <sw-container
+                    v-if="active === 'box'"
+                    class="sw-cms-block-layout-config__tab-box"
+                >
+                    <sw-cms-block-layout-box-config
+                        :block="block"
+                    />
+                </sw-container>
+
+                {# Style tab #}
+                <sw-container v-if="active === 'style'">
+                    <sw-cms-block-layout-style-config
+                        :block="block"
+                    />
+                </sw-container>
+            </template>
+        </sw-tabs>
+    </div>
+{% endblock %}

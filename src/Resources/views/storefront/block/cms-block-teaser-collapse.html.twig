@@ -7,9 +7,9 @@
 {% block cms_block_group_predefined_content %}
     {% block cms_block_teaser_collapse %}
         {% set teaserCollapseOptions = {
-            closedHeight: block.customFields.closedHeight,
-            md_closedHeight: block.customFields.md_closedHeight,
-            sm_closedHeight: block.customFields.sm_closedHeight
+            closedHeight: block.customFields.additionalSettings.closedHeight,
+            md_closedHeight: block.customFields.additionalSettings.md_closedHeight,
+            sm_closedHeight: block.customFields.additionalSettings.sm_closedHeight
         } %}
 
         <div class="cms-teaser-collapse" 

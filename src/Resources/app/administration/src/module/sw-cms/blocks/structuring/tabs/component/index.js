@@ -17,6 +17,6 @@ Component.extend('sw-cms-block-tabs', 'sw-cms-block-group-dynamic', {
     },
 
     created() {
-        this.activePanelIndex = this.getCFValue('activeIndex') <= this.panels.length ? this.getCFValue('activeIndex') - 1 : 0;
+        this.activePanelIndex = this.getAdditionalSettingValue('activeIndex') <= this.panels.length ? this.getAdditionalSettingValue('activeIndex') - 1 : 0;
     }
 });

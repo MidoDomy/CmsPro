@@ -6,6 +6,7 @@ import './sw-cms.scss';
 import './component/sw-cms-sidebar';
 import './component/sw-cms-section';
 import './component/sw-cms-block';
+import './component/sw-cms-block/sw-cms-block-config';
 import './component/sw-media-preview-v2';
     /* Created */
 import './component/cms-block-sub-section';
@@ -17,6 +18,7 @@ import './component/cms-navigator-tree/cms-navigator-tree-item';
 import './component/sw-cms-block/sw-cms-block-content-config';
 import './component/sw-cms-block/sw-cms-block-additional-config';
 import './component/sw-cms-block/sw-cms-block-additional-config/sw-cms-block-additional-config-base-form';
+import './component/sw-cms-block/sw-cms-block-layout-config';
 import './component/repeater';
 import './component/sw-cms-heading-field';
 import './component/sw-cms-link-field';

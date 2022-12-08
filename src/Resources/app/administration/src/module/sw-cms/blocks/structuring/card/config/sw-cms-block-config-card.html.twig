@@ -3,7 +3,7 @@
         <div class="sw-cms-block-config-card">
             {# Remove header padding #}
             <sw-switch-field
-                v-model="customFields.removeHeaderPadding" 
+                v-model="additionalSettingsFields.removeHeaderPadding" 
                 :label="$tc('sw-cms.blocks.card.config.removeHeaderPadding.label')"
                 size="small"
                 :disabled="notResponsive"
@@ -11,7 +11,7 @@
 
             {# Show header #}
             <sw-switch-field
-                v-model="customFields.showHeader" 
+                v-model="additionalSettingsFields.showHeader" 
                 :label="$tc('sw-cms.blocks.card.config.showHeader.label')"
                 size="small"
                 :disabled="notResponsive"
@@ -20,7 +20,7 @@
 
             {# Show footer #}
             <sw-switch-field
-                v-model="customFields.showFooter" 
+                v-model="additionalSettingsFields.showFooter" 
                 :label="$tc('sw-cms.blocks.card.config.showFooter.label')"
                 size="small"
                 :disabled="notResponsive"

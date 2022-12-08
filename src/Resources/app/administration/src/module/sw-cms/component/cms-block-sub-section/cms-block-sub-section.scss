@@ -2,6 +2,9 @@
 
 .cms-block-sub-section {
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100%;
     padding-bottom: 10px;
 
     .sw-cms-section__content {

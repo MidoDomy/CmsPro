@@ -3,12 +3,12 @@
 {% block cms_block_group_dynamic_content %}
     {% block cms_block_timeline %}
         {% set timelineOptions = {
-            position: block.customFields.position,
-            md_position: block.customFields.md_position,
-            sm_position: block.customFields.sm_position,
-            padding: block.customFields.padding,
-            md_padding: block.customFields.md_padding,
-            sm_padding: block.customFields.sm_padding
+            position: block.customFields.additionalSettings.position,
+            md_position: block.customFields.additionalSettings.md_position,
+            sm_position: block.customFields.additionalSettings.sm_position,
+            padding: block.customFields.additionalSettings.padding,
+            md_padding: block.customFields.additionalSettings.md_padding,
+            sm_padding: block.customFields.additionalSettings.sm_padding
         } %}
 
         <div class="cms-timeline" 

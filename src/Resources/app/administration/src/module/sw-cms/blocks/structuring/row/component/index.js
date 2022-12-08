@@ -23,11 +23,11 @@ Component.extend('sw-cms-block-row', 'sw-cms-block-group-dynamic', {
 
     computed: {
         gutter() {
-            return this.getCFValue('gutter', true);
+            return this.getAdditionalSettingValue('gutter', true);
         },
 
         direction() {
-            return this.getCFValue('direction', true);
+            return this.getAdditionalSettingValue('direction', true);
         },
 
         rowStyles() {

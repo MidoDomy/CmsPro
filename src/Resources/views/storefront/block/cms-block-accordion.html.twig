@@ -11,7 +11,7 @@
                         {% block cms_block_accordion_item_heading %}
                             <div id="heading{{ currentBlockId }}{{ loop.index }}">
                                 {% block cms_block_accordion_item_trigger %}
-                                    <h4 class="accordion-item-trigger{% if loop.index != block.customFields.activeIndex %} collapsed{% endif %}"
+                                    <h4 class="accordion-item-trigger{% if loop.index != block.customFields.additionalSettings.activeIndex %} collapsed{% endif %}"
                                         data-toggle="collapse" 
                                         data-target="#collapse{{ currentBlockId }}{{ loop.index }}" 
                                         aria-expanded="true" 
@@ -29,7 +29,7 @@
                         {% endblock %}
 
                         {% block cms_block_accordion_item_content %}
-                            <div class="accordion-item-content collapse{% if loop.index == block.customFields.activeIndex %} show{% endif %}"
+                            <div class="accordion-item-content collapse{% if loop.index == block.customFields.additionalSettings.activeIndex %} show{% endif %}"
                                 id="collapse{{ currentBlockId }}{{ loop.index }}" 
                                 aria-labelledby="heading{{ currentBlockId }}{{ loop.index }}" 
                                 data-parent="#accordion{{ currentBlockId }}"

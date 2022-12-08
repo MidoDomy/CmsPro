@@ -20,15 +20,15 @@ Component.extend('sw-cms-block-card', 'sw-cms-block-group-predefined', {
 
     computed: {
         removeHeaderPadding() {
-            return this.getCFValue('removeHeaderPadding');
+            return this.getAdditionalSettingValue('removeHeaderPadding');
         },
 
         showHeader() {
-            return this.getCFValue('showHeader');
+            return this.getAdditionalSettingValue('showHeader');
         },
 
         showFooter() {
-            return this.getCFValue('showFooter');
+            return this.getAdditionalSettingValue('showFooter');
         },
 
         cardHeaderStyles() {

@@ -1,19 +1,22 @@
-import template from './sw-cms-block-additional-config-base-form.html.twig';
+import template from './sw-cms-block-layout-style-config.html.twig';
+import './sw-cms-block-layout-style-config.scss';
 
 const { Component, Mixin } = Shopware;
 
-Component.register('sw-cms-block-additional-config-base-form', {
+Component.register('sw-cms-block-layout-style-config', {
     template,
-    
+
+    inject: [ 'cmsService' ],
+
     mixins: [
-        Mixin.getByName('cms-state'),
+      Mixin.getByName('cms-state')
     ],
 
     props: {
         block: {
             type: Object,
-            required: true,
-        },
+            required: true
+        }
     },
 
     computed: {
@@ -30,8 +33,15 @@ Component.register('sw-cms-block-additional-config-base-form', {
                 this.currentDeviceView === 'tablet-landscape' ? 'md_' : '';
         },
 
-        additionalSettingsFields() {
-            return this.block.customFields.additionalSettings;
+        customFields() {
+            return this.block.customFields;
+        },
+
+        boxShadowTypeOptions() {
+            return [
+                {'value': 'outset', 'name': 'Outset'},
+                {'value': 'inset', 'name': 'Inset'}
+            ]
         }
     }
 });

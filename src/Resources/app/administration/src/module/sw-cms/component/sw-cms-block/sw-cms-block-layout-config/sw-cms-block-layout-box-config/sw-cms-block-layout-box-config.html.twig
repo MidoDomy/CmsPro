@@ -1,0 +1,188 @@
+{% block sw_cms_block_layout_box_config %}
+    <div class="sw-cms-block-layout-box-config">
+        {# Margin #}
+        {% block sw_cms_block_layout_spacers_config_margin %}
+            <div class="sw-cms-block-layout-box-config__margin">
+                {# Label #}
+                {% block sw_cms_block_layout_spacers_config_margin_label %}
+                    <sw-label>
+                        {{ $tc('sw-cms.sidebar.block.layout.config.margin.label') }}
+                    </sw-label>
+                {% endblock %}
+                
+                <div>&nbsp;</div>
+                {# Margin top #}
+                {% block sw_cms_block_layout_spacers_config_margin_top_field %}
+                    <sw-number-field
+                        v-model="customFields[currentViewportPrefix + 'marginTop']"
+                        placeholder="-"
+                        :step="1" 
+                        :min="0" 
+                        size="small"
+                    />
+                {% endblock %}
+                <div>&nbsp;</div>
+
+                {# Margin left #}
+                {% block sw_cms_block_layout_spacers_config_margin_left_field %}
+                    <sw-number-field  
+                        v-model="customFields[currentViewportPrefix + 'marginLeft']"
+                        placeholder="-"
+                        :step="1"
+                        :min="0"
+                        size="small"
+                    />
+                {% endblock %}
+
+                {# Border #}
+                {% block sw_cms_block_layout_spacers_config_border %}
+                    <div class="sw-cms-block-layout-box-config__border">
+                        {# Label #}
+                        {% block sw_cms_block_layout_spacers_config_border_label %}
+                            <sw-label>
+                                {{ $tc('sw-cms.sidebar.block.layout.config.border.label') }}
+                            </sw-label>
+                        {% endblock %}
+
+                        <div>&nbsp;</div>
+                        {# Border top #}
+                        {% block sw_cms_block_layout_spacers_config_border_top_width_field %}
+                            <sw-number-field
+                                v-model="customFields[currentViewportPrefix + 'borderTopWidth']"
+                                placeholder="-"
+                                :step="1" 
+                                :min="0" 
+                                size="small"
+                            />
+                        {% endblock %}
+                        <div>&nbsp;</div>
+
+                        {# Border left #}
+                        {% block sw_cms_block_layout_spacers_config_border_left_width_field %}
+                            <sw-number-field  
+                                v-model="customFields[currentViewportPrefix + 'borderLeftWidth']"
+                                placeholder="-"
+                                :step="1"
+                                :min="0"
+                                size="small"
+                            />
+                        {% endblock %}
+
+                        {# Padding #}
+                        {% block sw_cms_block_layout_spacers_config_padding %}
+                            <div class="sw-cms-block-layout-box-config__padding">
+                                {# Label #}
+                                {% block sw_cms_block_layout_spacers_config_padding_label %}
+                                    <sw-label>
+                                        {{ $tc('sw-cms.sidebar.block.layout.config.padding.label') }}
+                                    </sw-label>
+                                {% endblock %}
+
+                                <div>&nbsp;</div>
+                                {# Padding top #}
+                                {% block sw_cms_block_layout_spacers_config_padding_top_field %}
+                                    <sw-number-field
+                                        v-model="customFields[currentViewportPrefix + 'paddingTop']"
+                                        placeholder="-"
+                                        :step="1" 
+                                        :min="0"
+                                        size="small"
+                                    />
+                                {% endblock %}
+                                <div>&nbsp;</div>
+
+                                {# Padding left #}
+                                {% block sw_cms_block_layout_spacers_config_padding_left_field %}
+                                    <sw-number-field 
+                                        v-model="customFields[currentViewportPrefix + 'paddingLeft']"
+                                        placeholder="-"
+                                        :step="1" 
+                                        :min="0" 
+                                        size="small"
+                                    />
+                                {% endblock %}
+
+                                {# Content #}
+                                <div class="sw-cms-block-layout-box-config__content">
+                                    &nbsp;
+                                </div>
+
+                                {# Padding right #}
+                                {% block sw_cms_block_layout_spacers_config_padding_right_field %}
+                                    <sw-number-field
+                                        v-model="customFields[currentViewportPrefix + 'paddingRight']"
+                                        placeholder="-"
+                                        :step="1"
+                                        :min="0"
+                                        size="small"
+                                    />
+                                {% endblock %}
+            
+                                <div>&nbsp;</div>
+                                {# Padding bottom #}
+                                {% block sw_cms_block_layout_spacers_config_padding_bottom_field %}
+                                    <sw-number-field
+                                        v-model="customFields[currentViewportPrefix + 'paddingBottom']"
+                                        placeholder="-"
+                                        :step="1"
+                                        :min="0"
+                                        size="small"
+                                    />
+                                {% endblock %}
+                                <div>&nbsp;</div>
+                            </div>
+                        {% endblock %}
+
+                        {# Border right #}
+                        {% block sw_cms_block_layout_spacers_config_border_right_width_field %}
+                            <sw-number-field
+                                v-model="customFields[currentViewportPrefix + 'borderRightWidth']"
+                                placeholder="-"
+                                :step="1"
+                                :min="0"
+                                size="small"
+                            />
+                        {% endblock %}
+
+                        <div>&nbsp;</div>
+                        {# Border bottom #}
+                        {% block sw_cms_block_layout_spacers_config_border_bottom_width_field %}
+                            <sw-number-field
+                                v-model="customFields[currentViewportPrefix + 'borderBottomWidth']"
+                                placeholder="-"
+                                :step="1"
+                                :min="0"
+                                size="small"
+                            />
+                        {% endblock %}
+                        <div>&nbsp;</div>
+                    </div>
+                {% endblock %}
+
+                {# Margin right #}
+                {% block sw_cms_block_layout_spacers_config_margin_right_field %}
+                    <sw-number-field
+                        v-model="customFields[currentViewportPrefix + 'marginRight']"
+                        placeholder="-"
+                        :step="1"
+                        :min="0"
+                        size="small"
+                    />
+                {% endblock %}
+
+                <div>&nbsp;</div>
+                {# Margin bottom #}
+                {% block sw_cms_block_layout_spacers_config_margin_bottom_field %}
+                    <sw-number-field  
+                        v-model="customFields[currentViewportPrefix + 'marginBottom']"
+                        placeholder="-"
+                        :step="1" 
+                        :min="0" 
+                        size="small"
+                    />
+                {% endblock %}
+                <div>&nbsp;</div>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
