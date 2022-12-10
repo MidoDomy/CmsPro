@@ -1,0 +1,9 @@
+.sw-cms-block-config {
+    .sw-block-field.sw-field--small {
+        margin-bottom: 16px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

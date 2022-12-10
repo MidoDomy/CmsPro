@@ -5,7 +5,8 @@
         },
         "sidebar": {
             "contentMenu": {
-                "customSettings": "Custom settings"
+                "contentSettings": "Content settings",
+                "additionalSettings": "Additional settings"
             },
             "block": {
                 "dynamicSlotItems": {

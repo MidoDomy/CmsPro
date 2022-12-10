@@ -1,11 +1,12 @@
-.sw-sidebar-collapse__custom-settings-content {
-    padding: 0 25px;
+.sw-sidebar-collapse {
+    &__content-settings,
+    &__additional-settings {
+        .sw-sidebar-collapse__title {
+            margin-right: 0;
+        }
 
-    .sw-tabs__content {
-        font-size: 14px;
-    }
-
-    .sw-tabs-item {
-        padding: 8px 12px;
+        .sw-collapse__content {
+            padding: 10px 25px 25px;
+        }
     }
 }

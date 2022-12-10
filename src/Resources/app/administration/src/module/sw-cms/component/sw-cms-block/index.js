@@ -95,10 +95,10 @@ Component.override('sw-cms-block', {
 
         overlayStyles() {
             return {
-                'top': `${this.getValue('marginTop') - 1 ?? -1}px`,
-                'bottom': `${this.getValue('marginBottom') - 1 ?? -1}px`,
-                'left': `${this.getValue('marginLeft') - 1 ?? -1}px`,
-                'right': `${this.getValue('marginRight') - 1 ?? -1}px`
+                'top': `${this.getValue('marginTop') ?? -1}px`,
+                'bottom': `${this.getValue('marginBottom') ?? -1}px`,
+                'left': `${this.getValue('marginLeft') ?? -1}px`,
+                'right': `${this.getValue('marginRight') ?? -1}px`
             };
         }
     },
