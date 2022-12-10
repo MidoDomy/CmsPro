@@ -7,7 +7,7 @@
 
 {% block section_content_block %}
     {# Variables #}
-    {% set layoutSettings = block.customFields %}
+    {% set layoutSettings = block.customFields | filter((value, key) => key != 'additionalSettings') %}
 
     {# Block column ------------- #}
         {% set blockColumnClasses = [layoutSettings.width ? 'col-lg-' ~ layoutSettings.width : 'col-lg-12', layoutSettings.md_width ? 'col-md-' ~ layoutSettings.md_width : 'col-md-12', layoutSettings.sm_width ? 'col-' ~ layoutSettings.sm_width : 'col-12'] %}
@@ -46,8 +46,6 @@
                 { name: 'borderRadiusBottomLeft', property: 'borderBottomLeftRadius', defaultValue: 0, unit: 'px' }
             ]
         } %}
-
-        {# 'box-shadow': `${this.getValue('boxShadowType') == 'inset' ? 'inset' : ''} ${this.getValue('boxShadowXOffset') ?? '0'}px ${this.getValue('boxShadowYOffset') ?? '0'}px ${this.getValue('boxShadowBlur') ?? '0'}px ${this.getValue('boxShadowSpread') ?? '0'}px ${this.getValue('boxShadowColor') ?? 'transparent'}`, #}
     {# -------------------------- #}
 
     {# Sidebar classes ---------- #}
