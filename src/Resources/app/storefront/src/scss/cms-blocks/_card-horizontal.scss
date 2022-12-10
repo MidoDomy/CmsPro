@@ -7,6 +7,10 @@
         flex: 1 1 66%;
     }
 
+    .card-header {
+        min-height: 100%;
+    }
+
     .card-body {
         padding: $card-spacer-x;
     }

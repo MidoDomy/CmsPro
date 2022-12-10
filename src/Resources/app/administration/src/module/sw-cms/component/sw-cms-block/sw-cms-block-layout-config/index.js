@@ -9,5 +9,5 @@ import './sw-cms-block-layout-box-config';
 const { Component } = Shopware;
 
 Component.override('sw-cms-block-layout-config', {
-  template
+    template
 });

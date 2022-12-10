@@ -5,8 +5,14 @@
 }
 
 .sw-cms-block {
-    .sw-cms-block {
-        z-index: 100;
+    &__content {
+        position: relative;
+
+        &:hover > .sw-cms-block-group {
+            &> .sw-cms-block-group__actions {
+                display: block;
+            }
+        }
     }
 
     .sw-cms-stage-add-block {

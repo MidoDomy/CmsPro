@@ -16,12 +16,11 @@
                             {% if block.customFields.additionalSettings.removeHeaderPadding %}style="padding: 0;"{% endif %}
                         >
                             {% block cms_block_card_header_subBlocks %}
-                                {% for block in columnChildBlocks.headerContent %}
-                                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                        sectionBlocks: sectionBlocks,
-                                        parentBlockId: currentBlockId
-                                    } %}
-                                {% endfor %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-blocks.html.twig" with {
+                                    blocks: columnChildBlocks.headerContent,
+                                    sectionBlocks: section.blocks,
+                                    parentBlockId: currentBlockId
+                                } %}
                             {% endblock %}
                         </div>
                     {% endblock %}
@@ -31,27 +30,25 @@
                     {% block cms_block_card_body %}
                         <div class="card-body">
                             {% block cms_block_card_body_subBlocks %}
-                                {% for block in columnChildBlocks.bodyContent %}
-                                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                        sectionBlocks: sectionBlocks,
-                                        parentBlockId: currentBlockId
-                                    } %}
-                                {% endfor %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-blocks.html.twig" with {
+                                    blocks: columnChildBlocks.bodyContent,
+                                    sectionBlocks: section.blocks,
+                                    parentBlockId: currentBlockId
+                                } %}
                             {% endblock %}
                         </div>
                     {% endblock %}
                 {% endif %}
 
-                {% if block.cutomFields.showFooter and columnChildBlocks.footerContent %}
+                {% if block.cutomFields.additionalSettings.showFooter and columnChildBlocks.footerContent %}
                     {% block cms_block_card_footer %}
                         <div class="card-footer">
                             {% block cms_block_card_footer_subBlocks %}
-                                {% for block in columnChildBlocks.footerContent %}
-                                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                        sectionBlocks: sectionBlocks,
-                                        parentBlockId: currentBlockId
-                                    } %}
-                                {% endfor %}
+                                {% sw_include "@Storefront/storefront/section/cms-section-blocks.html.twig" with {
+                                    blocks: columnChildBlocks.footerContent,
+                                    sectionBlocks: section.blocks,
+                                    parentBlockId: currentBlockId
+                                } %}
                             {% endblock %}
                         </div>
                     {% endblock %}

@@ -27,7 +27,7 @@ Component.register('sw-cms-block-layout-style-config', {
 
         /** Sends prefix of the current viewport
          * prefixes are used for dynamic variables
-         * example: customFields.[currentViewportPrefix + 'variableName'] */ 
+         * example: customFields[currentViewportPrefix + 'variableName'] */ 
         currentViewportPrefix() {
             return this.currentDeviceView === 'mobile' ? 'sm_' : 
                 this.currentDeviceView === 'tablet-landscape' ? 'md_' : '';
@@ -41,7 +41,7 @@ Component.register('sw-cms-block-layout-style-config', {
             return [
                 {'value': 'outset', 'name': 'Outset'},
                 {'value': 'inset', 'name': 'Inset'}
-            ]
+            ];
         }
     }
 });

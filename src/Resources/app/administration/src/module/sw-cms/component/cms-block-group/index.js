@@ -141,14 +141,7 @@ Component.register('cms-block-group', {
          * @returns 
          */
         getAdditionalSettingValue(name, responsive = false) {
-            return responsive ? this.customFields.additionalSettings[this.currentViewportPrefix() + name] : this.customFields.additionalSettings[name];
-        }
-    },
-
-    watch: {
-        block: {
-            deep: true,
-            handler() {}
+            return responsive ? this.additionalSettingsFields[this.currentViewportPrefix() + name] : this.additionalSettingsFields[name];
         }
     }
 });

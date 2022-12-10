@@ -1,23 +1,111 @@
 {% sw_extends '@Storefront/storefront/section/cms-section-block-container.html.twig' %}
 
-{% block section_content_block %}
-    {# Make sure, that we only render the first level #}
-    {% if block.customFields.cms_parent_block_id is empty %}
-        {{ parent() }}
-    {% else %}
-        {# In case of a block with a parent block id we check if the parentBlockId is set and matches #}
-        {% if parentBlockId is defined and parentBlockId == block.customFields.cms_parent_block_id %}
-            {{ parent() }}
-        {% endif %}
-    {% endif %}
-{% endblock %}
+{# 
+    styleMap description 
+    { admin variable name, js style property name, default value, unit }
+#}
 
-{% block section_content_block_container %}
-    <div class="cms-block-container"
-        style="{% if top or right or bottom or left %}padding: {{ padding }};{% endif %}"
-    >
-        {% block section_content_block_row %}
-            {{ parent() }}
-        {% endblock %}
-    </div>
+{% block section_content_block %}
+    {# Variables #}
+    {% set layoutSettings = block.customFields %}
+
+    {# Block column ------------- #}
+        {% set blockColumnClasses = [layoutSettings.width ? 'col-lg-' ~ layoutSettings.width : 'col-lg-12', layoutSettings.md_width ? 'col-md-' ~ layoutSettings.md_width : 'col-md-12', layoutSettings.sm_width ? 'col-' ~ layoutSettings.sm_width : 'col-12'] %}
+        {% set blockColumnStyleOptions = {
+            styleFields: layoutSettings,
+            styleMap: [
+                { name: 'sort', property: 'order', defaultValue: 999, unit: '' },
+                { name: 'verticalAlign', property: 'alignSelf', defaultValue: 'flex-start', unit: '' },
+                { name: 'marginTop', property: 'paddingTop', defaultValue: 0, unit: 'px' },
+                { name: 'marginBottom', property: 'paddingBottom', defaultValue: 0, unit: 'px' },
+                { name: 'marginLeft', property: 'paddingLeft', defaultValue: 0, unit: 'px' },
+                { name: 'marginRight', property: 'paddingRight', defaultValue: 0, unit: 'px' }
+            ]
+        } %}
+    {# -------------------------- #}
+
+    {# Block -------------------- #}
+        {% set blockClasses = [block.cssClass, 'pos-' ~ block.position, 'cms-block-' ~ block.type] %}
+        {% set blockStyleOptions = {
+            styleFields: layoutSettings,
+            styleMap: [
+                { name: 'minHeight', property: 'minHeight', defaultValue: 0, unit: 'px' },
+                { name: 'borderTopWidth', property: 'borderTopWidth', defaultValue: 0, unit: 'px' },
+                { name: 'borderBottomWidth', property: 'borderBottomWidth', defaultValue: 0, unit: 'px' },
+                { name: 'borderLeftWidth', property: 'borderLeftWidth', defaultValue: 0, unit: 'px' },
+                { name: 'borderRightWidth', property: 'borderRightWidth', defaultValue: 0, unit: 'px' },
+                { name: 'paddingTop', property: 'paddingTop', defaultValue: 0, unit: 'px' },
+                { name: 'paddingBottom', property: 'paddingBottom', defaultValue: 0, unit: 'px' },
+                { name: 'paddingLeft', property: 'paddingLeft', defaultValue: 0, unit: 'px' },
+                { name: 'paddingRight', property: 'paddingRight', defaultValue: 0, unit: 'px' },
+                { name: 'borderColor', property: 'borderColor', defaultValue: 'transparent', unit: '' },
+                { name: 'borderStyle', property: 'borderStyle', defaultValue: 'solid', unit: '' },
+                { name: 'borderRadiusTopLeft', property: 'borderTopLeftRadius', defaultValue: 0, unit: 'px' },
+                { name: 'borderRadiusTopRight', property: 'borderTopRightRadius', defaultValue: 0, unit: 'px' },
+                { name: 'borderRadiusBottomRight', property: 'borderBottomRightRadius', defaultValue: 0, unit: 'px' },
+                { name: 'borderRadiusBottomLeft', property: 'borderBottomLeftRadius', defaultValue: 0, unit: 'px' }
+            ]
+        } %}
+
+        {# 'box-shadow': `${this.getValue('boxShadowType') == 'inset' ? 'inset' : ''} ${this.getValue('boxShadowXOffset') ?? '0'}px ${this.getValue('boxShadowYOffset') ?? '0'}px ${this.getValue('boxShadowBlur') ?? '0'}px ${this.getValue('boxShadowSpread') ?? '0'}px ${this.getValue('boxShadowColor') ?? 'transparent'}`, #}
+    {# -------------------------- #}
+
+    {# Sidebar classes ---------- #}
+        {% set columns = 3 %}
+        {% set isInSidebar = block.sectionPosition == 'sidebar' %}
+        {% set sidebarClasses = '' %}
+
+        {% if isInSidebar == true %}
+            {% set sidebarClasses = 'has--sidebar' %}
+        {% endif %}
+    {# -------------------------- #}
+
+    {# Background --------------- #}
+        {% set blockBgColor = block.backgroundColor %}
+        {% if block.backgroundMedia %}
+            {% set blockClasses = ['bg-image']|merge(blockClasses) %}
+        {% endif %}
+
+        {% if blockBgColor %}
+            {% set blockClasses = ['bg-color']|merge(blockClasses) %}
+        {% endif %}
+    {# -------------------------- #}
+
+    {# Box-shadow --------------- #}
+        {% set boxShadow = (layoutSettings.boxShadowType == 'inset' ? 'inset ' : '') ~ layoutSettings.boxShadowXOffset ~ 'px ' ~ layoutSettings.boxShadowYOffset ~ 'px ' ~ layoutSettings.boxShadowBlur ~ 'px ' ~ (layoutSettings.boxShadowSpread ? layoutSettings.boxShadowSpread ~ 'px ' : '') ~ layoutSettings.boxShadowColor %}
+    {# -------------------------- #}
+
+    {# Template ----------------- #}
+        <div class="{{ blockColumnClasses|join(' ') }}"
+            data-responsive-styles="true"
+            data-responsive-styles-options="{{ blockColumnStyleOptions|json_encode }}"
+        >
+            <div class="cms-block {{ blockClasses|join(' ') }}"
+                style="box-shadow: {{ boxShadow }}; {% if blockBgColor %}background-color: {{ blockBgColor }};{% endif %}"
+                data-responsive-styles="true"
+                data-responsive-styles-options="{{ blockStyleOptions|json_encode }}"
+            >
+                {% block section_content_block_background_image %}
+                    {% if block.backgroundMedia %}
+                        {% sw_thumbnails 'cms-block-background' with {
+                            media: block.backgroundMedia,
+                            attributes: {
+                                class: "cms-block-background media-mode--" ~ block.backgroundMediaMode
+                            }
+                        } %}
+                    {% endif %}
+                {% endblock %}
+
+                {% block section_content_block_container %}
+                    <div class="cms-block-container">
+                        {% block section_content_block_row %}
+                            <div class="cms-block-container-row row cms-row {{ sidebarClasses }}">
+                                {% sw_include "@Storefront/storefront/block/cms-block-" ~ block.type ~ ".html.twig" ignore missing %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    {# -------------------------- #}
 {% endblock %}

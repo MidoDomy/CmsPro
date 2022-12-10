@@ -19,12 +19,11 @@
                 {% block cms_block_row_col %}
                     <div class="col">
                         {% block cms_block_row_col_subBlocks %}
-                            {% for block in panelConfig.subBlocks %}
-                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                    sectionBlocks: sectionBlocks,
-                                    parentBlockId: currentBlockId
-                                } %}
-                            {% endfor %}
+                            {% sw_include "@Storefront/storefront/section/cms-section-blocks.html.twig" with {
+                                blocks: panelConfig.subBlocks,
+                                sectionBlocks: section.blocks,
+                                parentBlockId: currentBlockId
+                            } %}
                         {% endblock %}
                     </div>
                 {% endblock %}

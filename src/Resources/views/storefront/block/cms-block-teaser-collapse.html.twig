@@ -20,12 +20,11 @@
                 <div class="cms-teaser-collapse-content">
                     <div>
                         {% block cms_block_teaser_collapse_content_subBlocks %}
-                            {% for block in columnChildBlocks.mainContent %}
-                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                    sectionBlocks: sectionBlocks,
-                                    parentBlockId: currentBlockId
-                                } %}
-                            {% endfor %}
+                            {% sw_include "@Storefront/storefront/section/cms-section-blocks.html.twig" with {
+                                blocks: columnChildBlocks.mainContent,
+                                sectionBlocks: section.blocks,
+                                parentBlockId: currentBlockId
+                            } %}
                         {% endblock %}
                     </div>
                 </div>

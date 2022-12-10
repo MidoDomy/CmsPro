@@ -17,7 +17,7 @@ Component.register('sw-cms-block-additional-config', {
     props: {
         block: {
             type: Object,
-            required: true,
+            required: true
         }
     }
 });

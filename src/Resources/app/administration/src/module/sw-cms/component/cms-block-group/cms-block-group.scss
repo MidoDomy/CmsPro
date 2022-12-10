@@ -5,12 +5,6 @@
 }
 
 .sw-cms-block-group {
-    position: relative;
-
-    &:hover .sw-cms-block-group__actions {
-        display: block;
-    }
-
     &__actions {
         position: absolute;
         top: 0;

@@ -19,6 +19,7 @@
                         :min="0" 
                         :max="9999" 
                         size="small"
+                        :disabled="notResponsive"
                     >
                         <template v-slot:suffix="{  identification  }">px</template>
                     </sw-number-field>
@@ -33,6 +34,7 @@
                         :min="0" 
                         :max="9999" 
                         size="small"
+                        :disabled="notResponsive"
                     >
                         <template v-slot:suffix="{  identification  }">px</template>
                     </sw-number-field>
@@ -47,6 +49,7 @@
                         :min="0" 
                         :max="9999" 
                         size="small"
+                        :disabled="notResponsive"
                     >
                         <template v-slot:suffix="{  identification  }">px</template>
                     </sw-number-field>
@@ -61,6 +64,7 @@
                         :min="0" 
                         :max="9999" 
                         size="small"
+                        :disabled="notResponsive"
                     >
                         <template v-slot:suffix="{  identification  }">px</template>
                     </sw-number-field>
@@ -74,6 +78,7 @@
                         <sw-radio-field
                             v-model="customFields[currentViewportPrefix + 'boxShadowType']"
                             :options="boxShadowTypeOptions"
+                            :disabled="notResponsive"
                         />
                     </div>
                 {% endblock %}
@@ -86,6 +91,7 @@
                         :alpha="true"
                         :zIndex="100"
                         size="small"
+                        :disabled="notResponsive"
                     />
                 {% endblock %}
             </div>

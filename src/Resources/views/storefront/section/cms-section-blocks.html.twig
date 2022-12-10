@@ -1,0 +1,21 @@
+{% block section_blocks %}
+    <div class="row no-gutters">
+        {% for block in blocks %}
+            {# Make sure, that we only render the first level #}
+            {% if block.customFields.cms_parent_block_id is empty %}
+                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                    sectionBlocks: section.blocks,
+                    parentBlockId: currentBlockId
+                } %}
+            {% else %}
+                {# In case of a block with a parent block id we check if the parentBlockId is set and matches #}
+                {% if parentBlockId is defined and parentBlockId == block.customFields.cms_parent_block_id %}
+                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
+                        sectionBlocks: section.blocks,
+                        parentBlockId: currentBlockId
+                    } %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

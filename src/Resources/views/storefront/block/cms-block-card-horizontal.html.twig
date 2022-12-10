@@ -21,12 +21,11 @@
                                             {% if block.customFields.additionalSettings.removeLeftColPadding %}style="padding: 0;"{% endif %}
                                         >
                                             {% block cms_block_card_horizontal_header_subBlocks %}
-                                                {% for block in columnChildBlocks.headerContent %}
-                                                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                                        sectionBlocks: sectionBlocks,
-                                                        parentBlockId: currentBlockId
-                                                    } %}
-                                                {% endfor %}
+                                                {% sw_include "@Storefront/storefront/section/cms-section-blocks.html.twig" with {
+                                                    blocks: columnChildBlocks.headerContent,
+                                                    sectionBlocks: section.blocks,
+                                                    parentBlockId: currentBlockId
+                                                } %}
                                             {% endblock %}
                                         </div>
                                     {% endblock %}
@@ -40,12 +39,11 @@
                                     {% block cms_block_card_horizontal_body %}
                                         <div class="card-body">
                                             {% block cms_block_card_horizontal_body_subBlocks %}
-                                                {% for block in columnChildBlocks.bodyContent %}
-                                                    {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                                        sectionBlocks: sectionBlocks,
-                                                        parentBlockId: currentBlockId
-                                                    } %}
-                                                {% endfor %}
+                                                {% sw_include "@Storefront/storefront/section/cms-section-blocks.html.twig" with {
+                                                    blocks: columnChildBlocks.bodyContent,
+                                                    sectionBlocks: section.blocks,
+                                                    parentBlockId: currentBlockId
+                                                } %}
                                             {% endblock %}
                                         </div>
                                     {% endblock %}

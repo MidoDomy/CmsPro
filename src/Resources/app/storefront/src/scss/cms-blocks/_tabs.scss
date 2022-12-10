@@ -25,4 +25,8 @@
 
 .nav-tabs {
     border-bottom: 0;
+
+    .nav-link.active {
+        background-color: transparent;
+    }
 }

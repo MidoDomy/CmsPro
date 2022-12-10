@@ -25,18 +25,6 @@ Component.register('sw-cms-block-layout-background-config', {
             return this.currentDeviceView != 'desktop';
         },
 
-        /** Sends prefix of the current viewport
-         * prefixes are used for dynamic variables
-         * example: customFields.[currentViewportPrefix + 'variableName'] */ 
-        currentViewportPrefix() {
-            return this.currentDeviceView === 'mobile' ? 'sm_' : 
-                this.currentDeviceView === 'tablet-landscape' ? 'md_' : '';
-        },
-
-        customFields() {
-            return this.block.customFields;
-        },
-
         uploadTag() {
             return `cms-block-media-config-${this.block.id}`;
         },

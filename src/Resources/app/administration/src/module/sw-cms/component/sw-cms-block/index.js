@@ -32,7 +32,7 @@ Component.override('sw-cms-block', {
 
         /** Sends prefix of the current viewport
          * prefixes are used for dynamic variables
-         * example: customFields.[currentViewportPrefix + 'variableName'] */ 
+         * example: customFields[currentViewportPrefix + 'variableName'] */ 
         currentViewportPrefix() {
             return this.currentDeviceView === 'mobile' ? 'sm_' : 
                 this.currentDeviceView === 'tablet-landscape' ? 'md_' : '';
@@ -89,7 +89,7 @@ Component.override('sw-cms-block', {
                 'border-top-right-radius': `${this.getValue('borderRadiusTopRight') ?? 0}px`,
                 'border-bottom-right-radius': `${this.getValue('borderRadiusBottomRight') ?? 0}px`,
                 'border-bottom-left-radius': `${this.getValue('borderRadiusBottomLeft') ?? 0}px`,
-                'box-shadow': `${this.getValue('boxShadowType') == 'inset' ? 'inset' : ''} ${this.getValue('boxShadowXOffset') ?? '0'}px ${this.getValue('boxShadowYOffset') ?? '0'}px ${this.getValue('boxShadowBlur') ?? '0'}px ${this.getValue('boxShadowSpread') ?? '0'}px ${this.getValue('boxShadowColor') ?? 'transparent'}`,
+                'box-shadow': `${this.customFields.boxShadowType == 'inset' ? 'inset' : ''} ${this.customFields.boxShadowXOffset ?? '0'}px ${this.customFields.boxShadowYOffset ?? '0'}px ${this.customFields.boxShadowBlur ?? '0'}px ${this.customFields.boxShadowSpread ?? '0'}px ${this.customFields.boxShadowColor ?? 'transparent'}`,
             };
         },
 

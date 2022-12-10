@@ -37,12 +37,11 @@
                                 {% block cms_block_accordion_item_content_inner %}
                                     <div class="accordion-item-content-inner">
                                         {% block cms_block_accordion_item_content_subBlocks %}
-                                            {% for block in panelConfig.subBlocks %}
-                                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                                    sectionBlocks: sectionBlocks,
-                                                    parentBlockId: currentBlockId
-                                                } %}
-                                            {% endfor %}
+                                            {% sw_include "@Storefront/storefront/section/cms-section-blocks.html.twig" with {
+                                                blocks: panelConfig.subBlocks,
+                                                sectionBlocks: section.blocks,
+                                                parentBlockId: currentBlockId
+                                            } %}
                                         {% endblock %}
                                     </div>
                                 {% endblock %}

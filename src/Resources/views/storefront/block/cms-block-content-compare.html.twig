@@ -19,12 +19,11 @@
                 <div class="cms-content-compare-slot left-content">
                     <div>
                         {% block cms_block_content_compare_leftContent_subBlocks %}
-                            {% for block in columnChildBlocks.leftContent %}
-                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                    sectionBlocks: sectionBlocks,
-                                    parentBlockId: currentBlockId
-                                } %}
-                            {% endfor %}
+                            {% sw_include "@Storefront/storefront/section/cms-section-blocks.html.twig" with {
+                                blocks: columnChildBlocks.leftContent,
+                                sectionBlocks: section.blocks,
+                                parentBlockId: currentBlockId
+                            } %}
                         {% endblock %}
                     </div>
                 </div>
@@ -34,12 +33,11 @@
                 <div class="cms-content-compare-slot right-content">
                     <div>
                         {% block cms_block_content_compare_rightContent_subBlocks %}
-                            {% for block in columnChildBlocks.rightContent %}
-                                {% sw_include "@Storefront/storefront/section/cms-section-block-container.html.twig" with {
-                                    sectionBlocks: sectionBlocks,
-                                    parentBlockId: currentBlockId
-                                } %}
-                            {% endfor %}
+                            {% sw_include "@Storefront/storefront/section/cms-section-blocks.html.twig" with {
+                                blocks: columnChildBlocks.rightContent,
+                                sectionBlocks: section.blocks,
+                                parentBlockId: currentBlockId
+                            } %}
                         {% endblock %}
                     </div>
                 </div>

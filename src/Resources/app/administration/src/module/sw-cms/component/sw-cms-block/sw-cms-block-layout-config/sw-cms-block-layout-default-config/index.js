@@ -1,5 +1,5 @@
 import template from './sw-cms-block-layout-default-config.html.twig';
-import './sw-cms-block-layout-default-config.scss'
+import './sw-cms-block-layout-default-config.scss';
 
 const { Component, Mixin } = Shopware;
 
@@ -46,7 +46,7 @@ Component.register('sw-cms-block-layout-default-config', {
                 {'value': 10, 'name': '10/12'},
                 {'value': 11, 'name': '11/12'},
                 {'value': 12, 'name': '12/12'}
-            ]
+            ];
         }
     }
 });
